@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article | RDX Studios Journal</title>
+  <meta name="description" content="RDX Studios Journal — long-form article on creative production, engineering, and brand design.">
+  <meta property="og:title" content="Article | RDX Studios Journal">
+  <meta property="og:description" content="A long-form read from the RDX Studios Journal.">
+  <meta property="og:image" content="assets/Hitman RED Wallpaper.webp">
+  <meta property="og:type" content="article">
+  <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* Article Hero */
+    .article-header {
+      padding: 160px 0 var(--space-xl);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .article-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-md);
+      font-size: 0.9rem;
+      margin-bottom: var(--space-md);
+    }
+    .article-cat-badge {
+      color: var(--rdx-red);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .article-date-time {
+      color: var(--rdx-gray-light);
+    }
+    .article-main-title {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.15;
+      color: var(--rdx-white);
+      margin-bottom: var(--space-md);
+    }
+
+    /* Cover Hero Image */
+    .article-cover-wrap {
+      max-width: 1000px;
+      margin: 0 auto var(--space-2xl);
+      aspect-ratio: 21/9;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: #111;
+    }
+    @media (max-width: 768px) {
+      .article-cover-wrap { aspect-ratio: 16/9; }
+    }
+    .article-cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Reading Container — Max ~680px */
+    .article-reading-container {
+      max-width: 680px;
+      margin: 0 auto var(--space-2xl);
+      padding: 0 var(--space-md);
+      font-family: var(--font-body);
+      font-size: 1.125rem;
+      line-height: 1.85;
+      color: #d1d1d1;
+    }
+    .article-reading-container p {
+      margin-bottom: 1.75rem;
+    }
+    .article-reading-container p:first-of-type::first-letter {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      float: left;
+      line-height: 1;
+      padding-right: 0.5rem;
+      color: var(--rdx-red);
+    }
+
+    /* Back Link */
+    .back-nav {
+      max-width: 680px;
+      margin: 0 auto var(--space-lg);
+      padding: 0 var(--space-md);
+    }
+    .back-link {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--rdx-gray-light);
+      letter-spacing: 0.05em;
+      transition: color var(--transition-fast);
+    }
+    .back-link:hover {
+      color: var(--rdx-red);
+    }
+
+    /* Related Articles */
+    .related-section {
+      padding: var(--space-2xl) 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      background: #050505;
+    }
+    .related-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: var(--space-xl);
+      color: var(--rdx-white);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+      .related-grid { grid-template-columns: 1fr; }
+    }
+
+    .related-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--transition-fast);
+    }
+    .related-card:hover {
+      border-color: var(--rdx-red);
+    }
+    .related-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .related-content {
+      padding: var(--space-md);
+    }
+    .related-card-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--rdx-white);
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body class="rdx-grain">
+  
+  <div id="page-transition" class="active"></div>
+  <div id="nav-placeholder"></div>
+
+  <main>
+    <div class="back-nav">
+      <a href="journal.html" class="back-link">&larr; Back to Journal</a>
+    </div>
+
+    <!-- Article Header -->
+    <header class="article-header rdx-fade-up">
+      <div class="article-meta">
+        <span class="article-cat-badge" id="art-cat">Category</span>
+        <span class="article-date-time" id="art-date-time">Date · Read time</span>
+      </div>
+      <h1 class="article-main-title" id="art-title">Loading Article...</h1>
+    </header>
+
+    <!-- Cover Image -->
+    <div class="article-cover-wrap rdx-fade-up" style="transition-delay: 100ms;">
+      <img id="art-cover" src="" alt="" class="article-cover-img">
+    </div>
+
+    <!-- Long-form Content -->
+    <article class="article-reading-container rdx-fade-up" id="art-body" style="transition-delay: 150ms;">
+      <!-- Dynamic body content -->
+    </article>
+
+    <!-- Related Articles -->
+    <section class="related-section">
+      <div class="container">
+        <h2 class="related-title rdx-fade-up">Related Articles</h2>
+        <div class="related-grid" id="related-grid">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const articleId = urlParams.get('id');
+
+      try {
+        const res = await fetch('data/journal.json');
+        if (!res.ok) return;
+
+        const articles = await res.json();
+        if (articles.length === 0) return;
+
+        let article = articles.find(a => a.id === articleId);
+        if (!article) {
+          article = articles[0]; // Fallback to first article
+        }
+
+        // Set Page Title
+        document.title = `${article.title} | RDX Studios Journal`;
+
+        // Render Header & Cover
+        document.getElementById('art-cat').textContent = article.category;
+        document.getElementById('art-date-time').textContent = `${article.date} · ${article.readTime}`;
+        document.getElementById('art-title').textContent = article.title;
+        
+        const coverEl = document.getElementById('art-cover');
+        coverEl.src = article.coverImage;
+        coverEl.alt = article.title;
+
+        // Render Body Paragraphs
+        const bodyContainer = document.getElementById('art-body');
+        bodyContainer.innerHTML = '';
+        if (Array.isArray(article.content)) {
+          article.content.forEach(pText => {
+            const p = document.createElement('p');
+            p.textContent = pText;
+            bodyContainer.appendChild(p);
+          });
+        }
+
+        // Render Related Articles (excluding current)
+        const relatedGrid = document.getElementById('related-grid');
+        relatedGrid.innerHTML = '';
+        const related = articles.filter(a => a.id !== article.id).slice(0, 2);
+
+        related.forEach(rel => {
+          const card = document.createElement('div');
+          card.className = 'related-card rdx-fade-up';
+          card.innerHTML = `
+            <a href="article.html?id=${encodeURIComponent(rel.id)}">
+              <img src="${rel.coverImage}" alt="${rel.title}" class="related-img" loading="lazy">
+            </a>
+            <div class="related-content">
+              <span style="font-size:0.75rem; color:var(--rdx-red); font-weight:700; text-transform:uppercase;">${rel.category}</span>
+              <h3 class="related-card-title">
+                <a href="article.html?id=${encodeURIComponent(rel.id)}">${rel.title}</a>
+              </h3>
+            </div>
+          `;
+          relatedGrid.appendChild(card);
+        });
+
+        if (typeof initAnimations === 'function') {
+          initAnimations();
+        }
+
+      } catch (err) {
+        console.error('Error loading article:', err);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | RDX Studios</title>
+  <meta name="description" content="Explore the RDX Studios portfolio — cinematic photography, event videography, UI/UX engineering, and brand design work.">
+  <meta property="og:title" content="Portfolio | RDX Studios">
+  <meta property="og:description" content="Photography, cinematography, web engineering, and brand design — see the work.">
+  <meta property="og:image" content="assets/DSLR shot.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* ────────────────────────────────
+       PAGE INTRO
+    ──────────────────────────────── */
+    .portfolio-intro {
+      padding: 160px 0 var(--space-xl);
+      text-align: center;
+    }
+    .portfolio-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--rdx-white);
+      margin-bottom: var(--space-sm);
+    }
+    .portfolio-subtitle {
+      color: var(--rdx-gray-light);
+      font-size: 1.1rem;
+    }
+
+    /* ────────────────────────────────
+       FILTER BUTTONS
+    ──────────────────────────────── */
+    .filter-bar {
+      display: flex;
+      gap: var(--space-sm);
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: var(--space-lg) 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .filter-btn {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-full);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--rdx-gray-light);
+      cursor: pointer;
+      background: transparent;
+      transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+    }
+    .filter-btn:hover {
+      color: var(--rdx-white);
+      border-color: rgba(255,255,255,0.4);
+    }
+    .filter-btn.is-active {
+      background: var(--rdx-red);
+      border-color: var(--rdx-red);
+      color: var(--rdx-white);
+    }
+
+    /* ────────────────────────────────
+       GRID
+    ──────────────────────────────── */
+    .portfolio-section {
+      padding: var(--space-lg) 0 var(--space-2xl);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+    }
+    @media (max-width: 900px) {
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Card base — fixed aspect-ratio to prevent layout shift */
+    .pf-card {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      background: #111; /* placeholder bg before image loads */
+      /* transitions for filter visibility */
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .pf-card.is-hidden {
+      display: none;
+    }
+    .pf-card.is-fading-out {
+      opacity: 0;
+      transform: scale(0.97);
+      pointer-events: none;
+    }
+    .pf-card.is-fading-in {
+      animation: cardFadeIn 0.4s ease forwards;
+    }
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: scale(0.97); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .pf-card img,
+    .pf-card .pf-poster {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .pf-card:hover img,
+    .pf-card:hover .pf-poster {
+      transform: scale(1.06);
+    }
+
+    /* Overlay */
+    .pf-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: var(--space-md);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .pf-card:hover .pf-overlay {
+      opacity: 1;
+    }
+    .pf-category-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--rdx-red);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .pf-card-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.05em;
+      line-height: 1.1;
+    }
+    .pf-action-hint {
+      font-size: 0.75rem;
+      color: var(--rdx-gray-light);
+      margin-top: 4px;
+    }
+
+    /* Video play icon overlay */
+    .pf-play-badge {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(232,0,29,0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      opacity: 0.9;
+    }
+    .pf-card:hover .pf-play-badge {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    .pf-play-badge svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
+      margin-left: 3px; /* optical centering for triangle */
+    }
+
+    /* ────────────────────────────────
+       LIGHTBOX / MODAL
+    ──────────────────────────────── */
+    .rdx-lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0);
+      pointer-events: none;
+      transition: background 0.3s ease;
+    }
+    .rdx-lightbox.is-open {
+      background: rgba(0,0,0,0.92);
+      pointer-events: all;
+    }
+    .lightbox-inner {
+      position: relative;
+      width: 90vw;
+      max-width: 960px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      background: #0d0d0d;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px) scale(0.97);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    .rdx-lightbox.is-open .lightbox-inner {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Media area — fixed 16/9 to reserve space before load */
+    .lightbox-media {
+      width: 100%;
+      aspect-ratio: 16/9;
+      position: relative;
+      background: #000;
+      flex-shrink: 0;
+    }
+    .lightbox-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .lightbox-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
+
+    /* Info panel */
+    .lightbox-info {
+      padding: var(--space-md) var(--space-lg);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      overflow-y: auto;
+    }
+    .lightbox-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--rdx-red);
+      font-weight: 700;
+      margin-bottom: var(--space-xs);
+    }
+    .lightbox-title {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      margin-bottom: var(--space-sm);
+    }
+    .lightbox-desc {
+      color: var(--rdx-gray-light);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* Controls */
+    .lightbox-close {
+      position: absolute;
+      top: var(--space-md);
+      right: var(--space-md);
+      z-index: 10;
+      width: 36px; height: 36px;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .lightbox-close:hover { background: var(--rdx-red); }
+    .lightbox-close svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
+
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      width: 44px; height: 44px;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .lightbox-nav-btn:hover { background: var(--rdx-red); }
+    .lightbox-nav-btn svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; }
+    .lightbox-prev { left: var(--space-sm); }
+    .lightbox-next { right: var(--space-sm); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rdx-lightbox, .lightbox-inner,
+      .pf-card, .pf-card img { transition: none !important; animation: none !important; }
+    }
+  </style>
+</head>
+<body class="rdx-grain">
+  
+  <div id="page-transition" class="active"></div>
+  <div id="nav-placeholder"></div>
+
+  <!-- Intro -->
+  <header class="portfolio-intro">
+    <div class="container">
+      <h1 class="portfolio-title rdx-fade-up">Portfolio</h1>
+      <p class="portfolio-subtitle rdx-fade-up" style="transition-delay:100ms;">
+        Photography · Videography · Digital Engineering · Brand Design
+      </p>
+    </div>
+  </header>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar" role="group" aria-label="Filter portfolio by category">
+    <button class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+    <button class="filter-btn" data-filter="rdx-red" aria-pressed="false">RDX RED</button>
+    <button class="filter-btn" data-filter="code-red" aria-pressed="false">Code RED</button>
+    <button class="filter-btn" data-filter="shape-red" aria-pressed="false">Shape RED</button>
+  </div>
+
+  <!-- Grid -->
+  <section class="portfolio-section">
+    <div class="container">
+      <div class="portfolio-grid" id="portfolio-grid">
+
+        <!-- Card 1 — RDX RED / Photo -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="image"
+          data-title="DSLR Editorial"
+          data-desc="<!-- PLACEHOLDER: Add project description for this shoot. (Chris — please fill in client name, shoot date, and brief creative intent.) -->"
+          style="transition-delay: 0ms;">
+          <img src="assets/DSLR shot.webp" alt="Professional editorial portrait captured with controlled studio lighting" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">RDX RED · Photography</div>
+            <div class="pf-card-title">DSLR Editorial</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card 2 — RDX RED / Photo -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="image"
+          data-title="Tulasi — Portrait Series"
+          data-desc="<!-- PLACEHOLDER: Add project description. (Chris — short portrait bio or shoot context here.) -->"
+          style="transition-delay: 60ms;">
+          <img src="assets/Tulasi.webp" alt="Tulasi portrait with dramatic light and shadow composition" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">RDX RED · Portrait</div>
+            <div class="pf-card-title">Tulasi — Portrait Series</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card 3 — RDX RED / Video -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video"
+          data-src="assets/Shiradi.mp4"
+          data-title="Shiradi — Cinematic Short"
+          data-desc="<!-- PLACEHOLDER: Add project description for Shiradi film. (Chris — client, concept, and any notable production details.) -->"
+          style="transition-delay: 120ms;">
+          <!-- Poster frame generated from first frame via CSS trick (video won't load until lightbox opens) -->
+          <img src="assets/Berlin Indoor Wallpaper.webp" alt="Still frame from the Shiradi cinematic short film" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
+          <div class="pf-play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+          <div class="pf-overlay">
+            <div class="pf-category-tag">RDX RED · Cinematography</div>
+            <div class="pf-card-title">Shiradi — Cinematic Short</div>
+            <div class="pf-action-hint">Click to play ▶</div>
+          </div>
+        </article>
+
+        <!-- Card 4 — RDX RED / Video -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video"
+          data-src="assets/Ester Vigil.mp4"
+          data-title="Ester Vigil — Event Film"
+          data-desc="<!-- PLACEHOLDER: Add project description for Ester Vigil event film. (Chris — event name, date, and key creative goals.) -->"
+          style="transition-delay: 180ms;">
+          <img src="assets/Hitman RED Wallpaper.webp" alt="Cinematic poster frame for the Ester Vigil event film" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
+          <div class="pf-play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+          <div class="pf-overlay">
+            <div class="pf-category-tag">RDX RED · Event Film</div>
+            <div class="pf-card-title">Ester Vigil — Event Film</div>
+            <div class="pf-action-hint">Click to play ▶</div>
+          </div>
+        </article>
+
+        <!-- Card 5 — RDX RED / Video -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video"
+          data-src="assets/bishop.mp4"
+          data-title="Bishop — Showreel"
+          data-desc="<!-- PLACEHOLDER: Add project description for Bishop showreel. -->"
+          style="transition-delay: 240ms;">
+          <img src="assets/MYSURU.webp" alt="Atmospheric still from the Bishop showreel shot at Mysuru Suite" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
+          <div class="pf-play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+          </div>
+          <div class="pf-overlay">
+            <div class="pf-category-tag">RDX RED · Showreel</div>
+            <div class="pf-card-title">Bishop — Showreel</div>
+            <div class="pf-action-hint">Click to play ▶</div>
+          </div>
+        </article>
+
+        <!-- Card 6 — Code RED / UI -->
+        <article class="pf-card rdx-fade-up" data-category="code-red" data-type="image"
+          data-title="Main Interface — Digital Engineering"
+          data-desc="<!-- PLACEHOLDER: Add project description. (Chris — is this VVCE Connect, ReliefRoute, or another system? Please confirm project name and context.) -->"
+          style="transition-delay: 300ms;">
+          <img src="assets/Main interface.webp" alt="Web application interface designed and built by Code RED" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Code RED · Development</div>
+            <div class="pf-card-title">Main Interface</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card 7 — Shape RED / Design -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Campaign Banner"
+          data-desc="<!-- PLACEHOLDER: Add project description for this banner design. (Chris — brand, medium, and campaign goal.) -->"
+          style="transition-delay: 360ms;">
+          <img src="assets/Banner.webp" alt="High-impact brand campaign banner designed by Shape RED" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Brand Design</div>
+            <div class="pf-card-title">Campaign Banner</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card 8 — Shape RED / AI Art 
+             CONFIRM: Chris — is "ChatGPT Image Mar 26 2026" a Shape RED design piece 
+             you want publicly showcased? If not, remove or reclassify. -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Digital Art — March 2026"
+          data-desc="<!-- VERIFY: Chris — please confirm if this AI-generated piece belongs in the portfolio and add context (project/client it was made for). -->"
+          style="transition-delay: 420ms;">
+          <img src="assets/ChatGPT Image Mar 26, 2026, 09_03_52 PM.webp" alt="AI-assisted digital art piece exploring abstract form and colour" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Digital Art</div>
+            <div class="pf-card-title">Digital Art — March 2026</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+      </div><!-- /portfolio-grid -->
+    </div>
+  </section>
+
+  <!-- ────────────────────────────────
+       LIGHTBOX / MODAL
+  ──────────────────────────────── -->
+  <div id="rdx-lightbox" class="rdx-lightbox" role="dialog" aria-modal="true" aria-label="Portfolio viewer" inert>
+    <div class="lightbox-inner" id="lightbox-inner">
+
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close (Esc)">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev" aria-label="Previous (←)">
+        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+      </button>
+
+      <button class="lightbox-nav-btn lightbox-next" id="lightbox-next" aria-label="Next (→)">
+        <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+      </button>
+
+      <div class="lightbox-media" id="lightbox-media">
+        <!-- Media injected by JS -->
+      </div>
+
+      <div class="lightbox-info">
+        <div class="lightbox-tag" id="lightbox-tag"></div>
+        <h2 class="lightbox-title" id="lightbox-title"></h2>
+        <p class="lightbox-desc" id="lightbox-desc"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js" defer></script>
+  <script>
+    // ═══════════════════════════════════════
+    //  PORTFOLIO PAGE LOGIC
+    // ═══════════════════════════════════════
+
+    const grid = document.getElementById('portfolio-grid');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const lightbox = document.getElementById('rdx-lightbox');
+    const lbMedia = document.getElementById('lightbox-media');
+    const lbTitle = document.getElementById('lightbox-title');
+    const lbTag = document.getElementById('lightbox-tag');
+    const lbDesc = document.getElementById('lightbox-desc');
+    const lbClose = document.getElementById('lightbox-close');
+    const lbPrev = document.getElementById('lightbox-prev');
+    const lbNext = document.getElementById('lightbox-next');
+
+    let allCards = [];
+    let visibleCards = [];
+    let currentIndex = -1;
+
+    // Initialise after partials are injected
+    document.addEventListener('DOMContentLoaded', initPortfolio);
+
+    function initPortfolio() {
+      allCards = Array.from(grid.querySelectorAll('.pf-card'));
+      visibleCards = [...allCards];
+
+      // ── Check for URL ?filter= param ──
+      const params = new URLSearchParams(window.location.search);
+      const urlFilter = params.get('filter');
+      if (urlFilter && urlFilter !== 'all') {
+        const matchBtn = Array.from(filterBtns).find(b => b.dataset.filter === urlFilter);
+        if (matchBtn) applyFilter(urlFilter, matchBtn);
+      }
+
+      // ── Filter buttons ──
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          applyFilter(btn.dataset.filter, btn);
+        });
+      });
+
+      // ── Open lightbox on card click ──
+      allCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const idx = visibleCards.indexOf(card);
+          if (idx !== -1) openLightbox(idx);
+        });
+      });
+
+      // ── Lightbox controls ──
+      lbClose.addEventListener('click', closeLightbox);
+      lbPrev.addEventListener('click', () => navigate(-1));
+      lbNext.addEventListener('click', () => navigate(1));
+
+      // Close on backdrop click
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) closeLightbox();
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft')  navigate(-1);
+        if (e.key === 'ArrowRight') navigate(1);
+      });
+    }
+
+    // ── Filter ──────────────────────────────
+    function applyFilter(filter, activeBtn) {
+      // Update button states
+      filterBtns.forEach(b => {
+        b.classList.remove('is-active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      activeBtn.classList.add('is-active');
+      activeBtn.setAttribute('aria-pressed', 'true');
+
+      // Animate out, then show/hide, then animate in
+      allCards.forEach(card => card.classList.add('is-fading-out'));
+
+      setTimeout(() => {
+        allCards.forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.classList.remove('is-hidden', 'is-fading-out', 'is-fading-in');
+          if (match) {
+            card.classList.add('is-fading-in');
+          } else {
+            card.classList.add('is-hidden');
+          }
+        });
+        visibleCards = allCards.filter(c => !c.classList.contains('is-hidden'));
+      }, 300);
+    }
+
+    // ── Lightbox open ────────────────────────
+    function openLightbox(index) {
+      currentIndex = index;
+      const card = visibleCards[index];
+      const type = card.dataset.type;
+      const src = type === 'video' ? card.dataset.src : card.querySelector('img').src;
+      const title = card.dataset.title;
+      const tag = card.querySelector('.pf-category-tag')?.textContent || '';
+      // Strip HTML comment from desc for display
+      const rawDesc = card.dataset.desc || '';
+      const displayDesc = rawDesc.replace(/<!--[\s\S]*?-->/g, '').trim()
+        || 'Project details coming soon.';
+
+      // Populate info
+      lbTitle.textContent = title;
+      lbTag.textContent = tag;
+      lbDesc.textContent = displayDesc;
+
+      // Populate media — lazy-load video only on open
+      lbMedia.innerHTML = '';
+      if (type === 'video') {
+        const vid = document.createElement('video');
+        vid.src = src;
+        vid.controls = true;
+        vid.autoplay = true;
+        vid.playsInline = true;
+        // Do NOT preload — load only now
+        vid.preload = 'auto';
+        lbMedia.appendChild(vid);
+      } else {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = title;
+        lbMedia.appendChild(img);
+      }
+
+      // Update prev/next visibility
+      lbPrev.style.display = index > 0 ? 'flex' : 'none';
+      lbNext.style.display = index < visibleCards.length - 1 ? 'flex' : 'none';
+
+      // Open
+      lightbox.removeAttribute('inert');
+      lightbox.classList.add('is-open');
+      lbClose.focus();
+      document.body.style.overflow = 'hidden';
+    }
+
+    // ── Lightbox close ───────────────────────
+    function closeLightbox() {
+      // Pause/stop any playing video
+      const vid = lbMedia.querySelector('video');
+      if (vid) { vid.pause(); vid.src = ''; }
+
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('inert', '');
+      document.body.style.overflow = '';
+      // Return focus to the card that opened it
+      if (currentIndex >= 0 && visibleCards[currentIndex]) {
+        visibleCards[currentIndex].focus();
+      }
+    }
+
+    // ── Lightbox navigate ────────────────────
+    function navigate(dir) {
+      const next = currentIndex + dir;
+      if (next >= 0 && next < visibleCards.length) openLightbox(next);
+    }
+  </script>
+</body>
+</html>

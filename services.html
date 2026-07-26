@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services | RDX Studios</title>
+  <meta name="description" content="RDX Studios services: cinematic photography and videography (RDX RED), custom web development (Code RED), and brand identity design (Shape RED).">
+  <meta property="og:title" content="Services | RDX Studios">
+  <meta property="og:description" content="Photography, web development, and brand design — three specialised wings under one creative roof.">
+  <meta property="og:image" content="assets/The 3 Mark.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* Hub Intro */
+    .services-intro {
+      padding: 160px 0 var(--space-2xl);
+      text-align: center;
+      background-color: var(--rdx-black);
+    }
+    .intro-graphic {
+      max-width: 400px;
+      width: 100%;
+      margin: 0 auto var(--space-lg);
+      opacity: 0.9;
+    }
+    .intro-desc {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.15rem;
+      color: var(--rdx-gray-light);
+    }
+
+    /* Sub-block Base */
+    .service-block {
+      padding: var(--space-2xl) 0;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .service-grid { grid-template-columns: 1fr; }
+    }
+    .service-list {
+      list-style: none;
+      margin-bottom: var(--space-xl);
+    }
+    .service-list li {
+      margin-bottom: var(--space-md);
+      font-size: 1.1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+    .service-list li::before {
+      content: "—";
+      color: var(--rdx-red);
+      font-weight: bold;
+    }
+    .service-list strong {
+      display: block;
+      color: var(--rdx-white);
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .service-list span {
+      color: var(--rdx-gray-light);
+      font-size: 0.95rem;
+    }
+
+    /* RDX RED Block */
+    .showreel-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      position: relative;
+    }
+    .showreel-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Code RED Block */
+    .code-block {
+      position: relative;
+      background-color: #050505;
+      padding: 120px 0;
+    }
+    .code-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('assets/code.webp');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    .code-header-img {
+      max-width: 300px;
+      margin-bottom: var(--space-lg);
+    }
+    .proof-points {
+      margin: var(--space-lg) 0;
+      padding: var(--space-md);
+      background: rgba(255,255,255,0.02);
+      border-left: 2px solid var(--rdx-red);
+    }
+    .proof-points h4 {
+      font-family: var(--font-display);
+      color: var(--rdx-red);
+      font-size: 1.25rem;
+      margin-bottom: var(--space-sm);
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+    }
+    .tech-badge {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-family: var(--font-body);
+      color: var(--rdx-gray-light);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Shape RED Block */
+    .shape-header-img {
+      max-width: 80px;
+      margin-bottom: var(--space-lg);
+      filter: invert(1);
+    }
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-sm);
+    }
+    .showcase-item {
+      aspect-ratio: 1/1;
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .showcase-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: opacity var(--transition-fast);
+    }
+    .showcase-item:hover .showcase-img {
+      opacity: 1;
+    }
+
+    /* Process Strip */
+    .process-strip {
+      padding: var(--space-2xl) 0;
+      background-color: var(--rdx-black);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .process-title {
+      text-align: center;
+      font-family: var(--font-display);
+      font-size: 3rem;
+      margin-bottom: var(--space-xl);
+      color: var(--rdx-red);
+    }
+    .timeline {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 24px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255,255,255,0.1);
+      z-index: 1;
+    }
+    @media (max-width: 768px) {
+      .timeline {
+        flex-direction: column;
+        gap: var(--space-lg);
+      }
+      .timeline::before {
+        top: 0;
+        bottom: 0;
+        left: 24px;
+        right: auto;
+        width: 2px;
+        height: 100%;
+      }
+    }
+    .timeline-step {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      text-align: center;
+      padding: 0 var(--space-sm);
+    }
+    @media (max-width: 768px) {
+      .timeline-step {
+        text-align: left;
+        padding-left: 60px;
+      }
+    }
+    .step-marker {
+      width: 50px;
+      height: 50px;
+      background: var(--rdx-black);
+      border: 2px solid var(--rdx-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-md);
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--rdx-white);
+    }
+    @media (max-width: 768px) {
+      .step-marker {
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0;
+      }
+    }
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: var(--space-xs);
+    }
+    .step-desc {
+      color: var(--rdx-gray-light);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body class="rdx-grain">
+  
+  <div id="page-transition" class="active"></div>
+  <div id="nav-placeholder"></div>
+
+  <!-- Hub Intro -->
+  <section class="services-intro">
+    <div class="container">
+      <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">RDX Studios Services</h1>
+      <img src="assets/The 3 Mark.webp" alt="The three-wing identity of RDX Studios: Code RED, RDX RED, and Shape RED" class="intro-graphic rdx-fade-up">
+      <p class="intro-desc rdx-fade-up" style="transition-delay: 100ms;">
+        RDX Studios operates as a unified creative ecosystem. Our three-wing model — RDX RED, Code RED, and Shape RED — seamlessly integrates luxury visual production, high-performance digital engineering, and strategic brand identity. This unified approach ensures that every project is conceptually cohesive and technically flawless.
+      </p>
+    </div>
+  </section>
+
+  <!-- RDX RED Block (Photography/Videography) -->
+  <section class="service-block">
+    <div class="container">
+      <div class="service-grid">
+        <div class="service-visual rdx-slide-in">
+          <div class="showreel-wrap">
+            <video class="showreel-video" muted loop playsinline preload="none" poster="assets/DSLR shot.webp">
+              <source src="assets/bishop.mp4" type="video/mp4">
+            </video>
+            <!-- Click to play: video does NOT autoplay -->
+            <button class="showreel-play" onclick="this.previousElementSibling.play();this.previousElementSibling.previousElementSibling?.play?.();this.style.display='none';this.closest('.showreel-wrap').querySelector('video').play()" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);border:none;cursor:pointer;z-index:2;">
+              <span style="width:64px;height:64px;background:var(--rdx-red);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></span>
+            </button>
+          </div>
+        </div>
+        <div class="service-content rdx-fade-up">
+          <h2 style="font-family: var(--font-display); font-size: 4rem; color: var(--rdx-red); margin-bottom: var(--space-md);">RDX RED</h2>
+          <p style="color: var(--rdx-gray-light); margin-bottom: var(--space-lg);">The premium photography and videography wing. We capture authentic emotion and craft cinematic visual narratives that elevate your brand's presence.</p>
+          
+          <ul class="service-list">
+            <!-- CONFIRM: Chris, please review this exact service list -->
+            <li>
+              <div>
+                <strong>Photography</strong>
+                <span>Fashion, Editorial, Product, and High-End Portraits</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Videography</strong>
+                <span>Commercials, Music Videos, and Corporate Documentaries</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Reels & Shorts</strong>
+                <span>High-retention 9:16 vertical content optimized for social growth</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Post-Production</strong>
+                <span>Color grading, VFX, editing, and professional retouching</span>
+              </div>
+            </li>
+          </ul>
+          
+          <a href="contact.html?service=rdx-red" class="btn btn-primary">Book a Shoot</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Code RED Block (Web Dev) -->
+  <section class="service-block code-block">
+    <div class="code-bg"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="service-grid" style="grid-template-columns: 1.2fr 0.8fr;">
+        <div class="service-content rdx-fade-up">
+          <img src="assets/CODE_RED.webp" alt="Code RED division logo in bold white type" class="code-header-img" loading="lazy">
+          <p style="color: var(--rdx-gray-light); margin-bottom: var(--space-lg);">The digital engineering wing. We build immersive, high-performance web experiences and robust applications engineered for the modern luxury standard.</p>
+          
+          <ul class="service-list">
+            <li>
+              <div>
+                <strong>Custom Web Development</strong>
+                <span>Bespoke websites tailored to precise performance and aesthetic needs</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>UI/UX Design</strong>
+                <span>Intuitive user interfaces built upon deep user experience research</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>System Engineering</strong>
+                <span>Complex application architecture and robust technical foundations</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="proof-points">
+            <h4>Capability Proof Points</h4>
+            <p style="font-size: 0.95rem; color: var(--rdx-gray-light);">Engineering the architecture behind comprehensive internal platforms like <strong>VVCE Connect</strong> and agile emergency response systems like <strong>ReliefRoute</strong>.</p>
+          </div>
+
+          <div class="tech-stack">
+            <span class="tech-badge">HTML5 / CSS3</span>
+            <span class="tech-badge">JavaScript / ES6+</span>
+            <span class="tech-badge">React & Next.js</span>
+            <span class="tech-badge">Node.js</span>
+            <span class="tech-badge">Figma</span>
+            <span class="tech-badge">MongoDB</span>
+          </div>
+          
+          <a href="contact.html?service=code-red" class="btn btn-primary">Start a Digital Build</a>
+        </div>
+        <div class="service-visual rdx-slide-in" style="transition-delay: 200ms;">
+           <!-- Abstract visual representation for Code RED -->
+           <div class="showcase-item" style="aspect-ratio: 4/5;">
+             <img src="assets/Berlin Indoor Wallpaper.webp" alt="Abstract digital texture representing code architecture" class="showcase-img" loading="lazy" style="opacity: 1; filter: grayscale(100%) contrast(1.2);">
+           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shape RED Block (Digital Media) -->
+  <section class="service-block">
+    <div class="container">
+      <div class="service-grid">
+        <div class="service-visual rdx-fade-up">
+          <div class="showcase-grid">
+            <div class="showcase-item"><img src="assets/Banner.webp" alt="Campaign banner design by Shape RED" class="showcase-img" loading="lazy"></div>
+            <div class="showcase-item"><img src="assets/Exclusive.webp" alt="Exclusive brand artwork created by Shape RED" class="showcase-img" loading="lazy"></div>
+            <div class="showcase-item"><img src="assets/code.webp" alt="Digital design mockup from the Shape RED portfolio" class="showcase-img" loading="lazy"></div>
+            <div class="showcase-item"><img src="assets/redpatterns.webp" alt="Geometric red pattern texture for brand identity" class="showcase-img" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="service-content rdx-slide-in">
+          <img src="assets/Icon SRED.webp" alt="Shape RED icon featuring geometric forms: circle, diamond, triangle" class="shape-header-img" loading="lazy">
+          <h2 style="font-family: var(--font-display); font-size: 4rem; color: var(--rdx-red); margin-bottom: var(--space-md); line-height: 1; margin-top: -1rem;">Shape RED</h2>
+          <p style="color: var(--rdx-gray-light); margin-bottom: var(--space-lg);">The creative digital wing forging impactful digital media. Strategic design and brand identity shaping that define industry leaders.</p>
+          
+          <ul class="service-list">
+            <li>
+              <div>
+                <strong>Brand Identity</strong>
+                <span>Comprehensive logo design, brand guidelines, and visual language</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Digital Art & Posters</strong>
+                <span>Premium digital media including high-impact posters and key art</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong>Motion Graphics</strong>
+                <span>Cinematic title cards, logo reveals, and animated visual assets</span>
+              </div>
+            </li>
+          </ul>
+          
+          <a href="contact.html?service=shape-red" class="btn btn-primary">Shape Your Brand</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shared Process Strip -->
+  <section class="process-strip">
+    <div class="container">
+      <h2 class="process-title rdx-fade-up">The RDX Workflow</h2>
+      <div class="timeline">
+        
+        <div class="timeline-step rdx-fade-up">
+          <div class="step-marker">01</div>
+          <h3 class="step-title">Inquiry</h3>
+          <p class="step-desc">Initial consultation to define the project scope, aesthetic goals, and technical requirements across all required wings.</p>
+        </div>
+        
+        <div class="timeline-step rdx-fade-up" style="transition-delay: 100ms;">
+          <div class="step-marker">02</div>
+          <h3 class="step-title">Concept</h3>
+          <p class="step-desc">Strategic planning, mood boarding, and architectural design. We architect the visual narrative or digital system.</p>
+        </div>
+        
+        <div class="timeline-step rdx-fade-up" style="transition-delay: 200ms;">
+          <div class="step-marker">03</div>
+          <h3 class="step-title">Production</h3>
+          <p class="step-desc">Execution phase. Photography shoots, active code sprints, and meticulous design crafting by our specialists.</p>
+        </div>
+        
+        <div class="timeline-step rdx-fade-up" style="transition-delay: 300ms;">
+          <div class="step-marker">04</div>
+          <h3 class="step-title">Delivery</h3>
+          <p class="step-desc">Final polish, post-production, QA testing, and seamless handover of premium-grade assets and digital products.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

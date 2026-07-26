@@ -1,0 +1,164 @@
+<nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html" aria-label="RDX Studios Home">
+        <img src="assets/LOgo.webp" alt="RDX Studios logo" class="logo-img">
+      </a>
+    </div>
+    
+    <!-- Hamburger Toggle (mobile) -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
+      <div class="nav-group">
+        <a href="services.html" class="nav-item">RDX RED</a>
+        <a href="services.html" class="nav-item">CODE RED</a>
+        <a href="services.html" class="nav-item">SHAPE RED</a>
+      </div>
+      <div class="nav-group secondary">
+        <a href="about.html" class="nav-item">ABOUT</a>
+        <a href="services.html" class="nav-item">SERVICES</a>
+        <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
+        <a href="journal.html" class="nav-item">JOURNAL</a>
+        <a href="team.html" class="nav-item">TEAM</a>
+      </div>
+    </div>
+    
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary">CONNECT</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+/* Nav Styles */
+.rdx-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: transparent;
+  transition: background-color var(--transition-normal);
+  padding: var(--space-md) 0;
+}
+.rdx-nav.is-solid {
+  background-color: var(--rdx-black);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+.logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: center;
+}
+.nav-group {
+  display: flex;
+  gap: var(--space-lg);
+}
+.nav-item {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.nav-item:hover {
+  color: var(--rdx-red);
+}
+/* Focus-visible for keyboard accessibility */
+.nav-item:focus-visible,
+.btn-primary:focus-visible {
+  outline: 2px solid var(--rdx-red);
+  outline-offset: 4px;
+}
+.btn-primary {
+  background-color: var(--rdx-red);
+  color: var(--rdx-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background-color var(--transition-fast);
+}
+.btn-primary:hover {
+  background-color: var(--rdx-red-hover);
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 110;
+}
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--rdx-white);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+.nav-hamburger.is-open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.is-open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.is-open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile breakpoint */
+@media (max-width: 900px) {
+  .nav-hamburger {
+    display: flex;
+  }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--rdx-black);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 100px var(--space-lg) var(--space-lg);
+    gap: var(--space-lg);
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+    box-shadow: -4px 0 30px rgba(0,0,0,0.5);
+    z-index: 105;
+  }
+  .nav-links.is-open {
+    transform: translateX(0);
+  }
+  .nav-group {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .nav-cta {
+    display: none; /* CTA duplicated inside mobile menu if needed */
+  }
+}
+</style>

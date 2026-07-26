@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | RDX Studios</title>
+  <meta name="description" content="Get in touch with RDX Studios. Book a photography shoot, start a digital build, or shape your brand. Studios in Kokkada and Mysuru, Karnataka.">
+  <meta property="og:title" content="Contact | RDX Studios">
+  <meta property="og:description" content="Book a shoot, start a digital build, or shape your brand. Get in touch with RDX Studios.">
+  <meta property="og:image" content="assets/KOKKADA.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* ────────────────────────────────
+       CONTACT LAYOUT
+    ──────────────────────────────── */
+    .contact-hero {
+      padding: 160px 0 var(--space-xl);
+      text-align: center;
+    }
+    .contact-title {
+      font-size: clamp(3rem, 8vw, 6rem);
+      color: var(--rdx-white);
+      margin-bottom: var(--space-sm);
+    }
+    .contact-subtitle {
+      color: var(--rdx-gray-light);
+      font-size: 1.1rem;
+    }
+
+    .contact-section {
+      padding: var(--space-xl) 0 var(--space-2xl);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--space-2xl);
+    }
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-xl);
+      }
+    }
+
+    /* ────────────────────────────────
+       INFO PANEL (Left Column)
+    ──────────────────────────────── */
+    .contact-info-block {
+      margin-bottom: var(--space-xl);
+    }
+    .info-heading {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--rdx-red);
+      margin-bottom: var(--space-md);
+      letter-spacing: 0.05em;
+    }
+    .info-text {
+      color: var(--rdx-gray-light);
+      font-size: 1.1rem;
+      margin-bottom: var(--space-sm);
+    }
+    .info-link {
+      color: var(--rdx-white);
+      text-decoration: underline;
+      transition: color var(--transition-fast);
+    }
+    .info-link:hover {
+      color: var(--rdx-red);
+    }
+    .social-links {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-md);
+    }
+    .social-links a {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: var(--rdx-gray-light);
+      transition: color var(--transition-fast);
+    }
+    .social-links a:hover {
+      color: var(--rdx-red);
+    }
+
+    /* Studios Panel */
+    .studios-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+    }
+    @media (max-width: 500px) {
+      .studios-panel { grid-template-columns: 1fr; }
+    }
+    .studio-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .studio-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .studio-details {
+      padding: var(--space-md);
+    }
+    .studio-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--rdx-white);
+      margin-bottom: 4px;
+    }
+    .studio-address {
+      font-size: 0.85rem;
+      color: var(--rdx-gray-light);
+      line-height: 1.4;
+    }
+
+    /* ────────────────────────────────
+       FORM PANEL (Right Column)
+    ──────────────────────────────── */
+    .form-panel {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+    }
+
+    /* Form Type Toggle */
+    .form-toggle {
+      display: flex;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-xl);
+      background: rgba(0,0,0,0.5);
+      padding: 4px;
+      border-radius: var(--radius-sm);
+    }
+    .toggle-btn {
+      flex: 1;
+      padding: var(--space-sm);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--rdx-gray-light);
+      background: transparent;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+    }
+    .toggle-btn.is-active {
+      background: var(--rdx-red);
+      color: var(--rdx-white);
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: var(--space-lg);
+    }
+    .form-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      color: var(--rdx-white);
+      margin-bottom: var(--space-xs);
+    }
+    .form-label span.req {
+      color: var(--rdx-red);
+    }
+    .form-control {
+      width: 100%;
+      background: rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--rdx-white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      transition: border-color var(--transition-fast);
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--rdx-red);
+    }
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      background-size: 16px;
+    }
+    textarea.form-control {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .submit-btn {
+      width: 100%;
+      background: var(--rdx-red);
+      color: var(--rdx-white);
+      border: none;
+      padding: 16px;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+    .submit-btn:hover {
+      background: var(--rdx-red-hover);
+    }
+
+    /* Success State */
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: var(--space-2xl) var(--space-xl);
+    }
+    .form-success.is-visible {
+      display: block;
+      animation: cardFadeIn 0.5s ease forwards;
+    }
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .success-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--rdx-red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-md);
+    }
+    .success-icon svg {
+      width: 32px;
+      height: 32px;
+      stroke: var(--rdx-white);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .success-title {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      margin-bottom: var(--space-sm);
+    }
+    .success-desc {
+      color: var(--rdx-gray-light);
+      margin-bottom: var(--space-lg);
+      line-height: 1.6;
+    }
+    .success-note {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      background: rgba(0,0,0,0.3);
+      padding: 12px;
+      border-radius: var(--radius-sm);
+      border: 1px dashed rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body class="rdx-grain">
+  
+  <div id="page-transition" class="active"></div>
+  <div id="nav-placeholder"></div>
+
+  <!-- Intro -->
+  <header class="contact-hero">
+    <div class="container">
+      <h1 class="contact-title rdx-fade-up">Ready to Create?</h1>
+      <p class="contact-subtitle rdx-fade-up" style="transition-delay:100ms;">
+        Let's build your next visual or digital legacy.
+      </p>
+    </div>
+  </header>
+
+  <!-- Contact Grid -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Left: Info & Studios -->
+        <div class="contact-info rdx-slide-in">
+          <div class="contact-info-block">
+            <h2 class="info-heading">Direct Contact</h2>
+            <p class="info-text">Email: <a href="mailto:ddxredx0703@gmail.com" class="info-link">ddxredx0703@gmail.com</a></p>
+            <p class="info-text">Phone: <a href="tel:+917676218729" class="info-link">+91 76762 18729</a></p>
+            
+            <div class="social-links">
+              <a href="#" target="_blank" rel="noopener">Instagram</a>
+              <a href="#" target="_blank" rel="noopener">Twitter</a>
+              <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+              <a href="#" target="_blank" rel="noopener">Behance</a>
+            </div>
+          </div>
+
+          <div class="contact-info-block" style="margin-top: var(--space-2xl);">
+            <h2 class="info-heading">Our Studios</h2>
+            <div class="studios-panel">
+              <div class="studio-card">
+                <img src="assets/KOKKADA.webp" alt="Interior of the Kokkada Main production studio" class="studio-img" loading="lazy">
+                <div class="studio-details">
+                  <h3 class="studio-name">Kokkada Main</h3>
+                  <p class="studio-address">
+                    123 Creative Hub Street<br>
+                    Dakshina Kannada, KA<br><br>
+                    Hours: 9am - 7pm (Mon-Sat)
+                  </p>
+                </div>
+              </div>
+              <div class="studio-card">
+                <img src="assets/MYSURU.webp" alt="Interior of the Mysuru Suite editorial studio" class="studio-img" loading="lazy">
+                <div class="studio-details">
+                  <h3 class="studio-name">Mysuru Suite</h3>
+                  <p class="studio-address">
+                    456 Editorial Lane<br>
+                    Mysore City, KA<br><br>
+                    Hours: By Appointment Only
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="form-panel rdx-fade-up" style="transition-delay: 200ms;">
+          
+          <div class="form-toggle" role="group" aria-label="Inquiry Type">
+            <button class="toggle-btn is-active" data-type="shoot" id="btn-shoot">Book a Shoot</button>
+            <button class="toggle-btn" data-type="inquiry" id="btn-inquiry">General Inquiry</button>
+          </div>
+
+          <form id="contact-form" novalidate>
+            <!-- Hidden field to pass form type to backend -->
+            <input type="hidden" name="inquiry_type" id="inquiry_type" value="shoot">
+
+            <div class="form-group">
+              <label class="form-label" for="full_name">Name <span class="req">*</span></label>
+              <input type="text" id="full_name" name="full_name" class="form-control" placeholder="Jane Doe" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email <span class="req">*</span></label>
+              <input type="email" id="email" name="email" class="form-control" placeholder="jane@example.com" required>
+            </div>
+
+            <div class="form-group" id="group-phone">
+              <label class="form-label" for="phone">Phone <span class="req" id="req-phone">*</span></label>
+              <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 00000 00000" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="service_interest">Service Interest <span class="req">*</span></label>
+              <select id="service_interest" name="service_interest" class="form-control" required>
+                <option value="" disabled selected>Select an option...</option>
+                <option value="rdx-red">RDX RED (Photography / Videography)</option>
+                <option value="code-red">Code RED (Web Development / UX)</option>
+                <option value="shape-red">Shape RED (Brand Design / Digital Art)</option>
+                <option value="not-sure">Not Sure / Multiple</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="group-studio">
+              <label class="form-label" for="preferred_studio">Preferred Studio <span class="req" id="req-studio">*</span></label>
+              <select id="preferred_studio" name="preferred_studio" class="form-control" required>
+                <option value="" disabled selected>Select an option...</option>
+                <option value="kokkada">Kokkada Main</option>
+                <option value="mysuru">Mysuru Suite</option>
+                <option value="remote">Remote / On-Location</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="project_details">Project Details <span class="req">*</span></label>
+              <textarea id="project_details" name="project_details" class="form-control" placeholder="Tell us about your vision, timeline, and deliverables..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">Submit Request</button>
+          </form>
+
+          <!-- Success State (Hidden initially) -->
+          <div id="form-success" class="form-success">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <h2 class="success-title">Message Received</h2>
+            <p class="success-desc">Thank you for reaching out to RDX Studios. We have received your request and will be in touch shortly to discuss your project.</p>
+            <div class="success-note">
+              <strong>Note:</strong> Client-side validation passed. This form is currently visually complete but not yet wired to a live backend (e.g., Supabase or Formspree). Real submissions will not be stored until the backend phase is implemented.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js" defer></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const contactForm = document.getElementById('contact-form');
+      const formSuccess = document.getElementById('form-success');
+      const btnShoot = document.getElementById('btn-shoot');
+      const btnInquiry = document.getElementById('btn-inquiry');
+      
+      const phoneInput = document.getElementById('phone');
+      const reqPhone = document.getElementById('req-phone');
+      const groupStudio = document.getElementById('group-studio');
+      const studioInput = document.getElementById('preferred_studio');
+      const reqStudio = document.getElementById('req-studio');
+      
+      const inquiryTypeInput = document.getElementById('inquiry_type');
+      const serviceInterestSelect = document.getElementById('service_interest');
+
+      // Auto-select service based on URL parameter (?service=code-red)
+      const urlParams = new URLSearchParams(window.location.search);
+      const serviceParam = urlParams.get('service');
+      if (serviceParam) {
+        const option = Array.from(serviceInterestSelect.options).find(opt => opt.value === serviceParam);
+        if (option) {
+          option.selected = true;
+        }
+      }
+
+      // Handle Toggle Logic
+      function setFormType(type) {
+        if (type === 'shoot') {
+          btnShoot.classList.add('is-active');
+          btnInquiry.classList.remove('is-active');
+          inquiryTypeInput.value = 'shoot';
+          
+          // Make Phone required
+          phoneInput.required = true;
+          reqPhone.style.display = 'inline';
+          
+          // Show and make Studio required
+          groupStudio.style.display = 'block';
+          studioInput.required = true;
+        } else {
+          btnInquiry.classList.add('is-active');
+          btnShoot.classList.remove('is-active');
+          inquiryTypeInput.value = 'inquiry';
+          
+          // Make Phone optional
+          phoneInput.required = false;
+          reqPhone.style.display = 'none';
+          
+          // Hide and make Studio optional
+          groupStudio.style.display = 'none';
+          studioInput.required = false;
+          studioInput.value = ''; // clear value
+        }
+      }
+
+      btnShoot.addEventListener('click', () => setFormType('shoot'));
+      btnInquiry.addEventListener('click', () => setFormType('inquiry'));
+
+      // Handle Form Submit (Client-Side Validation Only)
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Remove previous visual error states (optional simple handling)
+        contactForm.querySelectorAll('.form-control').forEach(el => {
+          el.style.borderColor = 'rgba(255,255,255,0.1)';
+        });
+
+        if (!contactForm.checkValidity()) {
+          // Highlight invalid fields natively or manually
+          contactForm.querySelectorAll(':invalid').forEach(el => {
+            el.style.borderColor = 'var(--rdx-red)';
+          });
+          return;
+        }
+
+        // Validation passed: Show Success State
+        contactForm.style.display = 'none';
+        formSuccess.classList.add('is-visible');
+      });
+
+      // Clear custom error borders on input
+      contactForm.addEventListener('input', (e) => {
+        if (e.target.classList.contains('form-control')) {
+          e.target.style.borderColor = 'rgba(255,255,255,0.1)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

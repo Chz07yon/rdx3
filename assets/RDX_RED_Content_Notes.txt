@@ -1,0 +1,100 @@
+RDX RED — SITE CONTENT NOTES
+(Use this file as the source of truth for real content. Do not invent placeholder text where content is provided below.)
+
+===================================
+## BRAND CORE
+===================================
+Studio name: RED Studio / RDX RED
+Tagline: We Paint with Light
+Sub-tagline: Capturing Moments in Red
+Meta description: RED Studio - We Paint with Light. Premium photography and videography studio.
+Hero line: Elevating visual storytelling through cinematic lens and premium studio spaces.
+
+===================================
+## ABOUT
+===================================
+Founded: 2024, in Karnataka, by Chris Zeyon Pinto
+
+Origin story:
+RED Studio was founded in 2024 in Karnataka by Chris Zeyon Pinto with a simple but powerful belief — every story deserves to be told through light, motion, and emotion. What started as a photography and videography studio quickly evolved into something bigger. Today, RED is a full-spectrum creative house that captures moments through the lens and builds unforgettable digital experiences through code.
+
+About RED:
+RED Studio is more than a creative agency. We are storytellers, light painters, and digital architects. We specialize in cinematic photography, high-end videography, short-form content, and now premium website development under our CODE RED division, and impactful digital media design through our SHAPE RED wing. Every project — whether a single frame or an entire digital ecosystem — is crafted with obsessive attention to emotion, contrast, and detail. Our work doesn't just look good. It feels alive.
+
+Vision:
+We believe the future belongs to creators who can master both light and code. Our vision is to become Karnataka's most respected creative powerhouse — a studio where photographers, cinematographers, and developers work side by side to deliver experiences that are visually stunning and technically flawless.
+
+Closing line: We don't just create content. We build legacies.
+
+Timeline:
+- 2024 — Studio Founded
+- Code RED — Digital Expansion
+- Shape RED — Digital Media Wing
+
+===================================
+## SUB-BRANDS (Signature Services)
+===================================
+1. RDX RED — the premium photography and videography wing of RED Studio
+2. Code RED — a high-end web development wing focused on specialized solutions tailored to client needs
+3. Shape RED — the creative digital wing forging impactful digital media including posters, title cards, and logos
+
+===================================
+## STATS
+===================================
+2 — Premium Studios
+10+ — Years Active
+500+ — Projects Delivered
+8 — Creative Potential
+
+===================================
+## TRUSTED BY (VERIFY BEFORE USING)
+===================================
+Vogue, Nike, Sony, Red Bull, HBO
+NOTE: confirm whether these are real past clients or placeholder names before launch. If placeholder, replace with real client names or remove this section — a fabricated client-trust bar is a credibility risk on a live company site.
+
+===================================
+## SERVICES
+===================================
+1. Photography — Fashion, Editorial, Product, and High-End Portraits
+2. Videography — Commercials, Music Videos, and Corporate Documentaries
+3. Reels & Shorts — High-retention 9:16 vertical content optimized for social growth
+4. Web Development — Custom websites, professional websites, testing of websites and UI/UX design
+5. Shape RED — Premium digital media including posters, title cards, brand logos, and digital art
+6. Signature Shots — Stylized hero images and cinematic slow-motion captures
+7. Post-Production — Color grading, VFX, editing, and professional retouching
+
+Pricing model: no public pricing listed — "Book Now" / "Start Your Project" CTA instead
+Service area: Dakshina Kannada District and Mysore City, Karnataka
+
+===================================
+## STUDIOS
+===================================
+1. Kokkada Main
+2. Mysuru Suite
+
+===================================
+## CONTACT
+===================================
+Email: ddxredx0703@gmail.com
+Phone: +91 76762 18729
+Booking form service dropdown options: Photography / Videography / Reels & Shorts / Web Development
+
+===================================
+## TEAM
+===================================
+Currently no confirmed roster — previous site showed "More Visionaries Incoming" placeholder.
+Action: populate with real team members this build (name, role, photo, short bio/quote per person).
+
+===================================
+## FOOTER
+===================================
+Tagline: Capturing Moments in Red
+Copyright: © 2026 RED Studio | Privacy | Terms
+Nav columns: Navigation (Home / About / Our Team / Services / Portfolio), Studios (Kokkada Main / Mysuru Suite), Connect (Contact Us), Join the Community (social icons)
+
+===================================
+## ADMIN PORTAL — DEFERRED
+===================================
+Old site had a restricted-access "Admin Portal" login stub on the About page (username/password fields, no working backend).
+STATUS: NOT part of this build. Do not build in Phases 0-8.
+Will be scoped as its own phase later once the main site is live — likely needs a real auth + backend decision (e.g. Supabase) at that point.

@@ -1,0 +1,62 @@
+[
+  {
+    "id": "crafting-cinematic-light",
+    "title": "Crafting Cinematic Light: The Philosophy Behind RDX RED",
+    "category": "RDX RED",
+    "categoryId": "rdx-red",
+    "date": "July 15, 2026",
+    "readTime": "4 min read",
+    "coverImage": "assets/Hitman RED Wallpaper.webp",
+    "summary": "Exploring contrast, shadow, and emotional framing in editorial photography and visual storytelling.",
+    "content": [
+      "Light is not merely illumination—it is narrative structure. At RDX RED, every frame begins with the quiet interplay between shadows and sculpted highlights.",
+      "When we approach an editorial or cinematic shoot, our primary focus is mood. Standard lighting setups produce clear images, but cinematic lighting creates visceral emotional responses. By shaping light with deliberate contrast ratios, we give every subject a heroic, timeless presence.",
+      "As digital media accelerates, the demand for authentic, high-impact imagery has never been higher. Whether in 9:16 vertical formats or full-frame anamorphic capture, the fundamental physics of light remain the studio's ultimate medium."
+    ]
+  },
+  {
+    "id": "future-of-web-craft",
+    "title": "Engineering Dark Luxury: Modern Architecture at Code RED",
+    "category": "Code RED",
+    "categoryId": "code-red",
+    "date": "June 28, 2026",
+    "readTime": "5 min read",
+    "coverImage": "assets/127418.webp",
+    "summary": "How we build high-performance, minimalist web experiences without compromising performance.",
+    "content": [
+      "In the modern digital landscape, luxury is defined by speed, responsiveness, and subtle micro-interactions. A website should feel like a precision instrument.",
+      "Under Code RED, our web development philosophy avoids bloated frameworks and unnecessary dependencies. We focus on lightweight CSS custom properties, vanilla execution, optimized image formats like WebP, and smooth IntersectionObserver scroll effects.",
+      "From internal ecosystems like VVCE Connect to rapid emergency response tools like ReliefRoute, our code standards prioritize clean structure and instantaneous user feedback."
+    ]
+  },
+  {
+    "id": "design-systems-dark-luxury",
+    "title": "Shape RED: The Power of Minimalist Brand Identities",
+    "category": "Shape RED",
+    "categoryId": "shape-red",
+    "date": "May 10, 2026",
+    "readTime": "3 min read",
+    "coverImage": "assets/Exclusive.webp",
+    "summary": "Why geometry, high-contrast typography, and restrained palettes create lasting visual authority.",
+    "content": [
+      "Visual noise is cheap; restraint is powerful. Shape RED was established to craft digital identity systems that command authority through simplicity.",
+      "A strong title card, poster, or brand mark must communicate core identity in a fraction of a second. By pairing sharp typography like Bebas Neue with structured geometric icons, we establish visual rhythm across digital media.",
+      "Whether designing key art for independent cinema or defining corporate design guidelines, consistency across media platforms is the hallmark of enduring brand design."
+    ]
+  },
+  {
+    "id": "behind-the-lens-editorial",
+    "title": "Midnight Perspectives: Capturing Atmosphere in Studio Spaces",
+    "category": "RDX RED",
+    "categoryId": "rdx-red",
+    "date": "April 02, 2026",
+    "readTime": "6 min read",
+    "coverImage": "assets/Midnight.webp",
+    "summary": "A deep dive into controlled studio environments, space aesthetics, and night production workflows.",
+    "content": [
+      "Studio spaces are controlled universes. In facilities like Kokkada Main and Mysuru Suite, every light fixture, backdrop, and acoustic panel is calibrated for creative freedom.",
+      "Night production brings a distinct energy to video sets and portrait work. Reduced ambient interference allows for razor-thin depth of field and dramatic atmospheric effects.",
+      "As we continue expanding our studio footprint, merging production infrastructure with post-production grading suites remains key to our creative workflow."
+    ]
+  }
+]

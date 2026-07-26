@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | RDX Studios</title>
+  <meta name="description" content="Discover the origin story of RDX Studios — founded in 2024 in Karnataka by Chris Zeyon Pinto. Three creative divisions, two premium studios, one uncompromising standard.">
+  <meta property="og:title" content="About | RDX Studios">
+  <meta property="og:description" content="Our origin, our founder, and the three-wing creative model behind RDX Studios.">
+  <meta property="og:image" content="assets/The 3 Mark.webp">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* Origin Story Section */
+    .origin-section {
+      padding: 180px 0 var(--space-2xl);
+      text-align: center;
+    }
+    .origin-anchor {
+      max-width: 600px;
+      width: 100%;
+      margin: 0 auto var(--space-xl);
+      opacity: 0.9;
+      filter: drop-shadow(0 0 20px rgba(232,0,29,0.1));
+    }
+    .origin-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .origin-title {
+      font-size: 3.5rem;
+      color: var(--rdx-red);
+      margin-bottom: var(--space-md);
+    }
+    .origin-text {
+      font-size: 1.1rem;
+      color: var(--rdx-gray-light);
+      margin-bottom: var(--space-lg);
+    }
+
+    /* Founder Section */
+    .founder-section {
+      padding: var(--space-2xl) 0;
+      background-color: #050505;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-2xl);
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .founder-grid { grid-template-columns: 1fr; }
+    }
+    .founder-image-wrapper {
+      position: relative;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      border-radius: var(--radius-sm);
+    }
+    .founder-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .founder-title {
+      font-size: 3rem;
+      margin-bottom: var(--space-xs);
+    }
+    .founder-role {
+      font-family: var(--font-display);
+      color: var(--rdx-red);
+      font-size: 1.25rem;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-lg);
+    }
+    .founder-bio {
+      color: var(--rdx-gray-light);
+      font-size: 1.05rem;
+    }
+
+    /* Studios Block */
+    .studios-section {
+      padding: var(--space-2xl) 0;
+    }
+    .studios-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+    .studios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-lg);
+    }
+    @media (max-width: 768px) {
+      .studios-grid { grid-template-columns: 1fr; }
+    }
+    .studio-card {
+      background: rgba(255,255,255,0.02);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .studio-img-wrap {
+      aspect-ratio: 16/9;
+      overflow: hidden;
+    }
+    .studio-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-normal);
+    }
+    .studio-card:hover .studio-img {
+      transform: scale(1.05);
+    }
+    .studio-content {
+      padding: var(--space-lg);
+    }
+    .studio-title {
+      font-size: 2rem;
+      margin-bottom: var(--space-sm);
+      color: var(--rdx-red);
+    }
+    .studio-desc {
+      color: var(--rdx-gray-light);
+      margin-bottom: var(--space-md);
+      font-size: 0.95rem;
+    }
+    .map-link {
+      font-family: var(--font-display);
+      color: var(--rdx-white);
+      text-decoration: underline;
+      letter-spacing: 0.05em;
+      transition: color var(--transition-fast);
+    }
+    .map-link:hover {
+      color: var(--rdx-red);
+    }
+
+    /* Team Teaser */
+    .team-teaser {
+      padding: var(--space-2xl) 0;
+      background-color: #050505;
+      text-align: center;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-lg);
+      margin: var(--space-xl) 0;
+    }
+    .team-member {
+      text-align: center;
+    }
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+      margin-bottom: var(--space-md);
+      filter: grayscale(100%);
+      transition: filter var(--transition-normal);
+    }
+    .team-member:hover .team-photo {
+      filter: grayscale(0%);
+    }
+    .team-name {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Values / Parallax Milestones */
+    .parallax-section {
+      position: relative;
+      padding: 120px 0;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-image: url('assets/Berlin Indoor Wallpaper.webp');
+    }
+    .parallax-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,0.85);
+    }
+    .parallax-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-xl);
+    }
+    @media (max-width: 768px) {
+      .timeline-grid { grid-template-columns: 1fr; }
+    }
+    .timeline-item {
+      padding: var(--space-md);
+    }
+    .timeline-number {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: var(--rdx-red);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+    .timeline-label {
+      font-family: var(--font-body);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.9rem;
+      color: var(--rdx-gray-light);
+    }
+  </style>
+</head>
+<body class="rdx-grain">
+  
+  <div id="page-transition" class="active"></div>
+  <div id="nav-placeholder"></div>
+
+  <!-- Origin Story Section -->
+  <section class="origin-section">
+    <div class="container">
+      <img src="assets/The 3 Mark.webp" alt="The three-wing identity of RDX Studios showing the Code RED, RDX RED, and Shape RED divisions" class="origin-anchor rdx-fade-up">
+      <div class="origin-content">
+        <h1 class="origin-title rdx-fade-up" style="transition-delay: 100ms;">Our Architecture of Creativity</h1>
+        <p class="origin-text rdx-fade-up" style="transition-delay: 200ms;">
+          Ignited in 2024 within the vibrant core of Karnataka, RDX Studios emerged from a singular conviction: that exceptional storytelling demands mastery over both the visual and the virtual. What originated as a relentless pursuit of cinematic lighting and photographic perfection quickly expanded into a formidable three-pillar creative ecosystem. 
+        </p>
+        <p class="origin-text rdx-fade-up" style="transition-delay: 300ms;">
+          Today, <strong>RDX RED</strong> captures the soul of the moment through luxury cinematography, <strong>Code RED</strong> engineers robust digital experiences for the modern web, and <strong>Shape RED</strong> forges strategic brand identities. Together, they form an uncompromising studio committed to building digital legacies.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Section -->
+  <section class="founder-section">
+    <div class="container">
+      <div class="founder-grid">
+        <div class="founder-image-wrapper rdx-slide-in">
+          <img src="assets/Chris.webp" alt="Chris Zeyon Pinto, founder of RDX Studios, in a studio portrait" class="founder-img" loading="lazy">
+        </div>
+        <div class="founder-info rdx-fade-up">
+          <h2 class="founder-title">Chris Zeyon Pinto</h2>
+          <div class="founder-role">FOUNDER & CREATIVE DIRECTOR</div>
+          <div class="founder-bio">
+            <!-- PLACEHOLDER BIO: Need exact bio copy from Chris. If not supplied, please provide it. -->
+            <p>
+              [Bio Placeholder] Chris established RDX Studios with a vision to bridge the gap between high-end visual production and advanced digital engineering. With a meticulous eye for cinematic detail and a rigorous approach to technical execution, he leads the studio's three divisions, ensuring every frame and line of code meets the luxury standard.
+            </p>
+            <p style="margin-top: 1rem;">
+              [Please replace this text with the official biography once provided.]
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Studios Block -->
+  <section class="studios-section">
+    <div class="container">
+      <header class="studios-header rdx-fade-up">
+        <h2 style="font-family: var(--font-display); font-size: 3rem;">Our Spaces</h2>
+        <p style="color: var(--rdx-gray-light);">Where vision meets execution.</p>
+      </header>
+      <div class="studios-grid">
+        <div class="studio-card rdx-fade-up">
+          <div class="studio-img-wrap">
+            <img src="assets/KOKKADA.webp" alt="Interior view of Kokkada Main, the flagship RDX production studio" class="studio-img" loading="lazy">
+          </div>
+          <div class="studio-content">
+            <h3 class="studio-title">Kokkada Main</h3>
+            <p class="studio-desc">Our flagship production facility designed for expansive shoots, high-end commercial sets, and full-scale creative engineering.</p>
+            <a href="#" class="map-link">View on Map &rarr;</a>
+          </div>
+        </div>
+        <div class="studio-card rdx-fade-up" style="transition-delay: 100ms;">
+          <div class="studio-img-wrap">
+            <img src="assets/MYSURU.webp" alt="Mysuru Suite, an intimate RDX studio space for editorial and post-production" class="studio-img" loading="lazy">
+          </div>
+          <div class="studio-content">
+            <h3 class="studio-title">Mysuru Suite</h3>
+            <p class="studio-desc">An intimate, premium suite optimized for editorial portraits, post-production color grading, and focused code development.</p>
+            <a href="#" class="map-link">View on Map &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Teaser -->
+  <section class="team-teaser">
+    <div class="container">
+      <h2 style="font-family: var(--font-display); font-size: 3rem; color: var(--rdx-red);" class="rdx-fade-up">The Architects</h2>
+      <div class="team-grid">
+        <div class="team-member rdx-fade-up">
+          <img src="assets/Chris.webp" alt="Chris Zeyon Pinto, creative director" class="team-photo" loading="lazy">
+          <div class="team-name">Chris</div>
+        </div>
+        <div class="team-member rdx-fade-up" style="transition-delay: 100ms;">
+          <img src="assets/Ciyana.webp" alt="Ciyana, RDX Studios team member" class="team-photo" loading="lazy">
+          <div class="team-name">Ciyana</div>
+        </div>
+        <div class="team-member rdx-fade-up" style="transition-delay: 200ms;">
+          <img src="assets/Tulasi.webp" alt="Tulasi, RDX Studios team member" class="team-photo" loading="lazy">
+          <div class="team-name">Tulasi</div>
+        </div>
+      </div>
+      <a href="team.html" class="btn btn-outline rdx-fade-up" style="margin-top: var(--space-md);">Meet the Full Team</a>
+    </div>
+  </section>
+
+  <!-- Values / Parallax Milestones -->
+  <section class="parallax-section">
+    <div class="parallax-overlay"></div>
+    <div class="container parallax-content">
+      <h2 style="font-family: var(--font-display); font-size: 3rem;" class="rdx-fade-up">Building Legacies</h2>
+      <p style="max-width: 600px; margin: 1rem auto 0; color: var(--rdx-gray-light);" class="rdx-fade-up">
+        Every project is crafted with obsessive attention to emotion, contrast, and detail. We don't just capture moments—we forge experiences that feel alive.
+      </p>
+      
+      <div class="timeline-grid">
+        <div class="timeline-item rdx-fade-up">
+          <div class="timeline-number counter" data-target="2024">0</div>
+          <div class="timeline-label">Founded</div>
+        </div>
+        <div class="timeline-item rdx-fade-up" style="transition-delay: 100ms;">
+          <div class="timeline-number counter" data-target="3">0</div>
+          <div class="timeline-label">Creative Divisions</div>
+        </div>
+        <div class="timeline-item rdx-fade-up" style="transition-delay: 200ms;">
+          <div class="timeline-number counter" data-target="500">0</div>
+          <div class="timeline-label">Projects Delivered</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/main.js" defer></script>
+  <script>
+    // Simple Intersection Observer for animating counters on viewport entry
+    document.addEventListener('DOMContentLoaded', () => {
+      const counters = document.querySelectorAll('.counter');
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const target = +entry.target.getAttribute('data-target');
+            const duration = 2000;
+            const start = 0;
+            let startTimestamp = null;
+            const step = (timestamp) => {
+              if (!startTimestamp) startTimestamp = timestamp;
+              const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+              // easeOutQuart
+              const easeProgress = 1 - Math.pow(1 - progress, 4);
+              entry.target.innerText = Math.floor(easeProgress * target) + (target === 500 ? '+' : '');
+              if (progress < 1) {
+                window.requestAnimationFrame(step);
+              }
+            };
+            window.requestAnimationFrame(step);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      counters.forEach(counter => observer.observe(counter));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1239 @@
+<!-- 
+RED STUDIO - TEAM PAGE
+Editorial Full-Page Redesign — No Modals
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | RED Studio</title>
+    <meta name="description"
+        content="Meet the visionary artists behind RED Studio — the creative directors and photographers capturing light and emotion.">
+    <link rel="icon" type="image/png" href="assets/ACT.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ═══════════════════════════════════════════
+           TEAM PAGE — EDITORIAL DESIGN SYSTEM
+           ═══════════════════════════════════════════ */
+
+        /* Film Grain Overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)"/%3E%3C/svg%3E');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* Red Vignette */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(227, 6, 19, 0.06) 100%);
+            pointer-events: none;
+            z-index: 9997;
+        }
+
+        /* ─── HERO OVERRIDES ─── */
+        .team-hero {
+            min-height: 55vh;
+            padding-top: 160px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .team-hero .hero-bg {
+            opacity: 0.12;
+            animation: kenBurnsTeam 15s infinite alternate linear;
+        }
+
+        @keyframes kenBurnsTeam {
+            0% {
+                transform: scale(1.04);
+            }
+
+            100% {
+                transform: scale(1.12);
+            }
+        }
+
+        .team-hero .hero-overlay {
+            background: linear-gradient(to bottom, rgba(8, 8, 8, 0.3), #080808),
+                radial-gradient(circle at center, rgba(227, 6, 19, 0.04) 0%, transparent 60%);
+        }
+
+        /* Hero Title Splits */
+        .hero-title-left {
+            display: inline-block;
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: heroSlideLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        .hero-title-right {
+            display: inline-block;
+            opacity: 0;
+            transform: translateX(50px);
+            animation: heroSlideRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+        }
+
+        @keyframes heroSlideLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes heroSlideRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero-subtitle-reveal {
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeUpSubtitle 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+        }
+
+        @keyframes fadeUpSubtitle {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Hero Horizontal Rule Draw */
+        .hero-rule {
+            width: 0;
+            height: 1px;
+            background: var(--accent-red);
+            margin: 1.5rem auto 0;
+            animation: drawRule 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.9s forwards;
+        }
+
+        @keyframes drawRule {
+            to {
+                width: 120px;
+            }
+        }
+
+        /* ─── EDITORIAL PANELS ─── */
+        #team-editorial-panels {
+            position: relative;
+            width: 100%;
+        }
+
+        .editorial-panel {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            padding: 8rem 0;
+            overflow: hidden;
+        }
+
+        .editorial-panel-inner {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            position: relative;
+        }
+
+        /* Sticky Section Label */
+        .panel-sticky-label {
+            position: sticky;
+            left: -2rem;
+            top: 120px;
+            z-index: 5;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .editorial-panel.in-view .panel-sticky-label {
+            opacity: 1;
+        }
+
+        /* ─── DOT NAVIGATION RAIL ─── */
+        .dot-rail {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            z-index: 50;
+        }
+
+        .dot-item {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .dot-item::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .dot-item:last-child::after {
+            display: none;
+        }
+
+        .dot-item.active {
+            color: var(--accent-red);
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 900px) {
+            .dot-rail {
+                display: none;
+            }
+        }
+
+        /* ─── SCROLL FOR NEXT INDICATOR ─── */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 1;
+            transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            pointer-events: none;
+        }
+
+        /* ─── LEFT COLUMN — Portrait ─── */
+        .portrait-col {
+            position: relative;
+        }
+
+        .portrait-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            border-radius: 8px;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(1.03);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .editorial-panel.in-view .portrait-wrapper {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .portrait-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 20%;
+            display: block;
+            will-change: transform;
+        }
+
+        @media (hover: hover) {
+            .editorial-panel.in-view .portrait-wrapper {
+                transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            }
+            .editorial-panel.in-view .portrait-wrapper:hover {
+                transform: scale(1.03);
+            }
+            .editorial-panel.in-view .portrait-wrapper img {
+                filter: grayscale(20%);
+                transition: filter 0.4s ease;
+            }
+            .editorial-panel.in-view .portrait-wrapper:hover img {
+                filter: grayscale(0%);
+            }
+        }
+
+        .portrait-wrapper::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(8, 8, 8, 0.95), transparent);
+            pointer-events: none;
+        }
+
+        /* Quote Block */
+        .portrait-quote {
+            margin-top: 2rem;
+            font-size: 1.6rem;
+            font-style: italic;
+            color: #fff;
+            border-left: 4px solid var(--accent-red);
+            padding-left: 1.5rem;
+            line-height: 1.6;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+        }
+
+        .editorial-panel.in-view .portrait-quote {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Instagram Pill */
+        .insta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid var(--accent-red);
+            border-radius: 30px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .insta-pill:hover {
+            background: rgba(227, 6, 19, 0.15);
+            color: var(--accent-red);
+            box-shadow: 0 0 20px rgba(227, 6, 19, 0.2);
+        }
+
+        /* ─── RIGHT COLUMN — Content ─── */
+        .content-col {
+            padding-top: 2rem;
+        }
+
+        /* Ghost Name Effect */
+        .ghost-name {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'VFCFantomen', sans-serif;
+            font-size: clamp(8rem, 18vw, 25rem);
+            color: rgba(255, 255, 255, 0.03);
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 0;
+            text-transform: uppercase;
+            user-select: none;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        @keyframes ghost-drift {
+            0% { transform: translate(calc(-50% - 20px), -50%); }
+            100% { transform: translate(calc(-50% + 20px), -50%); }
+        }
+
+        .editorial-panel.in-view .ghost-name {
+            opacity: 1;
+            animation: ghost-drift 12s ease-in-out infinite alternate;
+        }
+
+        /* Name */
+        .member-name {
+            font-family: 'VFCFantomen', sans-serif;
+            font-size: 6rem;
+            color: #fff;
+            line-height: 0.95;
+            text-transform: uppercase;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1), transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .editorial-panel.in-view .member-name {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Role */
+        .member-role {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            color: var(--accent-red);
+            letter-spacing: 4px;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+        }
+
+        .editorial-panel.in-view .member-role {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Tagline */
+        .member-tagline {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: #d4d0cb;
+            font-style: italic;
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+        }
+
+        .editorial-panel.in-view .member-tagline {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Red Divider */
+        .content-divider {
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--accent-red), rgba(227, 6, 19, 0.2));
+            margin-bottom: 2.5rem;
+            transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
+        }
+
+        .editorial-panel.in-view .content-divider {
+            width: 100%;
+        }
+
+        /* Bio Section */
+        .bio-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .bio-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #d4d0cb;
+        }
+
+        .bio-text .bio-line {
+            display: block;
+            clip-path: inset(0 0 100% 0);
+            transition: clip-path 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .editorial-panel.in-view .bio-text .bio-line {
+            clip-path: inset(0 0 0% 0);
+        }
+
+        /* Stats Row */
+        .stats-row {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-block {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .stat-block .section-label {
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
+        }
+
+        .editorial-panel.in-view .stat-value {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Specialties Tags */
+        .specialties-section {
+            margin-bottom: 3rem;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .specialty-tag {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            background: rgba(227, 6, 19, 0.08);
+            border: 1px solid rgba(227, 6, 19, 0.3);
+            border-radius: 30px;
+            color: var(--accent-red);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: default;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .editorial-panel.in-view .specialty-tag {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .specialty-tag:hover {
+            background: var(--accent-red);
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(227, 6, 19, 0.3);
+        }
+
+        /* Selected Works Strip */
+        .works-section {
+            margin-bottom: 2rem;
+        }
+
+        .works-strip {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            scrollbar-width: none;
+        }
+
+        .works-strip::-webkit-scrollbar {
+            display: none;
+        }
+
+        .work-sample {
+            flex: 0 0 220px;
+            height: 160px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            background: var(--bg-secondary);
+            border: 1px solid rgba(227, 6, 19, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: grayscale(30%);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .work-sample:hover {
+            filter: grayscale(0%);
+            box-shadow: 0 4px 30px rgba(227, 6, 19, 0.25);
+            border-color: rgba(227, 6, 19, 0.4);
+        }
+
+        .work-sample img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .work-sample-placeholder {
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 0.75rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            padding: 1rem;
+        }
+
+        .work-sample-placeholder i {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ─── PANEL SEPARATOR ─── */
+        .panel-separator {
+            position: relative;
+            width: 100%;
+            padding: 2rem 0;
+            overflow: hidden;
+        }
+
+        .separator-line {
+            width: 0;
+            height: 1px;
+            background: var(--accent-red);
+            margin: 0 auto;
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .panel-separator.in-view .separator-line {
+            width: 100%;
+        }
+
+        .separator-watermark {
+            text-align: center;
+            font-family: 'VFCFantomen', sans-serif;
+            font-size: 8rem;
+            color: #fff;
+            opacity: 0.03;
+            line-height: 1;
+            margin-top: -1rem;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        /* ─── HIDE ORIGINAL GRID ─── */
+        .team-grid {
+            display: none !important;
+        }
+
+        /* ─── MOBILE RESPONSIVE ─── */
+        @media (max-width: 768px) {
+            .editorial-panel {
+                padding: 4rem 0;
+                min-height: auto;
+            }
+
+            .editorial-panel-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1.5rem;
+            }
+
+            .panel-sticky-label {
+                display: none;
+            }
+
+            .portrait-wrapper {
+                aspect-ratio: 9 / 16;
+                height: auto;
+                min-height: auto;
+            }
+
+            .member-name {
+                font-size: 4rem;
+            }
+
+            .member-role {
+                font-size: 0.9rem;
+                letter-spacing: 2px;
+            }
+
+            .bio-text {
+                font-size: 1rem;
+            }
+
+            .portrait-quote {
+                font-size: 1.3rem;
+            }
+
+            .stats-row {
+                display: flex;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            
+            .stat-block {
+                display: flex;
+                align-items: baseline;
+                gap: 0.5rem;
+            }
+            
+            .stat-block .section-label {
+                margin-bottom: 0;
+            }
+
+            .stat-value {
+                font-size: 1rem;
+            }
+
+            .separator-watermark {
+                font-size: 4rem;
+            }
+
+            .works-strip {
+                gap: 0.8rem;
+            }
+
+            .work-sample {
+                flex: 0 0 180px;
+                height: 130px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .member-name {
+                font-size: 3rem;
+            }
+
+            .editorial-panel-inner {
+                padding: 0 1rem;
+            }
+        }
+
+        /* ─── PREFERS REDUCED MOTION ─── */
+        @media (prefers-reduced-motion: reduce) {
+
+            .hero-title-left,
+            .hero-title-right,
+            .hero-subtitle-reveal,
+            .portrait-wrapper,
+            .portrait-quote,
+            .member-name,
+            .member-role,
+            .member-tagline,
+            .stat-value,
+            .specialty-tag,
+            .panel-separator,
+            .editorial-panel-inner *,
+            .bio-text .bio-line {
+                opacity: 1 !important;
+                transform: none !important;
+                clip-path: none !important;
+                animation: none !important;
+                transition: none !important;
+            }
+
+            .ghost-name {
+                transform: translate(-50%, -50%) !important;
+                animation: none !important;
+                opacity: 1 !important;
+            }
+
+            .hero-rule {
+                width: 120px !important;
+                animation: none !important;
+            }
+
+            .content-divider {
+                width: 100% !important;
+                transition: none !important;
+            }
+
+            .separator-line {
+                width: 100% !important;
+                transition: none !important;
+            }
+
+            .team-hero .hero-bg {
+                animation: none !important;
+            }
+        }
+
+        /* ─── SKELETON LOADER ─── */
+        .skeleton-panel {
+            position: relative;
+            width: 100%;
+            padding: 8rem 0;
+            overflow: hidden;
+        }
+
+        .skeleton-inner {
+            display: grid;
+            grid-template-columns: 40% 60%;
+            gap: 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+        }
+
+        .skeleton-portrait {
+            width: 100%;
+            aspect-ratio: 9 / 16;
+            background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 75%);
+            background-size: 200% 100%;
+            border-radius: 8px;
+            animation: skeleton-shimmer 1.5s linear infinite;
+        }
+
+        .skeleton-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding-top: 2rem;
+        }
+
+        .skeleton-line {
+            background: linear-gradient(90deg, rgba(255,255,255,0.02) 25%, rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.02) 75%);
+            background-size: 200% 100%;
+            border-radius: 4px;
+            animation: skeleton-shimmer 1.5s linear infinite;
+        }
+
+        .skeleton-line.title {
+            height: 5rem;
+            width: 70%;
+            margin-bottom: 2rem;
+        }
+
+        .skeleton-line.text {
+            height: 1.2rem;
+            width: 100%;
+        }
+
+        .skeleton-line.text.short {
+            width: 60%;
+        }
+
+        @keyframes skeleton-shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        @media (max-width: 768px) {
+            .skeleton-inner {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 0 1.5rem;
+            }
+            .skeleton-panel {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .skeleton-portrait,
+            .skeleton-line {
+                animation: none !important;
+                background: rgba(255, 255, 255, 0.04) !important;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/global.css">
+</head>
+
+<body>
+    <!-- Page Transition Shutter -->
+    <div id="page-transition" class="active"></div>
+
+    <div style="overflow-x: hidden; width: 100%; position: relative;">
+    <!-- Header Navigation -->
+    <!-- Shared Nav Placeholder -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="team-hero hero" style="min-height: 55vh; padding-top: 160px;">
+        <div class="hero-bg" style="background-image: url('assets/redpatterns.png');"></div>
+        <div class="hero-overlay"></div>
+        <div class="container text-center">
+            <h1 class="hero-title">
+                <span class="hero-title-left">Meet The </span><span class="hero-title-right text-accent">Team</span>
+            </h1>
+            <p class="subtitle hero-subtitle-reveal" style="margin-top: 1rem;">The visionary artists and designers
+                behind the lens and code,
+                crafting cinematic imagery and immersive digital experiences.</p>
+            <div class="hero-rule"></div>
+        </div>
+    </section>
+
+    <!-- Team Data Source (hidden, read by JS) -->
+    <section class="container" style="position: relative; padding-top: 2rem;">
+        <div class="team-grid">
+            <div class="profile-card team-member-card" data-name="Chris Zeyon Pinto"
+                data-role="Creative Director & Founder" data-tagline="Cinematic Direction. Brand Storytelling." data-img="assets/Chris.png"
+                data-bio="The visionary force behind RED Studio. With a passion for dramatic lighting and emotional storytelling, Chris leads the creative direction and ensures every frame tells a powerful story. He has directed prominent campaigns and his hallmark is an unmistakable cinematic contrast. He handles RDX RED and SHAPE RED."
+                data-experience="2+ Years" data-specialties="Cinematic Direction, Visual Storytelling, Brand Campaigns"
+                data-equipment="Unclassified"
+                data-quote="every story deserves to be told through light, motion, and emotion."
+                data-instagram="@z_____ch7" data-instagram-url="https://instagram.com/z_____ch7">
+            </div>
+
+            <div class="profile-card team-member-card" data-name="Ciyana Lora Pinto" data-role="Technical Director" data-tagline="Creative Visionary. Digital Architect."
+                data-img="assets/Ciyana.png"
+                data-bio="She leads RED Studio�s digital arm, transforming bold creative visions into high-performance, cinematic websites. With a sharp eye for UI/UX and a passion for clean code, she ensures every RED website feels as premium and immersive as our photography and videography work. She maintains complete creative control and secrecy over client projects. She handles CODE RED."
+                data-experience="Unclassified" data-specialties="Fashion & Editorial, Coding, Natural Light Portraits"
+                data-equipment="Unclassified" data-quote="Every frame is a painting waiting to be revealed."
+                data-instagram="@Unclassified" data-instagram-url="https://instagram.com/rdx._.red">
+            </div>
+
+            <div class="profile-card team-member-card" data-name="[ CLASSIFIED ]" data-role="Incoming Visionary" data-tagline="Awaiting Declassification. Next-Gen Talent."
+                data-img="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect width='1' height='1' fill='black'/%3E%3C/svg%3E"
+                data-bio="The RED Studio roster is actively expanding. A new creative force is currently being integrated into our ranks. Full identity, specialty, and portfolio access are restricted until official declassification."
+                data-experience="[ RESTRICTED ]" data-specialties="[ RESTRICTED ]"
+                data-equipment="[ RESTRICTED ]" data-quote="Patience. The best is yet to come."
+                data-instagram="@red.studio" data-instagram-url="https://instagram.com/rdx._.red">
+            </div>
+        </div>
+
+        <!-- Editorial Panels Container (JS-populated) -->
+        <div id="team-editorial-panels">
+            <!-- Loading Skeleton (removed by JS) -->
+            <div class="skeleton-panel">
+                <div class="skeleton-inner">
+                    <div class="skeleton-portrait"></div>
+                    <div class="skeleton-content">
+                        <div class="skeleton-line title"></div>
+                        <div class="skeleton-line text"></div>
+                        <div class="skeleton-line text"></div>
+                        <div class="skeleton-line text short"></div>
+                        <div class="skeleton-line text" style="margin-top: 2rem; height: 3rem; width: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="skeleton-panel">
+                <div class="skeleton-inner">
+                    <div class="skeleton-portrait"></div>
+                    <div class="skeleton-content">
+                        <div class="skeleton-line title"></div>
+                        <div class="skeleton-line text"></div>
+                        <div class="skeleton-line text"></div>
+                        <div class="skeleton-line text short"></div>
+                        <div class="skeleton-line text" style="margin-top: 2rem; height: 3rem; width: 40%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roster End Separator -->
+        <div class="roster-end-separator" style="margin: 4rem auto 2rem auto; text-align: center; position: relative; max-width: 800px; padding: 0 2rem;">
+            <hr style="border: none; border-top: 1px dashed rgba(227, 6, 19, 0.2); margin: 0;">
+            <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg-primary, #0A0A0A); padding: 0 1rem; color: var(--text-muted); font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap;">End of Confirmed Roster</span>
+        </div>
+
+        <!-- Upcoming Members Teaser -->
+        <div class="upcoming-teaser text-center fade-in" style="margin: 8rem 0 4rem; padding: 4rem 2rem; border: 1px dashed rgba(227, 6, 19, 0.3); border-radius: 12px; background: rgba(10, 0, 0, 0.5); position: relative; overflow: hidden;">
+            <div class="red-flare" style="width: 300px; height: 300px; opacity: 0.3; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none;"></div>
+            <h2 style="font-family: 'Bebas Neue', sans-serif; font-size: 4rem; letter-spacing: 2px; color: rgba(255, 255, 255, 0.8); position: relative; z-index: 2;">More Visionaries <span class="text-accent">Incoming</span></h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 1rem auto 0; font-family: 'JetBrains Mono', sans-serif; position: relative; z-index: 2;">The RED Studio roster is expanding. Stay tuned as we prepare to unveil the next wave of creative talent joining our ranks.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Shared Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        /* ═══════════════════════════════════════════════════
+           TEAM EDITORIAL ENGINE — Inline Panel Renderer
+           ═══════════════════════════════════════════════════ */
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.team-member-card');
+            const container = document.getElementById('team-editorial-panels');
+            if (!container || cards.length === 0) return;
+
+            const escapeHTML = (str) => {
+                return String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+            };
+
+            let panelHTML = '';
+            let dotsHTML = '<div class="dot-rail">';
+
+            cards.forEach((card, index) => {
+                const name = escapeHTML(card.getAttribute('data-name') || '');
+                const role = escapeHTML(card.getAttribute('data-role') || '');
+                const taglineText = escapeHTML(card.getAttribute('data-tagline') || '');
+                const img = card.getAttribute('data-img') || '';
+                const bio = escapeHTML(card.getAttribute('data-bio') || '');
+                const experience = escapeHTML(card.getAttribute('data-experience') || '');
+                const specialties = escapeHTML(card.getAttribute('data-specialties') || '');
+                const equipment = escapeHTML(card.getAttribute('data-equipment') || '');
+                const quote = escapeHTML(card.getAttribute('data-quote') || '');
+                const instagram = escapeHTML(card.getAttribute('data-instagram') || '');
+                const instagramUrl = card.getAttribute('data-instagram-url') || '#';
+
+                const num = String(index + 1).padStart(2, '0');
+
+                let displayName = name;
+                let imgSrc = img;
+                let imgComment = '';
+                let altText = name;
+
+                let ghostText = name.split(' ')[0];
+
+                if (name === 'Ciyana Lora Pinto') {
+                    displayName = `<span style='opacity:0.4; font-size:4.5rem;'>?????????</span>`;
+                    imgComment = '';
+                    altText = 'Sneak Peek';
+                }
+
+                // Build specialty tags
+                const tagsHTML = specialties.split(',').map((tag, i) => {
+                    const trimmed = tag.trim();
+                    if (!trimmed) return '';
+                    return `<span class="specialty-tag" style="transition-delay: ${0.4 + (i * 0.08)}s">${trimmed}</span>`;
+                }).join('');
+
+                // Build bio lines for clip-path animation
+                const bioSentences = bio.match(/[^.!?]+[.!?]+/g) || [bio];
+                const bioLinesHTML = bioSentences.map((line, i) => {
+                    return `<span class="bio-line" style="transition-delay: ${0.35 + (i * 0.08)}s">${line.trim()} </span>`;
+                }).join('');
+
+                // Add separator before panels (except first)
+                if (index > 0) {
+                    panelHTML += `
+                        <div class="panel-separator" data-animate="separator">
+                            <div class="separator-line"></div>
+                            <div class="separator-watermark">RED STUDIO</div>
+                        </div>
+                    `;
+                }
+
+                dotsHTML += `<div class="dot-item" data-target="panel-${num}" id="dot-${num}">${num}</div>`;
+
+                let scrollIndicatorHTML = '';
+                if (index < cards.length - 1) {
+                    scrollIndicatorHTML = `
+                        <div class="scroll-indicator" aria-hidden="true">
+                            SCROLL <i class="fas fa-chevron-down"></i>
+                        </div>
+                    `;
+                }
+
+                panelHTML += `
+                    <div class="editorial-panel" data-animate="panel" id="panel-${num}">
+                        <div class="ghost-name">${ghostText}</div>
+                        <div class="panel-sticky-label">${num} — ${role.toUpperCase()}</div>
+                        <div class="editorial-panel-inner">
+                            <!-- LEFT: Portrait -->
+                            <div class="portrait-col">
+                                <div class="portrait-wrapper" data-parallax>${imgComment}
+                                    <img src="${imgSrc}" alt="${altText}" loading="lazy">
+                                </div>
+                                <blockquote class="portrait-quote">"${quote}"</blockquote>
+                                <a href="${instagramUrl}" target="_blank" rel="noopener noreferrer" class="insta-pill">
+                                    <i class="fab fa-instagram"></i> ${instagram}
+                                </a>
+                            </div>
+
+                            <!-- RIGHT: Content -->
+                            <div class="content-col">
+                                <h2 class="member-name">${displayName}</h2>
+                                <p class="member-role">${role}</p>
+                                ${taglineText ? `<div class="member-tagline">${taglineText}</div>` : ''}
+                                <div class="content-divider"></div>
+
+                                <div class="bio-section">
+                                    <div class="section-label">Biography</div>
+                                    <div class="bio-text">${bioLinesHTML}</div>
+                                </div>
+
+                                <div class="stats-row">
+                                    <div class="stat-block">
+                                        <div class="section-label"><i class="fas fa-clock" style="margin-right: 0.4rem; color: var(--accent-red);"></i>Experience:</div>
+                                        <div class="stat-value">${experience}</div>
+                                    </div>
+                                    <div class="stat-block">
+                                        <div class="section-label"><i class="fas fa-tools" style="margin-right: 0.4rem; color: var(--accent-red);"></i>${role.includes('Development') || role.includes('Design') ? 'Primary Tools:' : 'Primary Equipment:'}</div>
+                                        <div class="stat-value">${equipment}</div>
+                                    </div>
+                                </div>
+
+                                <div class="specialties-section">
+                                    <div class="section-label">Specialties</div>
+                                    <div class="tags-container">${tagsHTML}</div>
+                                </div>
+                            </div>
+                        </div>
+                        ${scrollIndicatorHTML}
+                    </div>
+                `;
+            });
+
+            dotsHTML += '</div>';
+            container.innerHTML = panelHTML + dotsHTML;
+
+            /* ─── SCROLL ANIMATION SYSTEM ─── */
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            const glitchDecode = (element) => {
+                const originalText = element.getAttribute('data-original-text') || element.textContent;
+                element.setAttribute('data-original-text', originalText);
+                const chars = '!<>-_\\\\/[]{}—=+*^?#_';
+                let iterations = 0;
+                const maxIterations = 15;
+                
+                const interval = setInterval(() => {
+                    element.textContent = originalText.split('').map((char, index) => {
+                        if (index < iterations / 1.5) {
+                            return originalText[index];
+                        }
+                        return chars[Math.floor(Math.random() * chars.length)];
+                    }).join('');
+                    
+                    if (iterations >= maxIterations) {
+                        clearInterval(interval);
+                        element.textContent = originalText;
+                    }
+                    iterations++;
+                }, 30);
+            };
+
+            if (!reducedMotion) {
+                // IntersectionObserver for panels
+                const panelObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const wasInView = entry.target.classList.contains('in-view');
+                            entry.target.classList.add('in-view');
+                            
+                            if (!wasInView) {
+                                entry.target.querySelectorAll('.stat-value, .specialty-tag, .member-role, .member-name').forEach(el => {
+                                    if (el.textContent.trim() === 'Unclassified') {
+                                        glitchDecode(el);
+                                    }
+                                });
+                            }
+                            
+                            // Dot rail active state
+                            document.querySelectorAll('.dot-item').forEach(dot => dot.classList.remove('active'));
+                            const num = entry.target.id.split('-')[1];
+                            const activeDot = document.getElementById(`dot-${num}`);
+                            if(activeDot) activeDot.classList.add('active');
+                        }
+                    });
+                }, { threshold: 0.15 });
+
+                document.querySelectorAll('.editorial-panel').forEach(panel => {
+                    panelObserver.observe(panel);
+                });
+
+                // Dot click logic
+                document.querySelectorAll('.dot-item').forEach(dot => {
+                    dot.addEventListener('click', (e) => {
+                        const targetId = e.currentTarget.getAttribute('data-target');
+                        const targetPanel = document.getElementById(targetId);
+                        if(targetPanel) {
+                            targetPanel.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    });
+                });
+
+                // IntersectionObserver for separators
+                const sepObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('in-view');
+                            sepObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.3 });
+
+                document.querySelectorAll('.panel-separator').forEach(sep => {
+                    sepObserver.observe(sep);
+                });
+
+                // Parallax effect on portraits
+                const parallaxImages = document.querySelectorAll('[data-parallax] img');
+
+                const handleParallax = () => {
+                    parallaxImages.forEach(img => {
+                        const wrapper = img.closest('.portrait-wrapper');
+                        const rect = wrapper.getBoundingClientRect();
+                        const viewH = window.innerHeight;
+
+                        if (rect.top < viewH && rect.bottom > 0) {
+                            const scrollPercent = (viewH - rect.top) / (viewH + rect.height);
+                            const translateY = (scrollPercent - 0.5) * 60 * 0.3;
+                            img.style.transform = `translateY(${translateY}px)`;
+                        }
+                    });
+
+                    // Scroll indicator fade
+                    document.querySelectorAll('.editorial-panel').forEach(panel => {
+                        const indicator = panel.querySelector('.scroll-indicator');
+                        if (indicator) {
+                            const rect = panel.getBoundingClientRect();
+                            if (rect.top <= -100) {
+                                indicator.style.opacity = '0';
+                            } else {
+                                indicator.style.opacity = '1';
+                            }
+                        }
+                    });
+                };
+
+                let parallaxTick = false;
+                window.addEventListener('scroll', () => {
+                    if (!parallaxTick) {
+                        requestAnimationFrame(() => {
+                            handleParallax();
+                            parallaxTick = false;
+                        });
+                        parallaxTick = true;
+                    }
+                }, { passive: true });
+
+            } else {
+                // Reduced motion — show everything immediately
+                document.querySelectorAll('.editorial-panel').forEach(p => p.classList.add('in-view'));
+                document.querySelectorAll('.panel-separator').forEach(s => s.classList.add('in-view'));
+            }
+        });
+    </script>
+    </div>
+</body>
+
+</html>
+

@@ -1,0 +1,111 @@
+<footer class="rdx-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      
+      <!-- Navigation -->
+      <div class="footer-col">
+        <h3 class="footer-heading">NAVIGATION</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="team.html">Team</a></li>
+        </ul>
+      </div>
+
+      <!-- Studios -->
+      <div class="footer-col">
+        <h3 class="footer-heading">STUDIOS</h3>
+        <ul class="footer-links">
+          <li><a href="services.html">RDX RED</a></li>
+          <li><a href="services.html">Code RED</a></li>
+          <li><a href="services.html">Shape RED</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect -->
+      <div class="footer-col">
+        <h3 class="footer-heading">CONNECT</h3>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
+          <li><a href="tel:+917676218729">+91 76762 18729</a></li>
+          <!-- PLACEHOLDER: Replace with real addresses once Chris confirms -->
+          <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
+        </ul>
+      </div>
+      
+      <!-- Socials -->
+      <div class="footer-col">
+        <h3 class="footer-heading">SOCIAL</h3>
+        <ul class="footer-links">
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> RDX Studios. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+/* Footer styles */
+.rdx-footer {
+  background-color: var(--rdx-black);
+  border-top: 1px solid var(--rdx-gray);
+  padding: var(--space-xl) 0 var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--rdx-white);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.05em;
+}
+.footer-links {
+  list-style: none;
+}
+.footer-links li {
+  margin-bottom: var(--space-sm);
+}
+.footer-links a, .footer-text {
+  font-family: var(--font-body);
+  color: var(--rdx-gray-light);
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+.footer-links a:hover {
+  color: var(--rdx-red);
+}
+.footer-links a:focus-visible {
+  outline: 2px solid var(--rdx-red);
+  outline-offset: 2px;
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid var(--rdx-gray);
+  padding-top: var(--space-md);
+  color: var(--rdx-gray-light);
+  font-size: 0.85rem;
+}
+</style>
