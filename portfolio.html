@@ -327,7 +327,360 @@
 <body class="rdx-grain">
   
   <div id="page-transition" class="active"></div>
-  <div id="nav-placeholder"></div>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+<nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="index.html" aria-label="RDX Studios Home">
+        <img src="assets/LOgo.webp" alt="RDX Studios logo" class="logo-img">
+      </a>
+    </div>
+    
+    <!-- Hamburger Toggle (mobile) -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
+      <div class="nav-group secondary">
+        <a href="about.html" class="nav-item">ABOUT</a>
+        
+        <div class="mega-menu-wrapper">
+          <button class="nav-item services-trigger" aria-expanded="false" aria-controls="services-mega-menu">
+            SERVICES
+            <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          
+          <div id="services-mega-menu" class="mega-menu-panel">
+            <div class="mega-menu-grid">
+              <a href="services.html#rdx-red" class="mega-card">
+                <div class="mega-card-icon" style="background:var(--rdx-red);border-radius:50%;padding:6px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+                  <img src="assets/Icon-RRED.svg" alt="" style="width:20px;height:20px;">
+                </div>
+                <div class="mega-card-content">
+                  <h4 class="mega-card-title">RDX RED</h4>
+                  <p class="mega-card-desc">The premium photography and videography wing.</p>
+                </div>
+              </a>
+              <a href="services.html#code-red" class="mega-card">
+                <img src="assets/Icon CRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
+                <div class="mega-card-content">
+                  <h4 class="mega-card-title">Code RED</h4>
+                  <p class="mega-card-desc">The digital engineering wing.</p>
+                </div>
+              </a>
+              <a href="services.html#shape-red" class="mega-card">
+                <img src="assets/Icon SRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
+                <div class="mega-card-content">
+                  <h4 class="mega-card-title">Shape RED</h4>
+                  <p class="mega-card-desc">The creative digital wing forging impactful digital media.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
+        <a href="journal.html" class="nav-item">JOURNAL</a>
+        <a href="team.html" class="nav-item">TEAM</a>
+      </div>
+    </div>
+    
+    <div class="nav-cta">
+      <a href="contact.html" class="btn btn-primary">CONNECT</a>
+    </div>
+  </div>
+</nav>
+
+<style>
+/* Nav Styles */
+.rdx-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: transparent;
+  transition: background-color var(--transition-normal);
+  padding: var(--space-md) 0;
+}
+.rdx-nav.is-solid {
+  background-color: var(--rdx-black);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+.logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
+}
+.nav-links {
+  display: flex;
+  gap: var(--space-xl);
+  align-items: center;
+}
+.nav-group {
+  display: flex;
+  gap: var(--space-lg);
+}
+.nav-item {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.nav-item:hover {
+  color: var(--rdx-red);
+}
+/* Focus-visible for keyboard accessibility */
+.nav-item:focus-visible,
+.btn-primary:focus-visible {
+  outline: 2px solid var(--rdx-red);
+  outline-offset: 4px;
+}
+.btn-primary {
+  background-color: var(--rdx-red);
+  color: var(--rdx-white);
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: background-color var(--transition-fast);
+}
+.btn-primary:hover {
+  background-color: var(--rdx-red-hover);
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 110;
+}
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--rdx-white);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+.nav-hamburger.is-open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-hamburger.is-open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.is-open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile breakpoint */
+@media (max-width: 900px) {
+  .nav-hamburger {
+    display: flex;
+  }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--rdx-black);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 100px var(--space-lg) var(--space-lg);
+    gap: var(--space-lg);
+    transform: translateX(100%);
+    transition: transform var(--transition-normal);
+    box-shadow: -4px 0 30px rgba(0,0,0,0.5);
+    z-index: 105;
+  }
+  .nav-links.is-open {
+    transform: translateX(0);
+  }
+  }
+  .nav-group {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  .nav-cta {
+    display: none; /* CTA duplicated inside mobile menu if needed */
+  }
+}
+
+/* Mega Menu Styles */
+.mega-menu-wrapper {
+  position: relative;
+}
+.services-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--rdx-white);
+  padding: 0;
+}
+.dropdown-icon {
+  transition: transform 0.2s ease;
+}
+.services-trigger[aria-expanded="true"] .dropdown-icon {
+  transform: rotate(180deg);
+}
+.mega-menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--rdx-black);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  width: max-content;
+  max-width: 90vw;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 1000;
+}
+.mega-menu-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(20px);
+}
+.mega-menu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.mega-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+  text-decoration: none;
+}
+.mega-card:hover, .mega-card:focus-visible {
+  background: rgba(255,255,255,0.05);
+  outline: none;
+}
+.mega-card:focus-visible {
+  outline: 2px solid var(--rdx-red-active);
+}
+.mega-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mega-card-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--rdx-white);
+  line-height: 1;
+}
+.mega-card-desc {
+  font-size: 0.85rem;
+  color: var(--rdx-gray-light);
+  max-width: 250px;
+}
+
+@media (max-width: 900px) {
+  .mega-menu-panel {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding: var(--space-sm) 0 0 0;
+    width: 100%;
+    display: none;
+  }
+  .mega-menu-panel.is-open {
+    transform: none;
+    display: block;
+  }
+  .mega-card-desc {
+    display: none;
+  }
+  .mega-card-title {
+    font-size: 1.25rem;
+  }
+}
+</style>
+
+<script>
+  (function() {
+    const trigger = document.querySelector('.services-trigger');
+    const panel = document.getElementById('services-mega-menu');
+    
+    if (!trigger || !panel) return;
+    
+    const closeMenu = () => {
+      trigger.setAttribute('aria-expanded', 'false');
+      panel.classList.remove('is-open');
+    };
+    
+    const openMenu = () => {
+      trigger.setAttribute('aria-expanded', 'true');
+      panel.classList.add('is-open');
+    };
+    
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!trigger.contains(e.target) && !panel.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+    
+    const links = panel.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+        // Also close mobile hamburger menu if open
+        const hamburger = document.getElementById('nav-hamburger');
+        const navLinks = document.getElementById('nav-links');
+        if (hamburger && navLinks) {
+          hamburger.classList.remove('is-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          navLinks.classList.remove('is-open');
+        }
+      });
+    });
+  })();
+</script>
+
 
   <!-- Intro -->
   <header class="portfolio-intro">
@@ -506,7 +859,118 @@
     </div>
   </div>
 
-  <div id="footer-placeholder"></div>
+  <footer class="rdx-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      
+      <!-- Navigation -->
+      <div class="footer-col">
+        <h3 class="footer-heading">NAVIGATION</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="journal.html">Journal</a></li>
+          <li><a href="team.html">Team</a></li>
+        </ul>
+      </div>
+
+      <!-- Studios -->
+      <div class="footer-col">
+        <h3 class="footer-heading">STUDIOS</h3>
+        <ul class="footer-links">
+          <li><a href="services.html#rdx-red">RDX RED</a></li>
+          <li><a href="services.html#code-red">Code RED</a></li>
+          <li><a href="services.html#shape-red">Shape RED</a></li>
+        </ul>
+      </div>
+
+      <!-- Connect -->
+      <div class="footer-col">
+        <h3 class="footer-heading">CONNECT</h3>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
+          <li><a href="tel:+917676218729">+91 76762 18729</a></li>
+          <!-- PLACEHOLDER: Replace with real addresses once Chris confirms -->
+          <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
+        </ul>
+      </div>
+      
+      <!-- Socials -->
+      <div class="footer-col">
+        <h3 class="footer-heading">SOCIAL</h3>
+        <ul class="footer-links">
+          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
+        </ul>
+      </div>
+
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> RDX Studios. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+/* Footer styles */
+.rdx-footer {
+  background-color: var(--rdx-black);
+  border-top: 1px solid var(--rdx-gray);
+  padding: var(--space-xl) 0 var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+.footer-heading {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--rdx-white);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.05em;
+}
+.footer-links {
+  list-style: none;
+}
+.footer-links li {
+  margin-bottom: var(--space-sm);
+}
+.footer-links a, .footer-text {
+  font-family: var(--font-body);
+  color: var(--rdx-gray-light);
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+.footer-links a:hover {
+  color: var(--rdx-red);
+}
+.footer-links a:focus-visible {
+  outline: 2px solid var(--rdx-red);
+  outline-offset: 2px;
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid var(--rdx-gray);
+  padding-top: var(--space-md);
+  color: var(--rdx-gray-light);
+  font-size: 0.85rem;
+}
+</style>
+
   <script src="js/main.js" defer></script>
   <script>
     // ═══════════════════════════════════════

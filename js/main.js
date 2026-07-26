@@ -1,9 +1,14 @@
 // Main application logic for RDX3.0 Shell
 
 document.addEventListener('DOMContentLoaded', () => {
-  initPartials();
+  initPartials(); // Legacy check for placeholders
+  initNavScroll();
+  initHamburger();
   initAnimations();
   initPageTransitions();
+
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
 
 /**

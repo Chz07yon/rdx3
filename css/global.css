@@ -165,4 +165,6 @@ img {
 }
 .skip-link:focus {
   top: 0;
+  outline: 3px solid var(--rdx-white);
+  outline-offset: 2px;
 }

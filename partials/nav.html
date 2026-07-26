@@ -1,3 +1,4 @@
+<a href="#main-content" class="skip-link">Skip to main content</a>
 <nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
     <div class="nav-logo">
@@ -14,14 +15,43 @@
     </button>
 
     <div class="nav-links" id="nav-links">
-      <div class="nav-group">
-        <a href="services.html" class="nav-item">RDX RED</a>
-        <a href="services.html" class="nav-item">CODE RED</a>
-        <a href="services.html" class="nav-item">SHAPE RED</a>
-      </div>
       <div class="nav-group secondary">
         <a href="about.html" class="nav-item">ABOUT</a>
-        <a href="services.html" class="nav-item">SERVICES</a>
+        
+        <div class="mega-menu-wrapper">
+          <button class="nav-item services-trigger" aria-expanded="false" aria-controls="services-mega-menu">
+            SERVICES
+            <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+          
+          <div id="services-mega-menu" class="mega-menu-panel">
+            <div class="mega-menu-grid">
+              <a href="services.html#rdx-red" class="mega-card">
+                <div class="mega-card-icon" style="background:var(--rdx-red);border-radius:50%;padding:6px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+                  <img src="assets/Icon-RRED.svg" alt="" style="width:20px;height:20px;">
+                </div>
+                <div class="mega-card-content">
+                  <h4 class="mega-card-title">RDX RED</h4>
+                  <p class="mega-card-desc">The premium photography and videography wing.</p>
+                </div>
+              </a>
+              <a href="services.html#code-red" class="mega-card">
+                <img src="assets/Icon CRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
+                <div class="mega-card-content">
+                  <h4 class="mega-card-title">Code RED</h4>
+                  <p class="mega-card-desc">The digital engineering wing.</p>
+                </div>
+              </a>
+              <a href="services.html#shape-red" class="mega-card">
+                <img src="assets/Icon SRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
+                <div class="mega-card-content">
+                  <h4 class="mega-card-title">Shape RED</h4>
+                  <p class="mega-card-desc">The creative digital wing forging impactful digital media.</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
         <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
         <a href="journal.html" class="nav-item">JOURNAL</a>
         <a href="team.html" class="nav-item">TEAM</a>
@@ -153,6 +183,7 @@
   .nav-links.is-open {
     transform: translateX(0);
   }
+  }
   .nav-group {
     flex-direction: column;
     gap: var(--space-md);
@@ -161,4 +192,162 @@
     display: none; /* CTA duplicated inside mobile menu if needed */
   }
 }
+
+/* Mega Menu Styles */
+.mega-menu-wrapper {
+  position: relative;
+}
+.services-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--rdx-white);
+  padding: 0;
+}
+.dropdown-icon {
+  transition: transform 0.2s ease;
+}
+.services-trigger[aria-expanded="true"] .dropdown-icon {
+  transform: rotate(180deg);
+}
+.mega-menu-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--rdx-black);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  width: max-content;
+  max-width: 90vw;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  z-index: 1000;
+}
+.mega-menu-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(20px);
+}
+.mega-menu-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+.mega-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease;
+  text-decoration: none;
+}
+.mega-card:hover, .mega-card:focus-visible {
+  background: rgba(255,255,255,0.05);
+  outline: none;
+}
+.mega-card:focus-visible {
+  outline: 2px solid var(--rdx-red-active);
+}
+.mega-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mega-card-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--rdx-white);
+  line-height: 1;
+}
+.mega-card-desc {
+  font-size: 0.85rem;
+  color: var(--rdx-gray-light);
+  max-width: 250px;
+}
+
+@media (max-width: 900px) {
+  .mega-menu-panel {
+    position: static;
+    transform: none;
+    box-shadow: none;
+    border: none;
+    padding: var(--space-sm) 0 0 0;
+    width: 100%;
+    display: none;
+  }
+  .mega-menu-panel.is-open {
+    transform: none;
+    display: block;
+  }
+  .mega-card-desc {
+    display: none;
+  }
+  .mega-card-title {
+    font-size: 1.25rem;
+  }
+}
 </style>
+
+<script>
+  (function() {
+    const trigger = document.querySelector('.services-trigger');
+    const panel = document.getElementById('services-mega-menu');
+    
+    if (!trigger || !panel) return;
+    
+    const closeMenu = () => {
+      trigger.setAttribute('aria-expanded', 'false');
+      panel.classList.remove('is-open');
+    };
+    
+    const openMenu = () => {
+      trigger.setAttribute('aria-expanded', 'true');
+      panel.classList.add('is-open');
+    };
+    
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+    
+    document.addEventListener('click', (e) => {
+      if (!trigger.contains(e.target) && !panel.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+      }
+    });
+    
+    const links = panel.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+        // Also close mobile hamburger menu if open
+        const hamburger = document.getElementById('nav-hamburger');
+        const navLinks = document.getElementById('nav-links');
+        if (hamburger && navLinks) {
+          hamburger.classList.remove('is-open');
+          hamburger.setAttribute('aria-expanded', 'false');
+          navLinks.classList.remove('is-open');
+        }
+      });
+    });
+  })();
+</script>
