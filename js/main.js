@@ -1,7 +1,7 @@
 // Main application logic for RDX3.0 Shell
 
 document.addEventListener('DOMContentLoaded', () => {
-  initPartials(); // Legacy check for placeholders
+
   initNavScroll();
   initHamburger();
   initAnimations();
@@ -11,36 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 });
 
-/**
- * Loads partials (nav, footer) via fetch
- */
-async function initPartials() {
-  const navPlaceholder = document.getElementById('nav-placeholder');
-  const footerPlaceholder = document.getElementById('footer-placeholder');
 
-  try {
-    if (navPlaceholder) {
-      const navRes = await fetch('partials/nav.html');
-      if (navRes.ok) {
-        navPlaceholder.innerHTML = await navRes.text();
-        initNavScroll();
-        initHamburger();
-      }
-    }
-
-    if (footerPlaceholder) {
-      const footerRes = await fetch('partials/footer.html');
-      if (footerRes.ok) {
-        footerPlaceholder.innerHTML = await footerRes.text();
-        // Set copyright year inside footer
-        const yearEl = document.getElementById('year');
-        if (yearEl) yearEl.textContent = new Date().getFullYear();
-      }
-    }
-  } catch (error) {
-    console.error('Error loading partials:', error);
-  }
-}
 
 /**
  * Sticky transparent-to-solid nav behavior

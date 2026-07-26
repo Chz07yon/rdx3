@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx serve ."
+    "dev": "npx serve .",
+    "sync-partials": "node scripts/inline-partials.cjs"
   },
   "keywords": [],
   "author": "",

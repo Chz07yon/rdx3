@@ -15,3 +15,6 @@ npm run dev
 ```
 
 This will serve the site at `http://localhost:3000` (or similar) where all components will load correctly.
+## Workflow
+
+Edit partials/nav.html or partials/footer.html, then run npm run sync-partials before previewing or committing. Never hand-edit the nav/footer markup inside individual page files — it will be overwritten.
