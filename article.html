@@ -152,13 +152,19 @@
       margin-top: 4px;
     }
   </style>
+
+  <!-- CONFIRM: Replace example-rdx3.com with live domain -->
+  <link rel="canonical" href="https://example-rdx3.com/article.html">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body class="rdx-grain">
   
   <div id="page-transition" class="active"></div>
   <div id="nav-placeholder"></div>
 
-  <main>
+  <main id="main-content">
     <div class="back-nav">
       <a href="journal.html" class="back-link">&larr; Back to Journal</a>
     </div>
@@ -249,7 +255,7 @@
               <img src="${rel.coverImage}" alt="${rel.title}" class="related-img" loading="lazy">
             </a>
             <div class="related-content">
-              <span style="font-size:0.75rem; color:var(--rdx-red); font-weight:700; text-transform:uppercase;">${rel.category}</span>
+              <span style="font-size:0.75rem; color:var(--rdx-red-active); font-weight:700; text-transform:uppercase;">${rel.category}</span>
               <h3 class="related-card-title">
                 <a href="article.html?id=${encodeURIComponent(rel.id)}">${rel.title}</a>
               </h3>

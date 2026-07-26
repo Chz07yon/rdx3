@@ -117,7 +117,7 @@
       font-size: 0.8rem;
     }
     .article-category {
-      color: var(--rdx-red);
+      color: var(--rdx-red-active);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.1em;
@@ -159,6 +159,12 @@
       color: var(--rdx-red);
     }
   </style>
+
+  <!-- CONFIRM: Replace example-rdx3.com with live domain -->
+  <link rel="canonical" href="https://example-rdx3.com/journal.html">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body class="rdx-grain">
   
@@ -184,7 +190,7 @@
   </div>
 
   <!-- Grid -->
-  <section class="journal-section">
+  <section id="main-content" class="journal-section">
     <div class="container">
       <div class="journal-grid" id="journal-grid">
         <!-- Rendered dynamically from data/journal.json -->

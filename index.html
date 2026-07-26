@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RDX Studios | Where Light Meets Code</title>
-  <meta name="description" content="RDX Studios — a three-wing creative house specialising in cinematic photography, high-performance web engineering, and strategic brand design. Based in Karnataka, India.">
+  <meta name="description"
+    content="RDX Studios — a three-wing creative house specialising in cinematic photography, high-performance web engineering, and strategic brand design. Based in Karnataka, India.">
   <!-- Open Graph -->
   <meta property="og:title" content="RDX Studios | Where Light Meets Code">
-  <meta property="og:description" content="Cinematic photography, digital engineering, and brand design. Three wings. One uncompromising standard.">
-  <meta property="og:image" content="assets/home-banner.webp">
+  <meta property="og:description"
+    content="Cinematic photography, digital engineering, and brand design. Three wings. One uncompromising standard.">
+  <meta property="og:image" content="assets/redpatterns.png">
   <meta property="og:type" content="website">
   <!-- Favicon -->
   <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
-  <link rel="preload" as="image" href="assets/home-banner.webp">
+  <link rel="preload" as="image" href="assets/redpatterns.png">
   <style>
     /* Hero Section */
     .hero {
@@ -26,26 +29,41 @@
       align-items: center;
       justify-content: center;
     }
+
     .hero-bg {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background-image: url('assets/home-banner.webp');
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('assets/redpatterns.png');
       background-size: cover;
       background-position: center;
       /* Slow Ken-Burns */
       animation: kenBurnsZoom 20s infinite alternate linear;
       z-index: 1;
     }
+
     @keyframes kenBurnsZoom {
-      0% { transform: scale(1); }
-      100% { transform: scale(1.1); }
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.1);
+      }
     }
+
     .hero-overlay {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.4), var(--rdx-black));
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, rgba(10, 10, 10, 0.4), var(--rdx-black));
       z-index: 2;
     }
+
     .hero-watermark {
       position: absolute;
       top: 50%;
@@ -57,12 +75,14 @@
       z-index: 3;
       pointer-events: none;
     }
+
     .hero-content {
       position: relative;
       z-index: 4;
       text-align: center;
       padding: 0 var(--space-md);
     }
+
     .hero-title {
       font-size: 5rem;
       text-transform: uppercase;
@@ -70,30 +90,35 @@
       line-height: 1.1;
       max-width: 900px;
     }
+
     .hero-actions {
       display: flex;
       gap: var(--space-md);
       justify-content: center;
     }
-    
+
     /* Featured Work Strip */
     .featured-work {
       padding: var(--space-2xl) 0;
       background-color: var(--rdx-black);
     }
+
     .section-header {
       text-align: center;
       margin-bottom: var(--space-xl);
     }
+
     .section-title {
       font-size: 3rem;
       color: var(--rdx-red);
     }
+
     .work-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: var(--space-md);
     }
+
     .work-card {
       position: relative;
       aspect-ratio: 16/9;
@@ -102,28 +127,33 @@
       display: block;
       group: work;
     }
+
     .work-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform var(--transition-normal);
     }
+
     .work-card:hover .work-img {
       transform: scale(1.05);
     }
+
     .work-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       opacity: 0;
       transition: opacity var(--transition-fast);
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .work-card:hover .work-overlay {
       opacity: 1;
     }
+
     .work-label {
       font-family: var(--font-display);
       font-size: 2rem;
@@ -135,23 +165,27 @@
       padding: var(--space-2xl) 0;
       position: relative;
     }
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: var(--space-lg);
     }
+
     .service-card {
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       padding: var(--space-xl) var(--space-lg);
       text-align: center;
       border-radius: var(--radius-md);
       transition: transform var(--transition-fast), border-color var(--transition-fast);
     }
+
     .service-card:hover {
       transform: translateY(-5px);
       border-color: var(--rdx-red);
     }
+
     .service-icon {
       width: 64px;
       height: 64px;
@@ -160,10 +194,12 @@
       filter: invert(1);
       opacity: 0.8;
     }
+
     .service-title {
       font-size: 2rem;
       margin-bottom: var(--space-sm);
     }
+
     .service-desc {
       color: var(--rdx-gray-light);
       font-size: 0.95rem;
@@ -175,6 +211,7 @@
       color: var(--rdx-white);
       padding: var(--space-xl) 0;
     }
+
     .stats-grid {
       display: flex;
       flex-wrap: wrap;
@@ -182,12 +219,14 @@
       gap: var(--space-lg);
       text-align: center;
     }
+
     .stat-number {
       font-family: var(--font-display);
       font-size: 4rem;
       line-height: 1;
       margin-bottom: var(--space-xs);
     }
+
     .stat-label {
       font-family: var(--font-body);
       font-weight: 600;
@@ -201,6 +240,7 @@
       padding: var(--space-2xl) 0;
       text-align: center;
     }
+
     .testimonial-quote {
       font-family: var(--font-display);
       font-size: 2.5rem;
@@ -209,6 +249,7 @@
       color: var(--rdx-white);
       line-height: 1.2;
     }
+
     .testimonial-author {
       color: var(--rdx-red);
       font-weight: 700;
@@ -224,6 +265,7 @@
       background-color: #050505;
       overflow: hidden;
     }
+
     .closing-accent {
       position: absolute;
       top: 50%;
@@ -234,10 +276,12 @@
       opacity: 0.05;
       pointer-events: none;
     }
+
     .closing-content {
       position: relative;
       z-index: 2;
     }
+
     .btn-outline {
       background: transparent;
       border: 2px solid var(--rdx-white);
@@ -249,23 +293,76 @@
       transition: background-color var(--transition-fast), color var(--transition-fast);
       display: inline-block;
     }
+
     .btn-outline:hover {
       background: var(--rdx-white);
       color: var(--rdx-black);
     }
   </style>
+
+  <!-- CONFIRM: Replace example-rdx3.com with live domain -->
+  <link rel="canonical" href="https://example-rdx3.com/">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "RDX Studios",
+    "image": "https://example-rdx3.com/assets/LOGO2.webp",
+    "url": "https://example-rdx3.com",
+    "sameAs": [
+      "https://instagram.com/rdxstudios",
+      "https://twitter.com/rdxstudios",
+      "https://linkedin.com/company/rdxstudios"
+    ],
+    "description": "A three-wing creative house specialising in cinematic photography, high-performance web engineering, and strategic brand design.",
+    "department": [
+      {
+        "@type": "LocalBusiness",
+        "name": "RDX Studios - Kokkada Main",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "123 Creative Hub Street",
+          "addressLocality": "Kokkada",
+          "addressRegion": "Karnataka",
+          "addressCountry": "IN"
+        }
+      },
+      {
+        "@type": "LocalBusiness",
+        "name": "RDX Studios - Mysuru Suite",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "456 Editorial Lane",
+          "addressLocality": "Mysuru",
+          "addressRegion": "Karnataka",
+          "addressCountry": "IN"
+        }
+      }
+    ],
+    "makesOffer": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "RDX RED (Photography & Videography)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Code RED (Digital Engineering)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Shape RED (Brand Design)" } }
+    ]
+  }
+  </script>
 </head>
+
 <body class="rdx-grain">
-  
+
   <div id="page-transition" class="active"></div>
   <div id="nav-placeholder"></div>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section id="main-content" class="hero">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <img src="assets/Wattermark.webp" alt="RDX Studios watermark emblem" class="hero-watermark">
-    
+
     <div class="hero-content rdx-fade-up">
       <!-- Tagline Options:
            Option 1: "Where Light Meets Code. Where Vision Takes Shape." (Active)
@@ -273,7 +370,7 @@
            Option 3: "Engineering Visual Excellence. Shaping Digital Realities."
       -->
       <h1 class="hero-title">Where Light Meets Code.<br>Where Vision Takes Shape.</h1>
-      
+
       <div class="hero-actions">
         <a href="portfolio.html" class="btn btn-primary">View Work</a>
         <a href="contact.html" class="btn btn-outline">Book a Shoot</a>
@@ -289,16 +386,20 @@
       </header>
       <div class="work-grid">
         <a href="portfolio.html?filter=photography" class="work-card rdx-fade-up" style="transition-delay: 100ms;">
-          <img src="assets/DSLR shot.webp" alt="High-end editorial photography captured on a professional DSLR camera" class="work-img" loading="lazy">
+          <img src="assets/DSLR shot.webp" alt="High-end editorial photography captured on a professional DSLR camera"
+            class="work-img" loading="lazy">
           <div class="work-overlay"><span class="work-label">Photography</span></div>
         </a>
         <a href="portfolio.html?filter=campaigns" class="work-card rdx-fade-up" style="transition-delay: 200ms;">
-          <img src="assets/Banner.webp" alt="Digital campaign banner designed for brand promotion" class="work-img" loading="lazy">
+          <img src="assets/Banner.webp" alt="Digital campaign banner designed for brand promotion" class="work-img"
+            loading="lazy">
           <div class="work-overlay"><span class="work-label">Campaigns</span></div>
         </a>
         <a href="portfolio.html?filter=rdx-red" class="work-card rdx-fade-up" style="transition-delay: 300ms;">
           <!-- Poster frame only — video never preloads here -->
-          <img src="assets/Chongqing Wallpaper.webp" alt="Cinematic motion reel preview from Shiradi production" class="work-img" loading="lazy" style="filter: grayscale(30%);">
+          <img src="assets/Chongqing Wallpaper.webp"
+            alt="Nighttime aerial view of Chongqing skyline illuminated by vibrant city lights" class="work-img"
+            loading="lazy" style="filter: grayscale(30%);">
           <div class="work-overlay"><span class="work-label">Motion</span></div>
         </a>
       </div>
@@ -311,19 +412,25 @@
       <div class="services-grid">
         <div class="service-card rdx-fade-up">
           <!-- Custom SVG for RDX RED generated above -->
-          <img src="assets/Icon-RRED.svg" alt="RDX RED photography studio icon showing a stylised camera" class="service-icon" loading="lazy" style="filter: none;">
+          <img src="assets/Wattermark.webp" alt="RDX RED photography studio icon showing a stylised camera"
+            class="service-icon" loading="lazy" style="filter: none;">
           <h3 class="service-title">RDX RED</h3>
-          <p class="service-desc">Our flagship photography and cinematography studio. We capture authentic emotion and craft cinematic visual narratives that elevate your brand's presence.</p>
+          <p class="service-desc">Our flagship photography and cinematography studio. We capture authentic emotion and
+            craft cinematic visual narratives that elevate your brand's presence.</p>
         </div>
         <div class="service-card rdx-fade-up" style="transition-delay: 100ms;">
-          <img src="assets/Icon CRED.webp" alt="Code RED digital engineering icon with overlapping arrows" class="service-icon" loading="lazy">
+          <img src="assets/Icon CRED.webp" alt="Code RED digital engineering icon with overlapping arrows"
+            class="service-icon" loading="lazy">
           <h3 class="service-title">Code RED</h3>
-          <p class="service-desc">The digital engineering wing. We build immersive, high-performance web experiences and robust applications engineered for the modern luxury standard.</p>
+          <p class="service-desc">The digital engineering wing. We build immersive, high-performance web experiences and
+            robust applications engineered for the modern luxury standard.</p>
         </div>
         <div class="service-card rdx-fade-up" style="transition-delay: 200ms;">
-          <img src="assets/Icon SRED.webp" alt="Shape RED brand design icon with geometric forms" class="service-icon" loading="lazy">
+          <img src="assets/Icon SRED.webp" alt="Shape RED brand design icon with geometric forms" class="service-icon"
+            loading="lazy">
           <h3 class="service-title">Shape RED</h3>
-          <p class="service-desc">Strategic design and brand identity shaping. From typography and logo design to comprehensive design systems that define industry leaders.</p>
+          <p class="service-desc">Strategic design and brand identity shaping. From typography and logo design to
+            comprehensive design systems that define industry leaders.</p>
         </div>
       </div>
     </div>
@@ -361,14 +468,15 @@
   <section class="testimonial-section rdx-fade-up">
     <div class="container">
       <!-- Placeholder component for a real client quote -->
-      <blockquote class="testimonial-quote">"Their mastery of light and digital precision elevated our entire brand architecture."</blockquote>
-      <div class="testimonial-author">— Client Name Here</div>
+      <blockquote class="testimonial-quote">"Their mastery of light and digital precision elevated our entire brand
+        architecture."</blockquote>
+      <div class="testimonial-author"> - RDX Studios</div>
     </div>
   </section>
 
   <!-- Closing CTA -->
   <section class="closing-cta">
-    <img src="assets/ACT.webp" alt="RDX Studios accent graphic" class="closing-accent" loading="lazy">
+    <img src="assets/Extended Background.webp" alt="RDX Studios accent graphic" class="closing-accent" loading="lazy">
     <div class="closing-content rdx-fade-up">
       <h2 class="section-title" style="margin-bottom: var(--space-md);">Ready to Create?</h2>
       <a href="contact.html" class="btn btn-primary">Book a Session</a>
@@ -379,4 +487,5 @@
 
   <script src="js/main.js" defer></script>
 </body>
+
 </html>

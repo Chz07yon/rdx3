@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | RDX Studios</title>
+  <meta name="description" content="Page not found.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="404 | RDX Studios">
+  <meta property="og:description" content="Page not found.">
+  <meta property="og:type" content="website">
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <!-- CONFIRM: Replace example-rdx3.com with live domain -->
+  <link rel="canonical" href="https://example-rdx3.com/404.html">
+  <meta name="theme-color" content="#0A0A0A">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <style>
+    .not-found-hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--rdx-black);
+      padding: var(--space-md);
+    }
+    .not-found-code {
+      font-family: var(--font-display);
+      font-size: 8rem;
+      color: var(--rdx-red);
+      line-height: 1;
+      margin-bottom: var(--space-sm);
+    }
+    .not-found-text {
+      font-size: 1.25rem;
+      color: #999;
+      max-width: 500px;
+      margin-bottom: var(--space-lg);
+    }
+    .not-found-actions {
+      display: flex;
+      gap: var(--space-md);
+    }
+  </style>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="nav-placeholder"></div>
+  <div class="page-transition"></div>
+
+  <main id="main-content">
+    <section class="not-found-hero">
+      <h1 class="not-found-code rdx-fade-up">404</h1>
+      <p class="not-found-text rdx-fade-up" style="transition-delay: 0.1s;">
+        The signal was lost. The page you're looking for doesn't exist or has been moved.
+      </p>
+      <div class="not-found-actions rdx-fade-up" style="transition-delay: 0.2s;">
+        <a href="index.html" class="btn btn-primary">Return Home</a>
+        <a href="portfolio.html" class="btn btn-outline">View Portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="footer-placeholder"></div>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

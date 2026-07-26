@@ -150,3 +150,19 @@ img {
     background-attachment: scroll !important;
   }
 }
+
+
+/* Skip to Content Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--rdx-red);
+  color: white;
+  padding: 8px;
+  z-index: 9999;
+  transition: top 0.2s ease-out;
+}
+.skip-link:focus {
+  top: 0;
+}
