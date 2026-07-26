@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  initNavScroll();
+  initUnifiedNavScroll();
   initHamburger();
   initAnimations();
   initPageTransitions();
@@ -14,19 +14,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 /**
- * Sticky transparent-to-solid nav behavior
+ * Unified scroll behavior: Hide/Reveal, Logo Morph, Depth on Reveal
  */
-function initNavScroll() {
+function initUnifiedNavScroll() {
   const nav = document.getElementById('site-nav');
   if (!nav) return;
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      nav.classList.add('is-solid');
+  let currentScrollY = window.scrollY;
+  let previousScrollY = window.scrollY;
+  let ticking = false;
+
+  const updateNavState = () => {
+    const isScrolled = currentScrollY > 100;
+    
+    if (isScrolled) {
+      nav.classList.add('is-scrolled');
     } else {
-      nav.classList.remove('is-solid');
+      nav.classList.remove('is-scrolled');
+    }
+
+    const delta = currentScrollY - previousScrollY;
+    
+    if (currentScrollY > 120) {
+      if (delta > 0) {
+        // Scrolling down
+        nav.classList.add('is-hidden');
+        previousScrollY = currentScrollY;
+      } else if (delta < -10) {
+        // Scrolling up past buffer
+        nav.classList.remove('is-hidden');
+        previousScrollY = currentScrollY;
+      }
+    } else {
+      nav.classList.remove('is-hidden');
+      previousScrollY = currentScrollY;
+    }
+    
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    currentScrollY = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(updateNavState);
+      ticking = true;
     }
   }, { passive: true });
+
+  // Init
+  updateNavState();
 }
 
 /**
@@ -75,7 +111,7 @@ function initAnimations() {
     });
   }, observerOptions);
 
-  document.querySelectorAll('.rdx-fade-up, .rdx-slide-in').forEach(el => {
+  document.querySelectorAll('.rdx-fade-up, .rdx-slide-in, .rdx-line-draw').forEach(el => {
     observer.observe(el);
   });
 }

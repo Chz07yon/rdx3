@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Services | RDX Studios</title>
-  <meta name="description" content="RDX Studios services: cinematic photography and videography (RDX RED), custom web development (Code RED), and brand identity design (Shape RED).">
+  <meta name="description"
+    content="RDX Studios services: cinematic photography and videography (RDX RED), custom web development (Code RED), and brand identity design (Shape RED).">
   <meta property="og:title" content="Services | RDX Studios">
-  <meta property="og:description" content="Photography, web development, and brand design — three specialised wings under one creative roof.">
-  <meta property="og:image" content="assets/The 3 Mark.webp">
+  <meta property="og:description"
+    content="Photography, web development, and brand design — three specialised wings under one creative roof.">
+  <meta property="og:image" content="assets/The 3 Mark.png">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
+  <link rel="icon" type="image/webp" href="assets/LOGO2.png">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -19,12 +22,14 @@
       text-align: center;
       background-color: var(--rdx-black);
     }
+
     .intro-graphic {
       max-width: 400px;
       width: 100%;
       margin: 0 auto var(--space-lg);
       opacity: 0.9;
     }
+
     .intro-desc {
       max-width: 800px;
       margin: 0 auto;
@@ -35,21 +40,27 @@
     /* Sub-block Base */
     .service-block {
       padding: var(--space-2xl) 0;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
+
     .service-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-2xl);
       align-items: center;
     }
+
     @media (max-width: 900px) {
-      .service-grid { grid-template-columns: 1fr; }
+      .service-grid {
+        grid-template-columns: 1fr;
+      }
     }
+
     .service-list {
       list-style: none;
       margin-bottom: var(--space-xl);
     }
+
     .service-list li {
       margin-bottom: var(--space-md);
       font-size: 1.1rem;
@@ -57,11 +68,13 @@
       align-items: flex-start;
       gap: var(--space-sm);
     }
+
     .service-list li::before {
       content: "—";
       color: var(--rdx-red-active);
       font-weight: bold;
     }
+
     .service-list strong {
       display: block;
       color: var(--rdx-white);
@@ -69,6 +82,7 @@
       font-size: 1.5rem;
       letter-spacing: 0.05em;
     }
+
     .service-list span {
       color: var(--rdx-gray-light);
       font-size: 0.95rem;
@@ -83,6 +97,7 @@
       overflow: hidden;
       position: relative;
     }
+
     .showreel-video {
       width: 100%;
       height: 100%;
@@ -95,40 +110,46 @@
       background-color: #050505;
       padding: 120px 0;
     }
+
     .code-bg {
       position: absolute;
       inset: 0;
-      background-image: url('assets/code.webp');
+      background-image: url('assets/code.png');
       background-size: cover;
       background-position: center;
       opacity: 0.08;
       pointer-events: none;
     }
+
     .code-header-img {
       max-width: 300px;
       margin-bottom: var(--space-lg);
     }
+
     .proof-points {
       margin: var(--space-lg) 0;
       padding: var(--space-md);
-      background: rgba(255,255,255,0.02);
+      background: rgba(255, 255, 255, 0.02);
       border-left: 2px solid var(--rdx-red);
     }
+
     .proof-points h4 {
       font-family: var(--font-display);
       color: var(--rdx-red-active);
       font-size: 1.25rem;
       margin-bottom: var(--space-sm);
     }
+
     .tech-stack {
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-sm);
       margin-bottom: var(--space-xl);
     }
+
     .tech-badge {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 4px 12px;
       border-radius: var(--radius-full);
       font-size: 0.8rem;
@@ -144,17 +165,20 @@
       margin-bottom: var(--space-lg);
       filter: invert(1);
     }
+
     .showcase-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-sm);
     }
+
     .showcase-item {
       aspect-ratio: 1/1;
-      background: rgba(255,255,255,0.02);
+      background: rgba(255, 255, 255, 0.02);
       border-radius: var(--radius-sm);
       overflow: hidden;
     }
+
     .showcase-img {
       width: 100%;
       height: 100%;
@@ -162,6 +186,7 @@
       opacity: 0.7;
       transition: opacity var(--transition-fast);
     }
+
     .showcase-item:hover .showcase-img {
       opacity: 1;
     }
@@ -170,8 +195,9 @@
     .process-strip {
       padding: var(--space-2xl) 0;
       background-color: var(--rdx-black);
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
+
     .process-title {
       text-align: center;
       font-family: var(--font-display);
@@ -179,6 +205,7 @@
       margin-bottom: var(--space-xl);
       color: var(--rdx-red);
     }
+
     .timeline {
       display: flex;
       justify-content: space-between;
@@ -186,6 +213,7 @@
       max-width: 1000px;
       margin: 0 auto;
     }
+
     .timeline::before {
       content: "";
       position: absolute;
@@ -193,14 +221,16 @@
       left: 0;
       right: 0;
       height: 2px;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255, 255, 255, 0.1);
       z-index: 1;
     }
+
     @media (max-width: 768px) {
       .timeline {
         flex-direction: column;
         gap: var(--space-lg);
       }
+
       .timeline::before {
         top: 0;
         bottom: 0;
@@ -210,6 +240,7 @@
         height: 100%;
       }
     }
+
     .timeline-step {
       position: relative;
       z-index: 2;
@@ -217,12 +248,14 @@
       text-align: center;
       padding: 0 var(--space-sm);
     }
+
     @media (max-width: 768px) {
       .timeline-step {
         text-align: left;
         padding-left: 60px;
       }
     }
+
     .step-marker {
       width: 50px;
       height: 50px;
@@ -237,6 +270,7 @@
       font-size: 1.5rem;
       color: var(--rdx-white);
     }
+
     @media (max-width: 768px) {
       .step-marker {
         position: absolute;
@@ -245,11 +279,13 @@
         margin: 0;
       }
     }
+
     .step-title {
       font-family: var(--font-display);
       font-size: 1.5rem;
       margin-bottom: var(--space-xs);
     }
+
     .step-desc {
       color: var(--rdx-gray-light);
       font-size: 0.9rem;
@@ -262,373 +298,463 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
+
 <body class="rdx-grain">
-  
+
   <div id="page-transition" class="active"></div>
   <!-- NAV:START -->
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
-  <div class="nav-container">
-    <div class="nav-logo">
-      <a href="index.html" aria-label="RDX Studios Home">
-        <img src="assets/LOgo.webp" alt="RDX Studios logo" class="logo-img">
-      </a>
-    </div>
-    
-    <!-- Hamburger Toggle (mobile) -->
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html" aria-label="RDX Studios Home" class="logo-morph-container">
+          <span class="logo-text logo-full">RDX RED</span>
+          <span class="logo-text logo-icon">R</span>
+        </a>
+      </div>
 
-    <div class="nav-links" id="nav-links">
-      <div class="nav-group secondary">
-        <a href="about.html" class="nav-item">ABOUT</a>
-        
-        <div class="mega-menu-wrapper">
-          <button class="nav-item services-trigger" aria-expanded="false" aria-controls="services-mega-menu">
-            SERVICES
-            <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          
-          <div id="services-mega-menu" class="mega-menu-panel">
-            <div class="mega-menu-grid">
-              <a href="services.html#rdx-red" class="mega-card">
-                <div class="mega-card-icon" style="background:var(--rdx-red);border-radius:50%;padding:6px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
-                  <img src="assets/Icon-RRED.svg" alt="" style="width:20px;height:20px;">
-                </div>
-                <div class="mega-card-content">
-                  <h4 class="mega-card-title">RDX RED</h4>
-                  <p class="mega-card-desc">The premium photography and videography wing.</p>
-                </div>
-              </a>
-              <a href="services.html#code-red" class="mega-card">
-                <img src="assets/Icon CRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
-                <div class="mega-card-content">
-                  <h4 class="mega-card-title">Code RED</h4>
-                  <p class="mega-card-desc">The digital engineering wing.</p>
-                </div>
-              </a>
-              <a href="services.html#shape-red" class="mega-card">
-                <img src="assets/Icon SRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
-                <div class="mega-card-content">
-                  <h4 class="mega-card-title">Shape RED</h4>
-                  <p class="mega-card-desc">The creative digital wing forging impactful digital media.</p>
-                </div>
-              </a>
+      <!-- Hamburger Toggle (mobile) -->
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <div class="nav-group secondary">
+          <a href="about.html" class="nav-item">ABOUT</a>
+
+          <div class="mega-menu-wrapper">
+            <button class="nav-item services-trigger" aria-expanded="false" aria-controls="services-mega-menu">
+              SERVICES
+              <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div id="services-mega-menu" class="mega-menu-panel">
+              <div class="mega-menu-grid">
+                <a href="services.html#rdx-red" class="mega-card">
+                  <div class="mega-card-icon"
+                    style="background:var(--rdx-red);border-radius:50%;padding:6px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
+                    <img src="assets/Icon-RRED.svg" alt="" style="width:20px;height:20px;">
+                  </div>
+                  <div class="mega-card-content">
+                    <h4 class="mega-card-title">RDX RED</h4>
+                    <p class="mega-card-desc">The premium photography and videography wing.</p>
+                  </div>
+                </a>
+                <a href="services.html#code-red" class="mega-card">
+                  <img src="assets/Icon CRED.png" alt="" class="mega-card-icon"
+                    style="width:32px;height:32px;object-fit:contain;">
+                  <div class="mega-card-content">
+                    <h4 class="mega-card-title">Code RED</h4>
+                    <p class="mega-card-desc">The digital engineering wing.</p>
+                  </div>
+                </a>
+                <a href="services.html#shape-red" class="mega-card">
+                  <img src="assets/Icon SRED.png" alt="" class="mega-card-icon"
+                    style="width:32px;height:32px;object-fit:contain;">
+                  <div class="mega-card-content">
+                    <h4 class="mega-card-title">Shape RED</h4>
+                    <p class="mega-card-desc">The creative digital wing forging impactful digital media.</p>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
+          <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
+          <a href="journal.html" class="nav-item">JOURNAL</a>
+          <a href="team.html" class="nav-item">TEAM</a>
         </div>
-        <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
-        <a href="journal.html" class="nav-item">JOURNAL</a>
-        <a href="team.html" class="nav-item">TEAM</a>
+      </div>
+
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary">CONNECT</a>
       </div>
     </div>
-    
-    <div class="nav-cta">
-      <a href="contact.html" class="btn btn-primary">CONNECT</a>
-    </div>
-  </div>
-</nav>
+  </nav>
 
-<style>
-/* Nav Styles */
-.rdx-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  background-color: transparent;
-  transition: background-color var(--transition-normal);
-  padding: var(--space-md) 0;
-}
-.rdx-nav.is-solid {
-  background-color: var(--rdx-black);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-.logo-img {
-  height: 36px;
-  width: auto;
-  display: block;
-}
-.nav-links {
-  display: flex;
-  gap: var(--space-xl);
-  align-items: center;
-}
-.nav-group {
-  display: flex;
-  gap: var(--space-lg);
-}
-.nav-item {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.nav-item:hover {
-  color: var(--rdx-red);
-}
-/* Focus-visible for keyboard accessibility */
-.nav-item:focus-visible,
-.btn-primary:focus-visible {
-  outline: 2px solid var(--rdx-red);
-  outline-offset: 4px;
-}
-.btn-primary {
-  background-color: var(--rdx-red);
-  color: var(--rdx-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: background-color var(--transition-fast);
-}
-.btn-primary:hover {
-  background-color: var(--rdx-red-hover);
-}
+  <style>
+    /* Nav Styles */
+    .rdx-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background-color: transparent;
+      transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out;
+      padding: var(--space-xl) 0;
+    }
 
-/* Hamburger */
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  z-index: 110;
-}
-.hamburger-line {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: var(--rdx-white);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
-}
-.nav-hamburger.is-open .hamburger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.nav-hamburger.is-open .hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-.nav-hamburger.is-open .hamburger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+    .rdx-nav.is-scrolled {
+      background-color: #0A0A0A;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      padding: var(--space-md) 0;
+    }
 
-/* Mobile breakpoint */
-@media (max-width: 900px) {
-  .nav-hamburger {
-    display: flex;
-  }
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 280px;
-    height: 100vh;
-    background: var(--rdx-black);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 100px var(--space-lg) var(--space-lg);
-    gap: var(--space-lg);
-    transform: translateX(100%);
-    transition: transform var(--transition-normal);
-    box-shadow: -4px 0 30px rgba(0,0,0,0.5);
-    z-index: 105;
-  }
-  .nav-links.is-open {
-    transform: translateX(0);
-  }
-  }
-  .nav-group {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-  .nav-cta {
-    display: none; /* CTA duplicated inside mobile menu if needed */
-  }
-}
+    .rdx-nav.is-hidden {
+      transform: translateY(-100%);
+    }
 
-/* Mega Menu Styles */
-.mega-menu-wrapper {
-  position: relative;
-}
-.services-trigger {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--rdx-white);
-  padding: 0;
-}
-.dropdown-icon {
-  transition: transform 0.2s ease;
-}
-.services-trigger[aria-expanded="true"] .dropdown-icon {
-  transform: rotate(180deg);
-}
-.mega-menu-panel {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background: var(--rdx-black);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-sm);
-  padding: var(--space-md);
-  width: max-content;
-  max-width: 90vw;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-  z-index: 1000;
-}
-.mega-menu-panel.is-open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(20px);
-}
-.mega-menu-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-.mega-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-sm);
-  border-radius: var(--radius-sm);
-  transition: background 0.2s ease;
-  text-decoration: none;
-}
-.mega-card:hover, .mega-card:focus-visible {
-  background: rgba(255,255,255,0.05);
-  outline: none;
-}
-.mega-card:focus-visible {
-  outline: 2px solid var(--rdx-red-active);
-}
-.mega-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.mega-card-title {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--rdx-white);
-  line-height: 1;
-}
-.mega-card-desc {
-  font-size: 0.85rem;
-  color: var(--rdx-gray-light);
-  max-width: 250px;
-}
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
 
-@media (max-width: 900px) {
-  .mega-menu-panel {
-    position: static;
-    transform: none;
-    box-shadow: none;
-    border: none;
-    padding: var(--space-sm) 0 0 0;
-    width: 100%;
-    display: none;
-  }
-  .mega-menu-panel.is-open {
-    transform: none;
-    display: block;
-  }
-  .mega-card-desc {
-    display: none;
-  }
-  .mega-card-title {
-    font-size: 1.25rem;
-  }
-}
-</style>
+    /* Logo Morph */
+    .logo-morph-container {
+      position: relative;
+      display: block;
+      width: 150px;
+      height: 42px;
+    }
 
-<script>
-  (function() {
-    const trigger = document.querySelector('.services-trigger');
-    const panel = document.getElementById('services-mega-menu');
-    
-    if (!trigger || !panel) return;
-    
-    const closeMenu = () => {
-      trigger.setAttribute('aria-expanded', 'false');
-      panel.classList.remove('is-open');
-    };
-    
-    const openMenu = () => {
-      trigger.setAttribute('aria-expanded', 'true');
-      panel.classList.add('is-open');
-    };
-    
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-      if (isExpanded) {
-        closeMenu();
-      } else {
-        openMenu();
+    .logo-text {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform-origin: left center;
+      font-family: var(--font-display);
+      color: var(--rdx-white);
+      font-size: 2.5rem;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+      margin-top: -18px;
+      /* vertical alignment adjustment */
+    }
+
+    .logo-full {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .logo-icon {
+      opacity: 0;
+      transform: scale(0.8);
+      color: var(--rdx-red);
+      /* Style the R differently if desired, or keep white */
+    }
+
+    .rdx-nav.is-scrolled .logo-full {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+
+    .rdx-nav.is-scrolled .logo-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .nav-group {
+      display: flex;
+      gap: var(--space-lg);
+    }
+
+    .nav-item {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-item:hover {
+      color: var(--rdx-red);
+    }
+
+    /* Focus-visible for keyboard accessibility */
+    .nav-item:focus-visible,
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--rdx-red);
+      outline-offset: 4px;
+    }
+
+    .btn-primary {
+      background-color: var(--rdx-red);
+      color: var(--rdx-white);
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: background-color var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--rdx-red-hover);
+    }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 110;
+    }
+
+    .hamburger-line {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: var(--rdx-white);
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .nav-hamburger.is-open .hamburger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-hamburger.is-open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-hamburger.is-open .hamburger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile breakpoint */
+    @media (max-width: 900px) {
+      .nav-hamburger {
+        display: flex;
       }
-    });
-    
-    document.addEventListener('click', (e) => {
-      if (!trigger.contains(e.target) && !panel.contains(e.target)) {
-        closeMenu();
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        background: var(--rdx-black);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 100px var(--space-lg) var(--space-lg);
+        gap: var(--space-lg);
+        transform: translateX(100%);
+        transition: transform var(--transition-normal);
+        box-shadow: -4px 0 30px rgba(0, 0, 0, 0.5);
+        z-index: 105;
       }
-    });
-    
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeMenu();
+
+      .nav-links.is-open {
+        transform: translateX(0);
       }
-    });
-    
-    const links = panel.querySelectorAll('a');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-        // Also close mobile hamburger menu if open
-        const hamburger = document.getElementById('nav-hamburger');
-        const navLinks = document.getElementById('nav-links');
-        if (hamburger && navLinks) {
-          hamburger.classList.remove('is-open');
-          hamburger.setAttribute('aria-expanded', 'false');
-          navLinks.classList.remove('is-open');
+
+      .nav-group {
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+
+      .nav-cta {
+        display: none;
+        /* CTA duplicated inside mobile menu if needed */
+      }
+    }
+
+    /* Mega Menu Styles */
+    .mega-menu-wrapper {
+      position: relative;
+    }
+
+    .services-trigger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--rdx-white);
+      padding: 0;
+    }
+
+    .dropdown-icon {
+      transition: transform 0.2s ease;
+    }
+
+    .services-trigger[aria-expanded="true"] .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .mega-menu-panel {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--rdx-black);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--radius-sm);
+      padding: var(--space-md);
+      width: max-content;
+      max-width: 90vw;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+      z-index: 1000;
+    }
+
+    .mega-menu-panel.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(20px);
+    }
+
+    .mega-menu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .mega-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-sm);
+      border-radius: var(--radius-sm);
+      transition: background 0.2s ease;
+      text-decoration: none;
+    }
+
+    .mega-card:hover,
+    .mega-card:focus-visible {
+      background: rgba(255, 255, 255, 0.05);
+      outline: none;
+    }
+
+    .mega-card:focus-visible {
+      outline: 2px solid var(--rdx-red-active);
+    }
+
+    .mega-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mega-card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--rdx-white);
+      line-height: 1;
+    }
+
+    .mega-card-desc {
+      font-size: 0.85rem;
+      color: var(--rdx-gray-light);
+      max-width: 250px;
+    }
+
+    @media (max-width: 900px) {
+      .mega-menu-panel {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        padding: var(--space-sm) 0 0 0;
+        width: 100%;
+        display: none;
+      }
+
+      .mega-menu-panel.is-open {
+        transform: none;
+        display: block;
+      }
+
+      .mega-card-desc {
+        display: none;
+      }
+
+      .mega-card-title {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+
+  <script>
+    (function () {
+      const trigger = document.querySelector('.services-trigger');
+      const panel = document.getElementById('services-mega-menu');
+
+      if (!trigger || !panel) return;
+
+      const closeMenu = () => {
+        trigger.setAttribute('aria-expanded', 'false');
+        panel.classList.remove('is-open');
+      };
+
+      const openMenu = () => {
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.classList.add('is-open');
+      };
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          closeMenu();
+        } else {
+          openMenu();
         }
       });
-    });
-  })();
-</script>
-<!-- NAV:END -->
+
+      document.addEventListener('click', (e) => {
+        if (!trigger.contains(e.target) && !panel.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      const links = panel.querySelectorAll('a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          closeMenu();
+          // Also close mobile hamburger menu if open
+          const hamburger = document.getElementById('nav-hamburger');
+          const navLinks = document.getElementById('nav-links');
+          if (hamburger && navLinks) {
+            hamburger.classList.remove('is-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('is-open');
+          }
+        });
+      });
+    })();
+  </script>
+  <!-- NAV:END -->
 
 
   <!-- Hub Intro -->
   <section id="main-content" class="services-intro">
     <div class="container">
       <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">RDX Studios Services</h1>
-      <img src="assets/The 3 Mark.webp" alt="The three-wing identity of RDX Studios: Code RED, RDX RED, and Shape RED" class="intro-graphic rdx-fade-up">
+      <img src="assets/The 3 Mark.png" alt="The three-wing identity of RDX Studios: Code RED, RDX RED, and Shape RED"
+        class="intro-graphic rdx-fade-up">
       <p class="intro-desc rdx-fade-up" style="transition-delay: 100ms;">
-        RDX Studios operates as a unified creative ecosystem. Our three-wing model — RDX RED, Code RED, and Shape RED — seamlessly integrates luxury visual production, high-performance digital engineering, and strategic brand identity. This unified approach ensures that every project is conceptually cohesive and technically flawless.
+        RDX Studios operates as a unified creative ecosystem. Our three-wing model — RDX RED, Code RED, and Shape RED —
+        seamlessly integrates luxury visual production, high-performance digital engineering, and strategic brand
+        identity. This unified approach ensures that every project is conceptually cohesive and technically flawless.
       </p>
     </div>
   </section>
@@ -639,19 +765,29 @@
       <div class="service-grid">
         <div class="service-visual rdx-slide-in">
           <div class="showreel-wrap">
-            <video class="showreel-video" muted loop playsinline preload="none" poster="assets/DSLR shot.webp">
+            <video class="showreel-video" muted loop playsinline preload="none" poster="assets/DSLR shot.png">
               <source src="assets/bishop.mp4" type="video/mp4">
             </video>
             <!-- Click to play: video does NOT autoplay -->
-            <button class="showreel-play" onclick="this.previousElementSibling.play();this.previousElementSibling.previousElementSibling?.play?.();this.style.display='none';this.closest('.showreel-wrap').querySelector('video').play()" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);border:none;cursor:pointer;z-index:2;">
-              <span style="width:64px;height:64px;background:var(--rdx-red);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg></span>
+            <button class="showreel-play"
+              onclick="this.previousElementSibling.play();this.previousElementSibling.previousElementSibling?.play?.();this.style.display='none';this.closest('.showreel-wrap').querySelector('video').play()"
+              style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);border:none;cursor:pointer;z-index:2;">
+              <span
+                style="width:64px;height:64px;background:var(--rdx-red);border-radius:50%;display:flex;align-items:center;justify-content:center;"><svg
+                  width="24" height="24" viewBox="0 0 24 24" fill="white">
+                  <polygon points="5,3 19,12 5,21" />
+                </svg></span>
             </button>
           </div>
         </div>
         <div class="service-content rdx-fade-up">
-          <h2 style="font-family: var(--font-display); font-size: 4rem; color: var(--rdx-red); margin-bottom: var(--space-md);">RDX RED</h2>
-          <p style="color: var(--rdx-gray-light); margin-bottom: var(--space-lg);">The premium photography and videography wing. We capture authentic emotion and craft cinematic visual narratives that elevate your brand's presence.</p>
-          
+          <h2
+            style="font-family: var(--font-display); font-size: 4rem; color: var(--rdx-red); margin-bottom: var(--space-md);">
+            RDX RED</h2>
+          <p style="color: var(--rdx-gray-light); margin-bottom: var(--space-lg);">The premium photography and
+            videography wing. We capture authentic emotion and craft cinematic visual narratives that elevate your
+            brand's presence.</p>
+
           <ul class="service-list">
             <!-- CONFIRM: Chris, please review this exact service list -->
             <li>
@@ -679,7 +815,7 @@
               </div>
             </li>
           </ul>
-          
+
           <a href="contact.html?service=rdx-red" class="btn btn-primary">Book a Shoot</a>
         </div>
       </div>
@@ -692,9 +828,12 @@
     <div class="container" style="position: relative; z-index: 2;">
       <div class="service-grid" style="grid-template-columns: 1.2fr 0.8fr;">
         <div class="service-content rdx-fade-up">
-          <img src="assets/CODE_RED.webp" alt="Code RED division logo in bold white type" class="code-header-img" loading="lazy">
-          <p style="color: var(--rdx-gray-light); margin-bottom: var(--space-lg);">The digital engineering wing. We build immersive, high-performance web experiences and robust applications engineered for the modern luxury standard.</p>
-          
+          <img src="assets/CODE_RED.png" alt="Code RED division logo in bold white type" class="code-header-img"
+            loading="lazy">
+          <p style="color: var(--rdx-gray-light); margin-bottom: var(--space-lg);">The digital engineering wing. We
+            build immersive, high-performance web experiences and robust applications engineered for the modern luxury
+            standard.</p>
+
           <ul class="service-list">
             <li>
               <div>
@@ -718,7 +857,9 @@
 
           <div class="proof-points">
             <h4>Capability Proof Points</h4>
-            <p style="font-size: 0.95rem; color: var(--rdx-gray-light);">Engineering the architecture behind comprehensive internal platforms like <strong>VVCE Connect</strong> and agile emergency response systems like <strong>ReliefRoute</strong>.</p>
+            <p style="font-size: 0.95rem; color: var(--rdx-gray-light);">Engineering the architecture behind
+              comprehensive internal platforms like <strong>VVCE Connect</strong> and agile emergency response systems
+              like <strong>ReliefRoute</strong>.</p>
           </div>
 
           <div class="tech-stack">
@@ -729,14 +870,15 @@
             <span class="tech-badge">Figma</span>
             <span class="tech-badge">MongoDB</span>
           </div>
-          
+
           <a href="contact.html?service=code-red" class="btn btn-primary">Start a Digital Build</a>
         </div>
         <div class="service-visual rdx-slide-in" style="transition-delay: 200ms;">
-           <!-- Abstract visual representation for Code RED -->
-           <div class="showcase-item" style="aspect-ratio: 4/5;">
-             <img src="assets/Berlin Indoor Wallpaper.webp" alt="Abstract digital texture representing code architecture" class="showcase-img" loading="lazy" style="opacity: 1; filter: grayscale(100%) contrast(1.2);">
-           </div>
+          <!-- Abstract visual representation for Code RED -->
+          <div class="showcase-item" style="aspect-ratio: 4/5;">
+            <img src="assets/Berlin Indoor Wallpaper.png" alt="Abstract digital texture representing code architecture"
+              class="showcase-img" loading="lazy" style="opacity: 1; filter: grayscale(100%) contrast(1.2);">
+          </div>
         </div>
       </div>
     </div>
@@ -748,17 +890,25 @@
       <div class="service-grid">
         <div class="service-visual rdx-fade-up">
           <div class="showcase-grid">
-            <div class="showcase-item"><img src="assets/Banner.webp" alt="Campaign banner design by Shape RED" class="showcase-img" loading="lazy"></div>
-            <div class="showcase-item"><img src="assets/Exclusive.webp" alt="Exclusive brand artwork created by Shape RED" class="showcase-img" loading="lazy"></div>
-            <div class="showcase-item"><img src="assets/code.webp" alt="Digital design mockup from the Shape RED portfolio" class="showcase-img" loading="lazy"></div>
-            <div class="showcase-item"><img src="assets/redpatterns.webp" alt="Geometric red pattern texture for brand identity" class="showcase-img" loading="lazy"></div>
+            <div class="showcase-item"><img src="assets/Banner.png" alt="Campaign banner design by Shape RED"
+                class="showcase-img" loading="lazy"></div>
+            <div class="showcase-item"><img src="assets/Exclusive.png"
+                alt="Exclusive brand artwork created by Shape RED" class="showcase-img" loading="lazy"></div>
+            <div class="showcase-item"><img src="assets/code.png"
+                alt="Digital design mockup from the Shape RED portfolio" class="showcase-img" loading="lazy"></div>
+            <div class="showcase-item"><img src="assets/redpatterns.png"
+                alt="Geometric red pattern texture for brand identity" class="showcase-img" loading="lazy"></div>
           </div>
         </div>
         <div class="service-content rdx-slide-in">
-          <img src="assets/Icon SRED.webp" alt="Shape RED icon featuring geometric forms: circle, diamond, triangle" class="shape-header-img" loading="lazy">
-          <h2 style="font-family: var(--font-display); font-size: 4rem; color: var(--rdx-red); margin-bottom: var(--space-md); line-height: 1; margin-top: -1rem;">Shape RED</h2>
-          <p style="color: var(--rdx-gray-light); margin-bottom: var(--space-lg);">The creative digital wing forging impactful digital media. Strategic design and brand identity shaping that define industry leaders.</p>
-          
+          <img src="assets/Icon SRED.png" alt="Shape RED icon featuring geometric forms: circle, diamond, triangle"
+            class="shape-header-img" loading="lazy">
+          <h2
+            style="font-family: var(--font-display); font-size: 4rem; color: var(--rdx-red); margin-bottom: var(--space-md); line-height: 1; margin-top: -1rem;">
+            Shape RED</h2>
+          <p style="color: var(--rdx-gray-light); margin-bottom: var(--space-lg);">The creative digital wing forging
+            impactful digital media. Strategic design and brand identity shaping that define industry leaders.</p>
+
           <ul class="service-list">
             <li>
               <div>
@@ -779,7 +929,7 @@
               </div>
             </li>
           </ul>
-          
+
           <a href="contact.html?service=shape-red" class="btn btn-primary">Shape Your Brand</a>
         </div>
       </div>
@@ -791,29 +941,33 @@
     <div class="container">
       <h2 class="process-title rdx-fade-up">The RDX Workflow</h2>
       <div class="timeline">
-        
+
         <div class="timeline-step rdx-fade-up">
           <div class="step-marker">01</div>
           <h3 class="step-title">Inquiry</h3>
-          <p class="step-desc">Initial consultation to define the project scope, aesthetic goals, and technical requirements across all required wings.</p>
+          <p class="step-desc">Initial consultation to define the project scope, aesthetic goals, and technical
+            requirements across all required wings.</p>
         </div>
-        
+
         <div class="timeline-step rdx-fade-up" style="transition-delay: 100ms;">
           <div class="step-marker">02</div>
           <h3 class="step-title">Concept</h3>
-          <p class="step-desc">Strategic planning, mood boarding, and architectural design. We architect the visual narrative or digital system.</p>
+          <p class="step-desc">Strategic planning, mood boarding, and architectural design. We architect the visual
+            narrative or digital system.</p>
         </div>
-        
+
         <div class="timeline-step rdx-fade-up" style="transition-delay: 200ms;">
           <div class="step-marker">03</div>
           <h3 class="step-title">Production</h3>
-          <p class="step-desc">Execution phase. Photography shoots, active code sprints, and meticulous design crafting by our specialists.</p>
+          <p class="step-desc">Execution phase. Photography shoots, active code sprints, and meticulous design crafting
+            by our specialists.</p>
         </div>
-        
+
         <div class="timeline-step rdx-fade-up" style="transition-delay: 300ms;">
           <div class="step-marker">04</div>
           <h3 class="step-title">Delivery</h3>
-          <p class="step-desc">Final polish, post-production, QA testing, and seamless handover of premium-grade assets and digital products.</p>
+          <p class="step-desc">Final polish, post-production, QA testing, and seamless handover of premium-grade assets
+            and digital products.</p>
         </div>
 
       </div>
@@ -821,120 +975,133 @@
   </section>
 
   <!-- FOOTER:START -->
-<footer class="rdx-footer">
-  <div class="footer-container">
-    <div class="footer-grid">
-      
-      <!-- Navigation -->
-      <div class="footer-col">
-        <h3 class="footer-heading">NAVIGATION</h3>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="journal.html">Journal</a></li>
-          <li><a href="team.html">Team</a></li>
-        </ul>
+  <footer class="rdx-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+
+        <!-- Navigation -->
+        <div class="footer-col">
+          <h3 class="footer-heading">NAVIGATION</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="journal.html">Journal</a></li>
+            <li><a href="team.html">Team</a></li>
+          </ul>
+        </div>
+
+        <!-- Studios -->
+        <div class="footer-col">
+          <h3 class="footer-heading">STUDIOS</h3>
+          <ul class="footer-links">
+            <li><a href="services.html#rdx-red">RDX RED</a></li>
+            <li><a href="services.html#code-red">Code RED</a></li>
+            <li><a href="services.html#shape-red">Shape RED</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect -->
+        <div class="footer-col">
+          <h3 class="footer-heading">CONNECT</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
+            <li><a href="tel:+917676218729">+91 76762 18729</a></li>
+            <!-- PLACEHOLDER: Replace with real addresses once Chris confirms -->
+            <li>
+              <p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Socials -->
+        <div class="footer-col">
+          <h3 class="footer-heading">SOCIAL</h3>
+          <ul class="footer-links">
+            <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+            <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
+          </ul>
+        </div>
+
       </div>
 
-      <!-- Studios -->
-      <div class="footer-col">
-        <h3 class="footer-heading">STUDIOS</h3>
-        <ul class="footer-links">
-          <li><a href="services.html#rdx-red">RDX RED</a></li>
-          <li><a href="services.html#code-red">Code RED</a></li>
-          <li><a href="services.html#shape-red">Shape RED</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> RDX Studios. All rights reserved.</p>
       </div>
-
-      <!-- Connect -->
-      <div class="footer-col">
-        <h3 class="footer-heading">CONNECT</h3>
-        <ul class="footer-links">
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
-          <li><a href="tel:+917676218729">+91 76762 18729</a></li>
-          <!-- PLACEHOLDER: Replace with real addresses once Chris confirms -->
-          <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
-        </ul>
-      </div>
-      
-      <!-- Socials -->
-      <div class="footer-col">
-        <h3 class="footer-heading">SOCIAL</h3>
-        <ul class="footer-links">
-          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
-          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
-        </ul>
-      </div>
-
     </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> RDX Studios. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<style>
-/* Footer styles */
-.rdx-footer {
-  background-color: var(--rdx-black);
-  border-top: 1px solid var(--rdx-gray);
-  padding: var(--space-xl) 0 var(--space-lg);
-  margin-top: var(--space-2xl);
-}
-.footer-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
-}
-.footer-heading {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--rdx-white);
-  margin-bottom: var(--space-md);
-  letter-spacing: 0.05em;
-}
-.footer-links {
-  list-style: none;
-}
-.footer-links li {
-  margin-bottom: var(--space-sm);
-}
-.footer-links a, .footer-text {
-  font-family: var(--font-body);
-  color: var(--rdx-gray-light);
-  font-size: 0.95rem;
-  transition: color var(--transition-fast);
-}
-.footer-links a:hover {
-  color: var(--rdx-red);
-}
-.footer-links a:focus-visible {
-  outline: 2px solid var(--rdx-red);
-  outline-offset: 2px;
-}
-.footer-bottom {
-  text-align: center;
-  border-top: 1px solid var(--rdx-gray);
-  padding-top: var(--space-md);
-  color: var(--rdx-gray-light);
-  font-size: 0.85rem;
-}
-</style>
-<!-- FOOTER:END -->
+  <style>
+    /* Footer styles */
+    .rdx-footer {
+      background-color: var(--rdx-black);
+      border-top: 1px solid var(--rdx-gray);
+      padding: var(--space-xl) 0 var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--rdx-white);
+      margin-bottom: var(--space-md);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-links a,
+    .footer-text {
+      font-family: var(--font-body);
+      color: var(--rdx-gray-light);
+      font-size: 0.95rem;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--rdx-red);
+    }
+
+    .footer-links a:focus-visible {
+      outline: 2px solid var(--rdx-red);
+      outline-offset: 2px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid var(--rdx-gray);
+      padding-top: var(--space-md);
+      color: var(--rdx-gray-light);
+      font-size: 0.85rem;
+    }
+  </style>
+  <!-- FOOTER:END -->
 
 
   <script src="js/main.js" defer></script>
 </body>
+
 </html>

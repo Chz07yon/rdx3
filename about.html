@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | RDX Studios</title>
-  <meta name="description" content="Discover the origin story of RDX Studios — founded in 2024 in Karnataka by Chris Zeyon Pinto. Three creative divisions, two premium studios, one uncompromising standard.">
+  <meta name="description"
+    content="Discover the origin story of RDX Studios — founded in 2024 in Karnataka by Chris Zeyon Pinto. Three creative divisions, two premium studios, one uncompromising standard.">
   <meta property="og:title" content="About | RDX Studios">
-  <meta property="og:description" content="Our origin, our founder, and the three-wing creative model behind RDX Studios.">
-  <meta property="og:image" content="assets/The 3 Mark.webp">
+  <meta property="og:description"
+    content="Our origin, our founder, and the three-wing creative model behind RDX Studios.">
+  <meta property="og:image" content="assets/The 3 Mark.png">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
+  <link rel="icon" type="image/webp" href="assets/LOGO2.png">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -17,23 +20,43 @@
     .origin-section {
       padding: 180px 0 var(--space-2xl);
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+
     .origin-anchor {
-      max-width: 600px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       width: 100%;
-      margin: 0 auto var(--space-xl);
-      opacity: 0.9;
-      filter: drop-shadow(0 0 20px rgba(232,0,29,0.1));
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
     }
+
     .origin-content {
+      position: relative;
+      z-index: 1;
       max-width: 800px;
       margin: 0 auto;
     }
+
     .origin-title {
-      font-size: 3.5rem;
+      font-size: 5rem;
       color: var(--rdx-red);
       margin-bottom: var(--space-md);
+      line-height: 1.1;
     }
+
+    @media (max-width: 768px) {
+      .origin-title {
+        font-size: 3rem;
+      }
+    }
+
     .origin-text {
       font-size: 1.1rem;
       color: var(--rdx-gray-light);
@@ -44,33 +67,80 @@
     .founder-section {
       padding: var(--space-2xl) 0;
       background-color: #050505;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
+
     .founder-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: var(--space-2xl);
       align-items: center;
     }
+
     @media (max-width: 768px) {
-      .founder-grid { grid-template-columns: 1fr; }
+      .founder-grid {
+        grid-template-columns: 1fr;
+      }
     }
+
     .founder-image-wrapper {
       position: relative;
       aspect-ratio: 4/5;
       overflow: hidden;
       border-radius: var(--radius-sm);
+      cursor: pointer;
     }
+
+    .founder-quote-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: var(--rdx-black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-xl);
+      text-align: center;
+      z-index: 2;
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .founder-quote-overlay blockquote {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      color: var(--rdx-red);
+      line-height: 1.2;
+      margin-bottom: var(--space-md);
+    }
+
     .founder-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0;
+      transform: scale(1.1);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     }
+
+    .founder-image-wrapper:hover .founder-quote-overlay,
+    .founder-image-wrapper:focus .founder-quote-overlay,
+    .founder-image-wrapper:active .founder-quote-overlay {
+      opacity: 0;
+    }
+
+    .founder-image-wrapper:hover .founder-img,
+    .founder-image-wrapper:focus .founder-img,
+    .founder-image-wrapper:active .founder-img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
     .founder-title {
       font-size: 3rem;
       margin-bottom: var(--space-xs);
     }
+
     .founder-role {
       font-family: var(--font-display);
       color: var(--rdx-red-active);
@@ -78,97 +148,48 @@
       letter-spacing: 0.1em;
       margin-bottom: var(--space-lg);
     }
+
     .founder-bio {
       color: var(--rdx-gray-light);
       font-size: 1.05rem;
     }
 
-    /* Studios Block */
-    .studios-section {
-      padding: var(--space-2xl) 0;
-    }
-    .studios-header {
-      text-align: center;
-      margin-bottom: var(--space-xl);
-    }
-    .studios-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: var(--space-lg);
-    }
-    @media (max-width: 768px) {
-      .studios-grid { grid-template-columns: 1fr; }
-    }
-    .studio-card {
-      background: rgba(255,255,255,0.02);
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-    .studio-img-wrap {
-      aspect-ratio: 16/9;
-      overflow: hidden;
-    }
-    .studio-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform var(--transition-normal);
-    }
-    .studio-card:hover .studio-img {
-      transform: scale(1.05);
-    }
-    .studio-content {
-      padding: var(--space-lg);
-    }
-    .studio-title {
-      font-size: 2rem;
-      margin-bottom: var(--space-sm);
-      color: var(--rdx-red);
-    }
-    .studio-desc {
-      color: var(--rdx-gray-light);
-      margin-bottom: var(--space-md);
-      font-size: 0.95rem;
-    }
-    .map-link {
-      font-family: var(--font-display);
-      color: var(--rdx-white);
-      text-decoration: underline;
-      letter-spacing: 0.05em;
-      transition: color var(--transition-fast);
-    }
-    .map-link:hover {
-      color: var(--rdx-red-active);
-    }
 
-    /* Team Teaser */
-    .team-teaser {
-      padding: var(--space-2xl) 0;
-      background-color: #050505;
-      text-align: center;
-    }
+
+    /* Team Grid embedded in Founder Section */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: var(--space-lg);
-      margin: var(--space-xl) 0;
+      margin: var(--space-md) 0 var(--space-xl);
     }
+
     .team-member {
       text-align: center;
     }
-    .team-photo {
-      width: 100%;
+
+    .team-image-wrapper {
+      position: relative;
       aspect-ratio: 1/1;
-      object-fit: cover;
+      overflow: hidden;
       border-radius: var(--radius-sm);
+      cursor: pointer;
       margin-bottom: var(--space-md);
-      filter: grayscale(100%);
-      transition: filter var(--transition-normal);
     }
-    .team-member:hover .team-photo {
-      filter: grayscale(0%);
+
+    .team-image-wrapper:hover .founder-quote-overlay,
+    .team-image-wrapper:focus .founder-quote-overlay,
+    .team-image-wrapper:active .founder-quote-overlay {
+      opacity: 0;
     }
+
+    .team-image-wrapper:hover .founder-img,
+    .team-image-wrapper:focus .founder-img,
+    .team-image-wrapper:active .founder-img {
+      opacity: 1;
+      transform: scale(1);
+    }
+
     .team-name {
       font-family: var(--font-display);
       font-size: 1.5rem;
@@ -183,43 +204,234 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
-      background-image: url('assets/Berlin Indoor Wallpaper.webp');
+      background-image: url('assets/Berlin Indoor Wallpaper.png');
     }
+
     .parallax-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(10,10,10,0.85);
+      background: rgba(10, 10, 10, 0.85);
     }
+
     .parallax-content {
       position: relative;
       z-index: 2;
       text-align: center;
     }
-    .timeline-grid {
+
+    .stats-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-lg);
       margin-top: var(--space-xl);
     }
+
     @media (max-width: 768px) {
-      .timeline-grid { grid-template-columns: 1fr; }
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
     }
-    .timeline-item {
+
+    .stats-item {
       padding: var(--space-md);
     }
-    .timeline-number {
+
+    .stats-number {
       font-family: var(--font-display);
       font-size: 5rem;
       color: var(--rdx-red);
       line-height: 1;
       margin-bottom: var(--space-xs);
     }
-    .timeline-label {
+
+    .stats-label {
       font-family: var(--font-body);
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-size: 0.9rem;
       color: var(--rdx-gray-light);
+    }
+
+    /* History Timeline */
+    .history-timeline-section {
+      padding: var(--space-2xl) 0;
+      background-color: var(--rdx-black);
+    }
+
+    .timeline-scroll-container {
+      width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .timeline-scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .timeline-wrapper {
+      position: relative;
+      min-width: 1800px;
+      margin: 0 auto;
+      padding: var(--space-xl) 0;
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--rdx-red-active);
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .timeline-line.is-visible {
+      transform: scaleX(1);
+    }
+
+    .timeline-nodes {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      min-height: 300px;
+    }
+
+    .timeline-node {
+      position: relative;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .node-dot {
+      width: 14px;
+      height: 14px;
+      background-color: var(--rdx-red-active);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 15px rgba(232, 0, 29, 0.4);
+      z-index: 2;
+    }
+
+    .node-content {
+      position: absolute;
+      width: 220px;
+      text-align: center;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .timeline-node:nth-child(odd) .node-content {
+      bottom: calc(50% + 24px);
+    }
+
+    .timeline-node:nth-child(even) .node-content {
+      top: calc(50% + 24px);
+    }
+
+    .node-date {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--rdx-white);
+      display: block;
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    .node-text {
+      font-size: 0.9rem;
+      color: var(--rdx-gray-light);
+    }
+
+    .scroll-indicator {
+      text-align: right;
+      font-family: var(--font-display);
+      color: var(--rdx-red-active);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      margin-top: var(--space-md);
+      opacity: 0.7;
+      animation: pulse-horizontal 2s infinite;
+    }
+
+    @keyframes pulse-horizontal {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(5px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .scroll-indicator {
+        display: none;
+      }
+
+      .timeline-scroll-container {
+        overflow: visible;
+      }
+
+      .timeline-wrapper {
+        min-width: 0;
+        padding: var(--space-xl) var(--space-lg);
+      }
+
+      .timeline-line {
+        top: var(--space-xl);
+        left: var(--space-lg);
+        width: 2px;
+        height: calc(100% - var(--space-xl) * 2);
+        transform-origin: top center;
+        transform: scaleY(0);
+      }
+
+      .timeline-nodes {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: var(--space-xl);
+        min-height: auto;
+      }
+
+      .timeline-node {
+        flex: none;
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .node-dot {
+        left: 0;
+        top: 0;
+        transform: translate(-50%, 0);
+      }
+
+      .node-content {
+        position: relative;
+        left: 0;
+        top: 0 !important;
+        bottom: 0 !important;
+        transform: none;
+        width: 100%;
+        text-align: left;
+        padding-left: 30px;
+      }
+
+      .node-date {
+        margin-top: -4px;
+      }
     }
   </style>
 
@@ -229,379 +441,654 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
+
 <body class="rdx-grain">
-  
+
   <div id="page-transition" class="active"></div>
   <!-- NAV:START -->
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
-  <div class="nav-container">
-    <div class="nav-logo">
-      <a href="index.html" aria-label="RDX Studios Home">
-        <img src="assets/LOgo.webp" alt="RDX Studios logo" class="logo-img">
-      </a>
-    </div>
-    
-    <!-- Hamburger Toggle (mobile) -->
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html" aria-label="RDX Studios Home" class="logo-morph-container">
+          <span class="logo-text logo-full">RDX RED</span>
+          <span class="logo-text logo-icon">R</span>
+        </a>
+      </div>
 
-    <div class="nav-links" id="nav-links">
-      <div class="nav-group secondary">
-        <a href="about.html" class="nav-item">ABOUT</a>
-        
-        <div class="mega-menu-wrapper">
-          <button class="nav-item services-trigger" aria-expanded="false" aria-controls="services-mega-menu">
-            SERVICES
-            <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          
-          <div id="services-mega-menu" class="mega-menu-panel">
-            <div class="mega-menu-grid">
-              <a href="services.html#rdx-red" class="mega-card">
-                <div class="mega-card-icon" style="background:var(--rdx-red);border-radius:50%;padding:6px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
-                  <img src="assets/Icon-RRED.svg" alt="" style="width:20px;height:20px;">
-                </div>
-                <div class="mega-card-content">
-                  <h4 class="mega-card-title">RDX RED</h4>
-                  <p class="mega-card-desc">The premium photography and videography wing.</p>
-                </div>
-              </a>
-              <a href="services.html#code-red" class="mega-card">
-                <img src="assets/Icon CRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
-                <div class="mega-card-content">
-                  <h4 class="mega-card-title">Code RED</h4>
-                  <p class="mega-card-desc">The digital engineering wing.</p>
-                </div>
-              </a>
-              <a href="services.html#shape-red" class="mega-card">
-                <img src="assets/Icon SRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
-                <div class="mega-card-content">
-                  <h4 class="mega-card-title">Shape RED</h4>
-                  <p class="mega-card-desc">The creative digital wing forging impactful digital media.</p>
-                </div>
-              </a>
+      <!-- Hamburger Toggle (mobile) -->
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <div class="nav-group secondary">
+          <a href="about.html" class="nav-item">ABOUT</a>
+
+          <div class="mega-menu-wrapper">
+            <button class="nav-item services-trigger" aria-expanded="false" aria-controls="services-mega-menu">
+              SERVICES
+              <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div id="services-mega-menu" class="mega-menu-panel">
+              <div class="mega-menu-grid">
+                <a href="services.html#rdx-red" class="mega-card">
+                  <img src="assets/Wattermark.png" alt="" class="mega-card-icon"
+                    style="width:32px;height:32px;object-fit:contain;">
+                  <div class="mega-card-content">
+                    <h4 class="mega-card-title">RDX RED</h4>
+                    <p class="mega-card-desc">The premium photography and videography wing.</p>
+                  </div>
+                </a>
+                <a href="services.html#code-red" class="mega-card">
+                  <img src="assets/Icon CRED.png" alt="" class="mega-card-icon"
+                    style="width:32px;height:32px;object-fit:contain;">
+                  <div class="mega-card-content">
+                    <h4 class="mega-card-title">Code RED</h4>
+                    <p class="mega-card-desc">The digital engineering wing.</p>
+                  </div>
+                </a>
+                <a href="services.html#shape-red" class="mega-card">
+                  <img src="assets/Icon SRED.png" alt="" class="mega-card-icon"
+                    style="width:32px;height:32px;object-fit:contain;">
+                  <div class="mega-card-content">
+                    <h4 class="mega-card-title">Shape RED</h4>
+                    <p class="mega-card-desc">The creative digital wing forging impactful digital media.</p>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
+          <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
+          <a href="journal.html" class="nav-item">JOURNAL</a>
+          <a href="team.html" class="nav-item">TEAM</a>
         </div>
-        <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
-        <a href="journal.html" class="nav-item">JOURNAL</a>
-        <a href="team.html" class="nav-item">TEAM</a>
+      </div>
+
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary">CONNECT</a>
       </div>
     </div>
-    
-    <div class="nav-cta">
-      <a href="contact.html" class="btn btn-primary">CONNECT</a>
-    </div>
-  </div>
-</nav>
+  </nav>
 
-<style>
-/* Nav Styles */
-.rdx-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  background-color: transparent;
-  transition: background-color var(--transition-normal);
-  padding: var(--space-md) 0;
-}
-.rdx-nav.is-solid {
-  background-color: var(--rdx-black);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-}
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-.logo-img {
-  height: 36px;
-  width: auto;
-  display: block;
-}
-.nav-links {
-  display: flex;
-  gap: var(--space-xl);
-  align-items: center;
-}
-.nav-group {
-  display: flex;
-  gap: var(--space-lg);
-}
-.nav-item {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.9rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.nav-item:hover {
-  color: var(--rdx-red);
-}
-/* Focus-visible for keyboard accessibility */
-.nav-item:focus-visible,
-.btn-primary:focus-visible {
-  outline: 2px solid var(--rdx-red);
-  outline-offset: 4px;
-}
-.btn-primary {
-  background-color: var(--rdx-red);
-  color: var(--rdx-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: background-color var(--transition-fast);
-}
-.btn-primary:hover {
-  background-color: var(--rdx-red-hover);
-}
+  <style>
+    /* Nav Styles */
+    .rdx-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background-color: transparent;
+      transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out;
+      padding: var(--space-xl) 0;
+    }
 
-/* Hamburger */
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  z-index: 110;
-}
-.hamburger-line {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: var(--rdx-white);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
-}
-.nav-hamburger.is-open .hamburger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.nav-hamburger.is-open .hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-.nav-hamburger.is-open .hamburger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+    .rdx-nav.is-scrolled {
+      background-color: #0A0A0A;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      padding: var(--space-md) 0;
+    }
 
-/* Mobile breakpoint */
-@media (max-width: 900px) {
-  .nav-hamburger {
-    display: flex;
-  }
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 280px;
-    height: 100vh;
-    background: var(--rdx-black);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 100px var(--space-lg) var(--space-lg);
-    gap: var(--space-lg);
-    transform: translateX(100%);
-    transition: transform var(--transition-normal);
-    box-shadow: -4px 0 30px rgba(0,0,0,0.5);
-    z-index: 105;
-  }
-  .nav-links.is-open {
-    transform: translateX(0);
-  }
-  }
-  .nav-group {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-  .nav-cta {
-    display: none; /* CTA duplicated inside mobile menu if needed */
-  }
-}
+    .rdx-nav.is-hidden {
+      transform: translateY(-100%);
+    }
 
-/* Mega Menu Styles */
-.mega-menu-wrapper {
-  position: relative;
-}
-.services-trigger {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--rdx-white);
-  padding: 0;
-}
-.dropdown-icon {
-  transition: transform 0.2s ease;
-}
-.services-trigger[aria-expanded="true"] .dropdown-icon {
-  transform: rotate(180deg);
-}
-.mega-menu-panel {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background: var(--rdx-black);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: var(--radius-sm);
-  padding: var(--space-md);
-  width: max-content;
-  max-width: 90vw;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-  z-index: 1000;
-}
-.mega-menu-panel.is-open {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(20px);
-}
-.mega-menu-grid {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-.mega-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-  padding: var(--space-sm);
-  border-radius: var(--radius-sm);
-  transition: background 0.2s ease;
-  text-decoration: none;
-}
-.mega-card:hover, .mega-card:focus-visible {
-  background: rgba(255,255,255,0.05);
-  outline: none;
-}
-.mega-card:focus-visible {
-  outline: 2px solid var(--rdx-red-active);
-}
-.mega-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.mega-card-title {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--rdx-white);
-  line-height: 1;
-}
-.mega-card-desc {
-  font-size: 0.85rem;
-  color: var(--rdx-gray-light);
-  max-width: 250px;
-}
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
 
-@media (max-width: 900px) {
-  .mega-menu-panel {
-    position: static;
-    transform: none;
-    box-shadow: none;
-    border: none;
-    padding: var(--space-sm) 0 0 0;
-    width: 100%;
-    display: none;
-  }
-  .mega-menu-panel.is-open {
-    transform: none;
-    display: block;
-  }
-  .mega-card-desc {
-    display: none;
-  }
-  .mega-card-title {
-    font-size: 1.25rem;
-  }
-}
-</style>
+    /* Logo Morph */
+    .logo-morph-container {
+      position: relative;
+      display: block;
+      width: 150px;
+      height: 42px;
+    }
 
-<script>
-  (function() {
-    const trigger = document.querySelector('.services-trigger');
-    const panel = document.getElementById('services-mega-menu');
-    
-    if (!trigger || !panel) return;
-    
-    const closeMenu = () => {
-      trigger.setAttribute('aria-expanded', 'false');
-      panel.classList.remove('is-open');
-    };
-    
-    const openMenu = () => {
-      trigger.setAttribute('aria-expanded', 'true');
-      panel.classList.add('is-open');
-    };
-    
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-      if (isExpanded) {
-        closeMenu();
-      } else {
-        openMenu();
+    .logo-text {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform-origin: left center;
+      font-family: var(--font-display);
+      color: var(--rdx-white);
+      font-size: 2.5rem;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+      margin-top: -18px;
+      /* vertical alignment adjustment */
+    }
+
+    .logo-full {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .logo-icon {
+      opacity: 0;
+      transform: scale(0.8);
+      color: var(--rdx-red);
+      /* Style the R differently if desired, or keep white */
+    }
+
+    .rdx-nav.is-scrolled .logo-full {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+
+    .rdx-nav.is-scrolled .logo-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .nav-group {
+      display: flex;
+      gap: var(--space-lg);
+    }
+
+    .nav-item {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-item:hover {
+      color: var(--rdx-red);
+    }
+
+    /* Focus-visible for keyboard accessibility */
+    .nav-item:focus-visible,
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--rdx-red);
+      outline-offset: 4px;
+    }
+
+    .btn-primary {
+      background-color: var(--rdx-red);
+      color: var(--rdx-white);
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: background-color var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--rdx-red-hover);
+    }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 110;
+    }
+
+    .hamburger-line {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: var(--rdx-white);
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .nav-hamburger.is-open .hamburger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-hamburger.is-open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-hamburger.is-open .hamburger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile breakpoint */
+    @media (max-width: 900px) {
+      .nav-hamburger {
+        display: flex;
       }
-    });
-    
-    document.addEventListener('click', (e) => {
-      if (!trigger.contains(e.target) && !panel.contains(e.target)) {
-        closeMenu();
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        background: var(--rdx-black);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 100px var(--space-lg) var(--space-lg);
+        gap: var(--space-lg);
+        transform: translateX(100%);
+        transition: transform var(--transition-normal);
+        box-shadow: -4px 0 30px rgba(0, 0, 0, 0.5);
+        z-index: 105;
       }
-    });
-    
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeMenu();
+
+      .nav-links.is-open {
+        transform: translateX(0);
       }
-    });
-    
-    const links = panel.querySelectorAll('a');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-        // Also close mobile hamburger menu if open
-        const hamburger = document.getElementById('nav-hamburger');
-        const navLinks = document.getElementById('nav-links');
-        if (hamburger && navLinks) {
-          hamburger.classList.remove('is-open');
-          hamburger.setAttribute('aria-expanded', 'false');
-          navLinks.classList.remove('is-open');
+
+      .nav-group {
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+
+      .nav-cta {
+        display: none;
+        /* CTA duplicated inside mobile menu if needed */
+      }
+    }
+
+    /* Mega Menu Styles */
+    .mega-menu-wrapper {
+      position: static;
+      /* Important so that the fixed child works reliably on all browsers, though fixed is relative to viewport anyway */
+    }
+
+    .services-trigger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--rdx-white);
+      padding: 0;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
+
+    .dropdown-icon {
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .services-trigger[aria-expanded="true"] .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .mega-menu-panel {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -45%) scale(0.98);
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: var(--space-xl);
+      width: max-content;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
+      z-index: 1000;
+    }
+
+    .mega-menu-panel.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .mega-menu-grid {
+      display: flex;
+      flex-direction: row;
+      gap: var(--space-lg);
+    }
+
+    .mega-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      width: 280px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mega-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--rdx-red-active);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .mega-card:hover,
+    .mega-card:focus-visible {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-4px);
+      outline: none;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .mega-card:hover::after,
+    .mega-card:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .mega-card-icon {
+      width: 48px !important;
+      height: 48px !important;
+      object-fit: contain;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s;
+      filter: brightness(0.8);
+    }
+
+    .mega-card:hover .mega-card-icon {
+      transform: scale(1.1);
+      filter: brightness(1);
+    }
+
+    .mega-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mega-card-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--rdx-white);
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+
+    .mega-card:hover .mega-card-title {
+      color: var(--rdx-red-active);
+    }
+
+    .mega-card-desc {
+      font-size: 0.9rem;
+      color: var(--rdx-gray-light);
+      line-height: 1.4;
+    }
+
+
+
+    @media (max-width: 900px) {
+      .mega-menu-panel {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        backdrop-filter: none;
+        padding: var(--space-sm) 0 0 0;
+        width: 100%;
+        display: none;
+      }
+
+      .mega-menu-panel.is-open {
+        transform: none;
+        display: block;
+      }
+
+      .mega-menu-grid {
+        flex-direction: column;
+      }
+
+      .mega-card {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        padding: var(--space-sm);
+        background: transparent;
+        border: none;
+      }
+
+      .mega-card:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: none;
+      }
+
+      .mega-card-desc {
+        display: none;
+      }
+
+      .mega-card-icon {
+        width: 32px !important;
+        height: 32px !important;
+      }
+
+      .mega-card-title {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+
+  <script>
+    (function () {
+      const trigger = document.querySelector('.services-trigger');
+      const panel = document.getElementById('services-mega-menu');
+
+      if (!trigger || !panel) return;
+
+      const closeMenu = () => {
+        trigger.setAttribute('aria-expanded', 'false');
+        panel.classList.remove('is-open');
+        document.body.classList.remove('mega-menu-active');
+      };
+
+      const openMenu = () => {
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.classList.add('is-open');
+        if (window.innerWidth > 900) document.body.classList.add('mega-menu-active');
+      };
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          closeMenu();
+        } else {
+          openMenu();
         }
       });
-    });
-  })();
-</script>
-<!-- NAV:END -->
+
+      document.addEventListener('click', (e) => {
+        if (!trigger.contains(e.target) && !panel.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      const links = panel.querySelectorAll('a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          closeMenu();
+          // Also close mobile hamburger menu if open
+          const hamburger = document.getElementById('nav-hamburger');
+          const navLinks = document.getElementById('nav-links');
+          if (hamburger && navLinks) {
+            hamburger.classList.remove('is-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('is-open');
+          }
+        });
+      });
+    })();
+  </script>
+  <!-- NAV:END -->
 
 
   <!-- Origin Story Section -->
   <section id="main-content" class="origin-section">
+    <img src="assets/Extended screen.png"
+      alt="The three-wing identity of RDX Studios showing the Code RED, RDX RED, and Shape RED divisions"
+      class="origin-anchor">
     <div class="container">
-      <img src="assets/The 3 Mark.webp" alt="The three-wing identity of RDX Studios showing the Code RED, RDX RED, and Shape RED divisions" class="origin-anchor rdx-fade-up">
       <div class="origin-content">
         <h1 class="origin-title rdx-fade-up" style="transition-delay: 100ms;">Our Architecture of Creativity</h1>
         <p class="origin-text rdx-fade-up" style="transition-delay: 200ms;">
-          Ignited in 2024 within the vibrant core of Karnataka, RDX Studios emerged from a singular conviction: that exceptional storytelling demands mastery over both the visual and the virtual. What originated as a relentless pursuit of cinematic lighting and photographic perfection quickly expanded into a formidable three-pillar creative ecosystem. 
+          Ignited in 2024 within the vibrant core of Karnataka, RDX Studios emerged from a singular conviction: that
+          exceptional storytelling demands mastery over both the visual and the virtual. What originated as a relentless
+          pursuit of cinematic lighting and photographic perfection quickly expanded into a formidable three-pillar
+          creative ecosystem.
         </p>
         <p class="origin-text rdx-fade-up" style="transition-delay: 300ms;">
-          Today, <strong>RDX RED</strong> captures the soul of the moment through luxury cinematography, <strong>Code RED</strong> engineers robust digital experiences for the modern web, and <strong>Shape RED</strong> forges strategic brand identities. Together, they form an uncompromising studio committed to building digital legacies.
+          Today, <strong>RDX RED</strong> captures the soul of the moment through luxury cinematography, <strong>Code
+            RED</strong> engineers robust digital experiences for the modern web, and <strong>Shape RED</strong> forges
+          strategic brand identities. Together, they form an uncompromising studio committed to building digital
+          legacies.
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- History Timeline Section -->
+  <section class="history-timeline-section">
+    <div class="container">
+      <div class="timeline-scroll-container">
+        <div class="timeline-wrapper">
+          <div class="timeline-line rdx-line-draw"></div>
+          <div class="timeline-nodes">
+
+            <div class="timeline-node">
+              <div class="node-dot"></div>
+              <div class="node-content">
+                <div class="rdx-fade-up" style="transition-delay: 100ms;">
+                  <span class="node-date">17 JUN 2025</span>
+                  <p class="node-text">RED Studios founded in Kokkada</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="node-dot"></div>
+              <div class="node-content">
+                <div class="rdx-fade-up" style="transition-delay: 200ms;">
+                  <span class="node-date">30 JUN 2025</span>
+                  <p class="node-text">RED Studio receives its 1st order</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="node-dot"></div>
+              <div class="node-content">
+                <div class="rdx-fade-up" style="transition-delay: 300ms;">
+                  <span class="node-date">16 AUG 2025 - present </span>
+                  <p class="node-text">RED Collaborated with ICYM Kokkada</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="node-dot"></div>
+              <div class="node-content">
+                <div class="rdx-fade-up" style="transition-delay: 400ms;">
+                  <span class="node-date">07 SEPT 2025 </span>
+                  <p class="node-text">RED Expanded to the City of Mysore
+                  <p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="node-dot"></div>
+              <div class="node-content">
+                <div class="rdx-fade-up" style="transition-delay: 500ms;">
+                  <span class="node-date">22 NOV 2025</span>
+                  <p class="node-text">Second-generation identity launched</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="node-dot"></div>
+              <div class="node-content">
+                <div class="rdx-fade-up" style="transition-delay: 600ms;">
+                  <span class="node-date">28 DEC 2025</span>
+                  <p class="node-text">CODE RED came into effect</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="node-dot"></div>
+              <div class="node-content">
+                <div class="rdx-fade-up" style="transition-delay: 700ms;">
+                  <span class="node-date">14 MAR 2026</span>
+                  <p class="node-text">Featured in @hey_.mangalore</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="node-dot"></div>
+              <div class="node-content">
+                <div class="rdx-fade-up" style="transition-delay: 800ms;">
+                  <span class="node-date">7 JUN 2026</span>
+                  <p class="node-text">SHAPE RED is introduced</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="timeline-node">
+              <div class="node-dot"></div>
+              <div class="node-content">
+                <div class="rdx-fade-up" style="transition-delay: 900ms;">
+                  <span class="node-date">26 JUL 2026</span>
+                  <p class="node-text">Full ground-up rebuild; Third -generation identity launched .</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator rdx-fade-up" style="transition-delay: 500ms;">Scroll to explore &raquo;</div>
     </div>
   </section>
 
@@ -610,76 +1097,46 @@
     <div class="container">
       <div class="founder-grid">
         <div class="founder-image-wrapper rdx-slide-in">
-          <img src="assets/Chris.webp" alt="Chris Zeyon Pinto, founder of RDX Studios, in a studio portrait" class="founder-img" loading="lazy">
+          <div class="founder-quote-overlay">
+            <blockquote>"Every story deserves to be told through light, motion, and emotion."</blockquote>
+          </div>
+          <img src="assets/chr(c).png" alt="Chris Zeyon Pinto, founder of RDX Studios, in a studio portrait"
+            class="founder-img" loading="lazy">
         </div>
         <div class="founder-info rdx-fade-up">
           <h2 class="founder-title">Chris Zeyon Pinto</h2>
           <div class="founder-role">FOUNDER & CREATIVE DIRECTOR</div>
           <div class="founder-bio">
-            <!-- PLACEHOLDER BIO: Need exact bio copy from Chris. If not supplied, please provide it. -->
-            <p>
-              [Bio Placeholder] Chris established RDX Studios with a vision to bridge the gap between high-end visual production and advanced digital engineering. With a meticulous eye for cinematic detail and a rigorous approach to technical execution, he leads the studio's three divisions, ensuring every frame and line of code meets the luxury standard.
-            </p>
-            <p style="margin-top: 1rem;">
-              [Please replace this text with the official biography once provided.]
-            </p>
+            <h3 style="font-family: var(--font-display); font-size: 2rem; color: var(--rdx-red); margin-bottom: 1rem;"
+              class="rdx-fade-up">The Architects</h3>
+            <div class="team-grid">
+              <div class="team-member rdx-fade-up" style="transition-delay: 100ms;">
+                <div class="team-image-wrapper">
+                  <div class="founder-quote-overlay" style="padding: var(--space-md);">
+                    <blockquote style="font-size: 1.3rem;">"Every frame is a painting waiting to be revealed."
+                    </blockquote>
+                  </div>
+                  <img src="assets/Cin(c).png" alt="Ciyana, RDX Studios team member" class="founder-img" loading="lazy">
+                </div>
+                <div class="team-name">Ciyana</div>
+              </div>
+              <div class="team-member rdx-fade-up" style="transition-delay: 200ms;">
+                <div class="team-image-wrapper">
+                  <div class="founder-quote-overlay" style="padding: var(--space-md);">
+                    <blockquote style="font-size: 1.3rem;">"Patience. The best is yet to come."</blockquote>
+                  </div>
+                  <img src="assets/Tul(c).png" alt="Tulasi, RDX Studios team member" class="founder-img" loading="lazy">
+                </div>
+                <div class="team-name">Tulasi</div>
+              </div>
+            </div>
+            <div style="text-align: center;">
+              <a href="team.html" class="btn btn-outline rdx-fade-up" style="margin-top: var(--space-md);">Meet the Full
+                Team</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Studios Block -->
-  <section class="studios-section">
-    <div class="container">
-      <header class="studios-header rdx-fade-up">
-        <h2 style="font-family: var(--font-display); font-size: 3rem;">Our Spaces</h2>
-        <p style="color: var(--rdx-gray-light);">Where vision meets execution.</p>
-      </header>
-      <div class="studios-grid">
-        <div class="studio-card rdx-fade-up">
-          <div class="studio-img-wrap">
-            <img src="assets/KOKKADA.webp" alt="Interior view of Kokkada Main, the flagship RDX production studio" class="studio-img" loading="lazy">
-          </div>
-          <div class="studio-content">
-            <h3 class="studio-title">Kokkada Main</h3>
-            <p class="studio-desc">Our flagship production facility designed for expansive shoots, high-end commercial sets, and full-scale creative engineering.</p>
-            <a href="#" class="map-link">View on Map &rarr;</a>
-          </div>
-        </div>
-        <div class="studio-card rdx-fade-up" style="transition-delay: 100ms;">
-          <div class="studio-img-wrap">
-            <img src="assets/MYSURU.webp" alt="Mysuru Suite, an intimate RDX studio space for editorial and post-production" class="studio-img" loading="lazy">
-          </div>
-          <div class="studio-content">
-            <h3 class="studio-title">Mysuru Suite</h3>
-            <p class="studio-desc">An intimate, premium suite optimized for editorial portraits, post-production color grading, and focused code development.</p>
-            <a href="#" class="map-link">View on Map &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team Teaser -->
-  <section class="team-teaser">
-    <div class="container">
-      <h2 style="font-family: var(--font-display); font-size: 3rem; color: var(--rdx-red);" class="rdx-fade-up">The Architects</h2>
-      <div class="team-grid">
-        <div class="team-member rdx-fade-up">
-          <img src="assets/Chris.webp" alt="Chris Zeyon Pinto, creative director" class="team-photo" loading="lazy">
-          <div class="team-name">Chris</div>
-        </div>
-        <div class="team-member rdx-fade-up" style="transition-delay: 100ms;">
-          <img src="assets/Ciyana.webp" alt="Ciyana, RDX Studios team member" class="team-photo" loading="lazy">
-          <div class="team-name">Ciyana</div>
-        </div>
-        <div class="team-member rdx-fade-up" style="transition-delay: 200ms;">
-          <img src="assets/Tulasi.webp" alt="Tulasi, RDX Studios team member" class="team-photo" loading="lazy">
-          <div class="team-name">Tulasi</div>
-        </div>
-      </div>
-      <a href="team.html" class="btn btn-outline rdx-fade-up" style="margin-top: var(--space-md);">Meet the Full Team</a>
     </div>
   </section>
 
@@ -689,139 +1146,152 @@
     <div class="container parallax-content">
       <h2 style="font-family: var(--font-display); font-size: 3rem;" class="rdx-fade-up">Building Legacies</h2>
       <p style="max-width: 600px; margin: 1rem auto 0; color: var(--rdx-gray-light);" class="rdx-fade-up">
-        Every project is crafted with obsessive attention to emotion, contrast, and detail. We don't just capture moments—we forge experiences that feel alive.
+        Every project is crafted with obsessive attention to emotion, contrast, and detail. We don't just capture
+        moments—we forge experiences that feel alive.
       </p>
-      
-      <div class="timeline-grid">
-        <div class="timeline-item rdx-fade-up">
-          <div class="timeline-number counter" data-target="2024">0</div>
-          <div class="timeline-label">Founded</div>
+
+      <div class="stats-grid" id="studio-stats">
+        <div class="stats-item rdx-fade-up">
+          <div class="stats-number counter" data-target="2025">0</div>
+          <div class="stats-label">Founded</div>
         </div>
-        <div class="timeline-item rdx-fade-up" style="transition-delay: 100ms;">
-          <div class="timeline-number counter" data-target="3">0</div>
-          <div class="timeline-label">Creative Divisions</div>
+        <div class="stats-item rdx-fade-up" style="transition-delay: 100ms;">
+          <div class="stats-number counter" data-target="3">0</div>
+          <div class="stats-label">Creative Divisions</div>
         </div>
-        <div class="timeline-item rdx-fade-up" style="transition-delay: 200ms;">
-          <div class="timeline-number counter" data-target="500">0</div>
-          <div class="timeline-label">Projects Delivered</div>
+        <div class="stats-item rdx-fade-up" style="transition-delay: 200ms;">
+          <div class="stats-number counter" data-target="53">0</div>
+          <div class="stats-label">Projects Delivered</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER:START -->
-<footer class="rdx-footer">
-  <div class="footer-container">
-    <div class="footer-grid">
-      
-      <!-- Navigation -->
-      <div class="footer-col">
-        <h3 class="footer-heading">NAVIGATION</h3>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="journal.html">Journal</a></li>
-          <li><a href="team.html">Team</a></li>
-        </ul>
+  <footer class="rdx-footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+
+        <!-- Navigation -->
+        <div class="footer-col">
+          <h3 class="footer-heading">NAVIGATION</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="journal.html">Journal</a></li>
+            <li><a href="team.html">Team</a></li>
+          </ul>
+        </div>
+
+        <!-- Studios -->
+        <div class="footer-col">
+          <h3 class="footer-heading">STUDIOS</h3>
+          <ul class="footer-links">
+            <li><a href="services.html#rdx-red">RDX RED</a></li>
+            <li><a href="services.html#code-red">Code RED</a></li>
+            <li><a href="services.html#shape-red">Shape RED</a></li>
+          </ul>
+        </div>
+
+        <!-- Connect -->
+        <div class="footer-col">
+          <h3 class="footer-heading">CONNECT</h3>
+          <ul class="footer-links">
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
+            <li><a href="tel:+917676218729">+91 76762 18729</a></li>
+            <!-- PLACEHOLDER: Replace with real addresses once Chris confirms -->
+            <li>
+              <p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Socials -->
+        <div class="footer-col">
+          <h3 class="footer-heading">SOCIAL</h3>
+          <ul class="footer-links">
+            <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+            <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
+          </ul>
+        </div>
+
       </div>
 
-      <!-- Studios -->
-      <div class="footer-col">
-        <h3 class="footer-heading">STUDIOS</h3>
-        <ul class="footer-links">
-          <li><a href="services.html#rdx-red">RDX RED</a></li>
-          <li><a href="services.html#code-red">Code RED</a></li>
-          <li><a href="services.html#shape-red">Shape RED</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> RDX Studios. All rights reserved.</p>
       </div>
-
-      <!-- Connect -->
-      <div class="footer-col">
-        <h3 class="footer-heading">CONNECT</h3>
-        <ul class="footer-links">
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
-          <li><a href="tel:+917676218729">+91 76762 18729</a></li>
-          <!-- PLACEHOLDER: Replace with real addresses once Chris confirms -->
-          <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
-        </ul>
-      </div>
-      
-      <!-- Socials -->
-      <div class="footer-col">
-        <h3 class="footer-heading">SOCIAL</h3>
-        <ul class="footer-links">
-          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
-          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
-        </ul>
-      </div>
-
     </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> RDX Studios. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+  </footer>
 
-<style>
-/* Footer styles */
-.rdx-footer {
-  background-color: var(--rdx-black);
-  border-top: 1px solid var(--rdx-gray);
-  padding: var(--space-xl) 0 var(--space-lg);
-  margin-top: var(--space-2xl);
-}
-.footer-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
-}
-.footer-heading {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--rdx-white);
-  margin-bottom: var(--space-md);
-  letter-spacing: 0.05em;
-}
-.footer-links {
-  list-style: none;
-}
-.footer-links li {
-  margin-bottom: var(--space-sm);
-}
-.footer-links a, .footer-text {
-  font-family: var(--font-body);
-  color: var(--rdx-gray-light);
-  font-size: 0.95rem;
-  transition: color var(--transition-fast);
-}
-.footer-links a:hover {
-  color: var(--rdx-red);
-}
-.footer-links a:focus-visible {
-  outline: 2px solid var(--rdx-red);
-  outline-offset: 2px;
-}
-.footer-bottom {
-  text-align: center;
-  border-top: 1px solid var(--rdx-gray);
-  padding-top: var(--space-md);
-  color: var(--rdx-gray-light);
-  font-size: 0.85rem;
-}
-</style>
-<!-- FOOTER:END -->
+  <style>
+    /* Footer styles */
+    .rdx-footer {
+      background-color: var(--rdx-black);
+      border-top: 1px solid var(--rdx-gray);
+      padding: var(--space-xl) 0 var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    .footer-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--rdx-white);
+      margin-bottom: var(--space-md);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-links a,
+    .footer-text {
+      font-family: var(--font-body);
+      color: var(--rdx-gray-light);
+      font-size: 0.95rem;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--rdx-red);
+    }
+
+    .footer-links a:focus-visible {
+      outline: 2px solid var(--rdx-red);
+      outline-offset: 2px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid var(--rdx-gray);
+      padding-top: var(--space-md);
+      color: var(--rdx-gray-light);
+      font-size: 0.85rem;
+    }
+  </style>
+  <!-- FOOTER:END -->
 
 
   <script src="js/main.js" defer></script>
@@ -851,9 +1321,10 @@
           }
         });
       }, { threshold: 0.5 });
-      
+
       counters.forEach(counter => observer.observe(counter));
     });
   </script>
 </body>
+
 </html>

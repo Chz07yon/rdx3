@@ -20,7 +20,7 @@
 
   /* Typography */
   --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'JetBrains Mono', monospace;
 
   /* Border Radius */
   --radius-sm: 4px;

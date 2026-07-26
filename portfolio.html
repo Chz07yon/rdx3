@@ -7,9 +7,9 @@
   <meta name="description" content="Explore the RDX Studios portfolio — cinematic photography, event videography, UI/UX engineering, and brand design work.">
   <meta property="og:title" content="Portfolio | RDX Studios">
   <meta property="og:description" content="Photography, cinematography, web engineering, and brand design — see the work.">
-  <meta property="og:image" content="assets/DSLR shot.webp">
+  <meta property="og:image" content="assets/DSLR shot.png">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/webp" href="assets/LOGO2.webp">
+  <link rel="icon" type="image/webp" href="assets/LOGO2.png">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
@@ -332,8 +332,9 @@
 <nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
     <div class="nav-logo">
-      <a href="index.html" aria-label="RDX Studios Home">
-        <img src="assets/LOgo.webp" alt="RDX Studios logo" class="logo-img">
+      <a href="index.html" aria-label="RDX Studios Home" class="logo-morph-container">
+        <span class="logo-text logo-full">RDX RED</span>
+        <span class="logo-text logo-icon">R</span>
       </a>
     </div>
     
@@ -357,23 +358,21 @@
           <div id="services-mega-menu" class="mega-menu-panel">
             <div class="mega-menu-grid">
               <a href="services.html#rdx-red" class="mega-card">
-                <div class="mega-card-icon" style="background:var(--rdx-red);border-radius:50%;padding:6px;width:32px;height:32px;display:flex;align-items:center;justify-content:center;">
-                  <img src="assets/Icon-RRED.svg" alt="" style="width:20px;height:20px;">
-                </div>
+                <img src="assets/Wattermark.png" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
                 <div class="mega-card-content">
                   <h4 class="mega-card-title">RDX RED</h4>
                   <p class="mega-card-desc">The premium photography and videography wing.</p>
                 </div>
               </a>
               <a href="services.html#code-red" class="mega-card">
-                <img src="assets/Icon CRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
+                <img src="assets/Icon CRED.png" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
                 <div class="mega-card-content">
                   <h4 class="mega-card-title">Code RED</h4>
                   <p class="mega-card-desc">The digital engineering wing.</p>
                 </div>
               </a>
               <a href="services.html#shape-red" class="mega-card">
-                <img src="assets/Icon SRED.webp" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
+                <img src="assets/Icon SRED.png" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
                 <div class="mega-card-content">
                   <h4 class="mega-card-title">Shape RED</h4>
                   <p class="mega-card-desc">The creative digital wing forging impactful digital media.</p>
@@ -403,12 +402,16 @@
   width: 100%;
   z-index: 100;
   background-color: transparent;
-  transition: background-color var(--transition-normal);
+  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out;
+  padding: var(--space-xl) 0;
+}
+.rdx-nav.is-scrolled {
+  background-color: #0A0A0A;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
   padding: var(--space-md) 0;
 }
-.rdx-nav.is-solid {
-  background-color: var(--rdx-black);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+.rdx-nav.is-hidden {
+  transform: translateY(-100%);
 }
 .nav-container {
   display: flex;
@@ -418,10 +421,43 @@
   margin: 0 auto;
   padding: 0 var(--space-lg);
 }
-.logo-img {
-  height: 36px;
-  width: auto;
+
+/* Logo Morph */
+.logo-morph-container {
+  position: relative;
   display: block;
+  width: 150px;
+  height: 42px;
+}
+.logo-text {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform-origin: left center;
+  font-family: var(--font-display);
+  color: var(--rdx-white);
+  font-size: 2.5rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+  margin-top: -18px; /* vertical alignment adjustment */
+}
+.logo-full {
+  opacity: 1;
+  transform: scale(1);
+}
+.logo-icon {
+  opacity: 0;
+  transform: scale(0.8);
+  color: var(--rdx-red); /* Style the R differently if desired, or keep white */
+}
+.rdx-nav.is-scrolled .logo-full {
+  opacity: 0;
+  transform: scale(1.1);
+}
+.rdx-nav.is-scrolled .logo-icon {
+  opacity: 1;
+  transform: scale(1);
 }
 .nav-links {
   display: flex;
@@ -435,7 +471,7 @@
 .nav-item {
   font-family: var(--font-body);
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -451,8 +487,9 @@
 .btn-primary {
   background-color: var(--rdx-red);
   color: var(--rdx-white);
-  padding: 0.75rem 1.5rem;
+  padding: 0.85rem 1.75rem;
   border-radius: var(--radius-sm);
+  font-size: 1rem;
   font-weight: 700;
   text-transform: uppercase;
   transition: background-color var(--transition-fast);
@@ -513,7 +550,6 @@
   .nav-links.is-open {
     transform: translateX(0);
   }
-  }
   .nav-group {
     flex-direction: column;
     gap: var(--space-md);
@@ -525,7 +561,7 @@
 
 /* Mega Menu Styles */
 .mega-menu-wrapper {
-  position: relative;
+  position: static; /* Important so that the fixed child works reliably on all browsers, though fixed is relative to viewport anyway */
 }
 .services-trigger {
   background: none;
@@ -536,72 +572,114 @@
   gap: 4px;
   color: var(--rdx-white);
   padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
 }
 .dropdown-icon {
-  transition: transform 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .services-trigger[aria-expanded="true"] .dropdown-icon {
   transform: rotate(180deg);
 }
 .mega-menu-panel {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  background: var(--rdx-black);
-  border: 1px solid rgba(255,255,255,0.1);
+  transform: translate(-50%, -45%) scale(0.98);
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
-  padding: var(--space-md);
+  padding: var(--space-xl);
   width: max-content;
-  max-width: 90vw;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255,255,255,0.05);
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
   z-index: 1000;
 }
 .mega-menu-panel.is-open {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(20px);
+  transform: translate(-50%, -50%) scale(1);
 }
 .mega-menu-grid {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
+  flex-direction: row;
+  gap: var(--space-lg);
 }
 .mega-card {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: var(--space-md);
-  padding: var(--space-sm);
+  padding: var(--space-lg);
   border-radius: var(--radius-sm);
-  transition: background 0.2s ease;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid transparent;
+  width: 280px;
   text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: hidden;
+}
+.mega-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--rdx-red-active);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 .mega-card:hover, .mega-card:focus-visible {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
   outline: none;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
-.mega-card:focus-visible {
-  outline: 2px solid var(--rdx-red-active);
+.mega-card:hover::after, .mega-card:focus-visible::after {
+  transform: scaleX(1);
+}
+.mega-card-icon {
+  width: 48px !important;
+  height: 48px !important;
+  object-fit: contain;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s;
+  filter: brightness(0.8);
+}
+.mega-card:hover .mega-card-icon {
+  transform: scale(1.1);
+  filter: brightness(1);
 }
 .mega-card-content {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 .mega-card-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: var(--rdx-white);
   line-height: 1;
+  transition: color 0.3s ease;
+}
+.mega-card:hover .mega-card-title {
+  color: var(--rdx-red-active);
 }
 .mega-card-desc {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--rdx-gray-light);
-  max-width: 250px;
+  line-height: 1.4;
 }
+
+
 
 @media (max-width: 900px) {
   .mega-menu-panel {
@@ -609,6 +687,8 @@
     transform: none;
     box-shadow: none;
     border: none;
+    background: transparent;
+    backdrop-filter: none;
     padding: var(--space-sm) 0 0 0;
     width: 100%;
     display: none;
@@ -617,8 +697,28 @@
     transform: none;
     display: block;
   }
+  .mega-menu-grid {
+    flex-direction: column;
+  }
+  .mega-card {
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    padding: var(--space-sm);
+    background: transparent;
+    border: none;
+  }
+  .mega-card:hover {
+    transform: none;
+    background: rgba(255,255,255,0.05);
+    box-shadow: none;
+  }
   .mega-card-desc {
     display: none;
+  }
+  .mega-card-icon {
+    width: 32px !important;
+    height: 32px !important;
   }
   .mega-card-title {
     font-size: 1.25rem;
@@ -636,11 +736,13 @@
     const closeMenu = () => {
       trigger.setAttribute('aria-expanded', 'false');
       panel.classList.remove('is-open');
+      document.body.classList.remove('mega-menu-active');
     };
     
     const openMenu = () => {
       trigger.setAttribute('aria-expanded', 'true');
       panel.classList.add('is-open');
+      if (window.innerWidth > 900) document.body.classList.add('mega-menu-active');
     };
     
     trigger.addEventListener('click', (e) => {
@@ -712,7 +814,7 @@
           data-title="DSLR Editorial"
           data-desc="<!-- PLACEHOLDER: Add project description for this shoot. (Chris — please fill in client name, shoot date, and brief creative intent.) -->"
           style="transition-delay: 0ms;">
-          <img src="assets/DSLR shot.webp" alt="Professional editorial portrait captured with controlled studio lighting" loading="lazy">
+          <img src="assets/DSLR shot.png" alt="Professional editorial portrait captured with controlled studio lighting" loading="lazy">
           <div class="pf-overlay">
             <div class="pf-category-tag">RDX RED · Photography</div>
             <div class="pf-card-title">DSLR Editorial</div>
@@ -725,7 +827,7 @@
           data-title="Tulasi — Portrait Series"
           data-desc="<!-- PLACEHOLDER: Add project description. (Chris — short portrait bio or shoot context here.) -->"
           style="transition-delay: 60ms;">
-          <img src="assets/Tulasi.webp" alt="Tulasi portrait with dramatic light and shadow composition" loading="lazy">
+          <img src="assets/Tulasi.jpg" alt="Tulasi portrait with dramatic light and shadow composition" loading="lazy">
           <div class="pf-overlay">
             <div class="pf-category-tag">RDX RED · Portrait</div>
             <div class="pf-card-title">Tulasi — Portrait Series</div>
@@ -740,7 +842,7 @@
           data-desc="<!-- PLACEHOLDER: Add project description for Shiradi film. (Chris — client, concept, and any notable production details.) -->"
           style="transition-delay: 120ms;">
           <!-- Poster frame generated from first frame via CSS trick (video won't load until lightbox opens) -->
-          <img src="assets/Berlin Indoor Wallpaper.webp" alt="Still frame from the Shiradi cinematic short film" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
+          <img src="assets/Berlin Indoor Wallpaper.png" alt="Still frame from the Shiradi cinematic short film" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
           <div class="pf-play-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
@@ -757,7 +859,7 @@
           data-title="Ester Vigil — Event Film"
           data-desc="<!-- PLACEHOLDER: Add project description for Ester Vigil event film. (Chris — event name, date, and key creative goals.) -->"
           style="transition-delay: 180ms;">
-          <img src="assets/Hitman RED Wallpaper.webp" alt="Cinematic poster frame for the Ester Vigil event film" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
+          <img src="assets/Hitman RED Wallpaper.png" alt="Cinematic poster frame for the Ester Vigil event film" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
           <div class="pf-play-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
@@ -774,7 +876,7 @@
           data-title="Bishop — Showreel"
           data-desc="<!-- PLACEHOLDER: Add project description for Bishop showreel. -->"
           style="transition-delay: 240ms;">
-          <img src="assets/MYSURU.webp" alt="Atmospheric still from the Bishop showreel shot at Mysuru Suite" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
+          <img src="assets/MYSURU.png" alt="Atmospheric still from the Bishop showreel shot at Mysuru Suite" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
           <div class="pf-play-badge" aria-hidden="true">
             <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
           </div>
@@ -790,7 +892,7 @@
           data-title="Main Interface — Digital Engineering"
           data-desc="<!-- PLACEHOLDER: Add project description. (Chris — is this VVCE Connect, ReliefRoute, or another system? Please confirm project name and context.) -->"
           style="transition-delay: 300ms;">
-          <img src="assets/Main interface.webp" alt="Web application interface designed and built by Code RED" loading="lazy">
+          <img src="assets/Main interface.png" alt="Web application interface designed and built by Code RED" loading="lazy">
           <div class="pf-overlay">
             <div class="pf-category-tag">Code RED · Development</div>
             <div class="pf-card-title">Main Interface</div>
@@ -803,7 +905,7 @@
           data-title="Campaign Banner"
           data-desc="<!-- PLACEHOLDER: Add project description for this banner design. (Chris — brand, medium, and campaign goal.) -->"
           style="transition-delay: 360ms;">
-          <img src="assets/Banner.webp" alt="High-impact brand campaign banner designed by Shape RED" loading="lazy">
+          <img src="assets/Banner.png" alt="High-impact brand campaign banner designed by Shape RED" loading="lazy">
           <div class="pf-overlay">
             <div class="pf-category-tag">Shape RED · Brand Design</div>
             <div class="pf-card-title">Campaign Banner</div>
@@ -818,7 +920,7 @@
           data-title="Digital Art — March 2026"
           data-desc="<!-- VERIFY: Chris — please confirm if this AI-generated piece belongs in the portfolio and add context (project/client it was made for). -->"
           style="transition-delay: 420ms;">
-          <img src="assets/ChatGPT Image Mar 26, 2026, 09_03_52 PM.webp" alt="AI-assisted digital art piece exploring abstract form and colour" loading="lazy">
+          <img src="assets/ChatGPT Image Mar 26, 2026, 09_03_52 PM.png" alt="AI-assisted digital art piece exploring abstract form and colour" loading="lazy">
           <div class="pf-overlay">
             <div class="pf-category-tag">Shape RED · Digital Art</div>
             <div class="pf-card-title">Digital Art — March 2026</div>
