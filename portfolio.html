@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | RDX Studios</title>
-  <meta name="description" content="Explore the RDX Studios portfolio — cinematic photography, event videography, UI/UX engineering, and brand design work.">
-  <meta property="og:title" content="Portfolio | RDX Studios">
-  <meta property="og:description" content="Photography, cinematography, web engineering, and brand design — see the work.">
+  <title>Portfolio | RED Studios</title>
+  <meta name="description"
+    content="Explore the RED Studios portfolio — cinematic photography, event videography, UI/UX engineering, and brand design work.">
+  <meta property="og:title" content="Portfolio | RED Studios">
+  <meta property="og:description"
+    content="Photography, cinematography, web engineering, and brand design — see the work.">
   <meta property="og:image" content="assets/DSLR shot.png">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/webp" href="assets/LOGO2.png">
@@ -17,14 +20,36 @@
        PAGE INTRO
     ──────────────────────────────── */
     .portfolio-intro {
-      padding: 160px 0 var(--space-xl);
+      position: relative;
+      overflow: hidden;
+      padding: 240px 0 160px;
       text-align: center;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
+
+    .portfolio-intro-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      z-index: 0;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+
     .portfolio-title {
       font-size: clamp(3rem, 8vw, 6rem);
       color: var(--rdx-white);
       margin-bottom: var(--space-sm);
     }
+
     .portfolio-subtitle {
       color: var(--rdx-gray-light);
       font-size: 1.1rem;
@@ -42,14 +67,15 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background-color: rgba(10,10,10,0.85);
+      background-color: rgba(10, 10, 10, 0.85);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
+
     .filter-btn {
       display: inline-block;
       padding: 0.5rem 1.5rem;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--radius-full);
       font-family: var(--font-body);
       font-size: 0.85rem;
@@ -61,10 +87,12 @@
       background: transparent;
       transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
     }
+
     .filter-btn:hover {
       color: var(--rdx-white);
-      border-color: rgba(255,255,255,0.4);
+      border-color: rgba(255, 255, 255, 0.4);
     }
+
     .filter-btn.is-active {
       background: var(--rdx-red);
       border-color: var(--rdx-red);
@@ -77,54 +105,72 @@
     .portfolio-section {
       padding: var(--space-lg) 0 var(--space-2xl);
     }
+
     .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--space-md);
-    }
-    @media (max-width: 900px) {
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 560px) {
-      .portfolio-grid { grid-template-columns: 1fr; }
+      column-count: 3;
+      column-gap: var(--space-md);
     }
 
-    /* Card base — fixed aspect-ratio to prevent layout shift */
+    @media (max-width: 900px) {
+      .portfolio-grid {
+        column-count: 2;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .portfolio-grid {
+        column-count: 1;
+      }
+    }
+
+    /* Card base — adapts to image aspect ratio natively */
     .pf-card {
       position: relative;
-      aspect-ratio: 4/3;
+      break-inside: avoid;
+      margin-bottom: var(--space-md);
       overflow: hidden;
       border-radius: var(--radius-sm);
       cursor: pointer;
-      background: #111; /* placeholder bg before image loads */
+      background: #111;
+      /* placeholder bg before image loads */
       /* transitions for filter visibility */
       transition: opacity 0.35s ease, transform 0.35s ease;
     }
+
     .pf-card.is-hidden {
       display: none;
     }
+
     .pf-card.is-fading-out {
       opacity: 0;
       transform: scale(0.97);
       pointer-events: none;
     }
+
     .pf-card.is-fading-in {
       animation: cardFadeIn 0.4s ease forwards;
     }
+
     @keyframes cardFadeIn {
-      from { opacity: 0; transform: scale(0.97); }
-      to   { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(0.97);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .pf-card img,
     .pf-card .pf-poster {
-      position: absolute;
-      inset: 0;
+      display: block;
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       transition: transform 0.5s ease;
     }
+
     .pf-card:hover img,
     .pf-card:hover .pf-poster {
       transform: scale(1.06);
@@ -134,7 +180,7 @@
     .pf-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, transparent 60%);
+      background: linear-gradient(to top, rgba(10, 10, 10, 0.85) 0%, transparent 60%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
@@ -142,9 +188,11 @@
       opacity: 0;
       transition: opacity 0.3s ease;
     }
+
     .pf-card:hover .pf-overlay {
       opacity: 1;
     }
+
     .pf-category-tag {
       font-size: 0.7rem;
       text-transform: uppercase;
@@ -153,12 +201,14 @@
       font-weight: 700;
       margin-bottom: 4px;
     }
+
     .pf-card-title {
       font-family: var(--font-display);
       font-size: 1.4rem;
       letter-spacing: 0.05em;
       line-height: 1.1;
     }
+
     .pf-action-hint {
       font-size: 0.75rem;
       color: var(--rdx-gray-light);
@@ -174,22 +224,25 @@
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      background: rgba(232,0,29,0.85);
+      background: rgba(232, 0, 29, 0.85);
       display: flex;
       align-items: center;
       justify-content: center;
       transition: transform 0.2s ease, opacity 0.2s ease;
       opacity: 0.9;
     }
+
     .pf-card:hover .pf-play-badge {
       transform: translate(-50%, -50%) scale(1);
       opacity: 1;
     }
+
     .pf-play-badge svg {
       width: 20px;
       height: 20px;
       fill: #fff;
-      margin-left: 3px; /* optical centering for triangle */
+      margin-left: 3px;
+      /* optical centering for triangle */
     }
 
     /* ────────────────────────────────
@@ -202,14 +255,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0);
+      background: rgba(0, 0, 0, 0);
       pointer-events: none;
       transition: background 0.3s ease;
     }
+
     .rdx-lightbox.is-open {
-      background: rgba(0,0,0,0.92);
+      background: rgba(0, 0, 0, 0.92);
       pointer-events: all;
     }
+
     .lightbox-inner {
       position: relative;
       width: 90vw;
@@ -218,34 +273,34 @@
       display: flex;
       flex-direction: column;
       background: #0d0d0d;
-      border: 1px solid rgba(255,255,255,0.07);
+      border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: var(--radius-md);
       overflow: hidden;
       opacity: 0;
       transform: translateY(20px) scale(0.97);
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
+
     .rdx-lightbox.is-open .lightbox-inner {
       opacity: 1;
       transform: translateY(0) scale(1);
     }
 
-    /* Media area — fixed 16/9 to reserve space before load */
+    /* Media area — adapts to content aspect ratio natively */
     .lightbox-media {
-      width: 100%;
-      aspect-ratio: 16/9;
-      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: #000;
       flex-shrink: 0;
     }
-    .lightbox-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+
+    .lightbox-media img,
     .lightbox-media video {
-      width: 100%;
-      height: 100%;
+      max-width: 100%;
+      max-height: 75vh;
+      width: auto;
+      height: auto;
       object-fit: contain;
       background: #000;
     }
@@ -253,9 +308,10 @@
     /* Info panel */
     .lightbox-info {
       padding: var(--space-md) var(--space-lg);
-      border-top: 1px solid rgba(255,255,255,0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       overflow-y: auto;
     }
+
     .lightbox-tag {
       font-size: 0.7rem;
       text-transform: uppercase;
@@ -264,11 +320,13 @@
       font-weight: 700;
       margin-bottom: var(--space-xs);
     }
+
     .lightbox-title {
       font-family: var(--font-display);
       font-size: 2rem;
       margin-bottom: var(--space-sm);
     }
+
     .lightbox-desc {
       color: var(--rdx-gray-light);
       font-size: 0.95rem;
@@ -281,9 +339,10 @@
       top: var(--space-md);
       right: var(--space-md);
       z-index: 10;
-      width: 36px; height: 36px;
-      background: rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,255,255,0.15);
+      width: 36px;
+      height: 36px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -291,30 +350,65 @@
       cursor: pointer;
       transition: background var(--transition-fast);
     }
-    .lightbox-close:hover { background: var(--rdx-red); }
-    .lightbox-close svg { width: 16px; height: 16px; stroke: #fff; fill: none; stroke-width: 2; }
+
+    .lightbox-close:hover {
+      background: var(--rdx-red);
+    }
+
+    .lightbox-close svg {
+      width: 16px;
+      height: 16px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+    }
 
     .lightbox-nav-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
-      width: 44px; height: 44px;
-      background: rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,255,255,0.15);
+      width: 44px;
+      height: 44px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       transition: background var(--transition-fast);
     }
-    .lightbox-nav-btn:hover { background: var(--rdx-red); }
-    .lightbox-nav-btn svg { width: 18px; height: 18px; stroke: #fff; fill: none; stroke-width: 2; }
-    .lightbox-prev { left: var(--space-sm); }
-    .lightbox-next { right: var(--space-sm); }
+
+    .lightbox-nav-btn:hover {
+      background: var(--rdx-red);
+    }
+
+    .lightbox-nav-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .lightbox-prev {
+      left: var(--space-sm);
+    }
+
+    .lightbox-next {
+      right: var(--space-sm);
+    }
 
     @media (prefers-reduced-motion: reduce) {
-      .rdx-lightbox, .lightbox-inner,
-      .pf-card, .pf-card img { transition: none !important; animation: none !important; }
+
+      .rdx-lightbox,
+      .lightbox-inner,
+      .pf-card,
+      .pf-card img {
+        transition: none !important;
+        animation: none !important;
+      }
     }
   </style>
 
@@ -324,15 +418,20 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
+
 <body class="rdx-grain">
-  
+
   <div id="page-transition" class="active"></div>
   <!-- NAV:START -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 <nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
     <div class="nav-logo">
-      <a href="index.html" aria-label="RDX Studios Home" class="logo-morph-container">
+      <a href="index.html" aria-label="RED Studios Home" class="logo-morph-container">
+        <svg class="nav-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
         <span class="logo-text logo-full">RDX RED</span>
         <span class="logo-text logo-icon">R</span>
       </a>
@@ -382,7 +481,7 @@
           </div>
         </div>
         <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
-        <a href="journal.html" class="nav-item">JOURNAL</a>
+        <a href="studio.html" class="nav-item">STUDIO</a>
         <a href="team.html" class="nav-item">TEAM</a>
       </div>
     </div>
@@ -426,13 +525,26 @@
 .logo-morph-container {
   position: relative;
   display: block;
-  width: 150px;
+  width: 190px;
   height: 42px;
+}
+.nav-home-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -12px;
+  width: 24px;
+  height: 24px;
+  color: var(--rdx-red);
+  transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+.rdx-nav.is-scrolled .nav-home-icon {
+  color: var(--rdx-white);
 }
 .logo-text {
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 34px;
   transform-origin: left center;
   font-family: var(--font-display);
   color: var(--rdx-white);
@@ -788,7 +900,8 @@
 
   <!-- Intro -->
   <header class="portfolio-intro">
-    <div class="container">
+    <img src="assets/redpatterns.png" alt="" class="portfolio-intro-bg">
+    <div class="container" style="position: relative; z-index: 1;">
       <h1 class="portfolio-title rdx-fade-up">Portfolio</h1>
       <p class="portfolio-subtitle rdx-fade-up" style="transition-delay:100ms;">
         Photography · Videography · Digital Engineering · Brand Design
@@ -809,42 +922,15 @@
     <div class="container">
       <div class="portfolio-grid" id="portfolio-grid">
 
-        <!-- Card 1 — RDX RED / Photo -->
-        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="image"
-          data-title="DSLR Editorial"
-          data-desc="<!-- PLACEHOLDER: Add project description for this shoot. (Chris — please fill in client name, shoot date, and brief creative intent.) -->"
-          style="transition-delay: 0ms;">
-          <img src="assets/DSLR shot.png" alt="Professional editorial portrait captured with controlled studio lighting" loading="lazy">
-          <div class="pf-overlay">
-            <div class="pf-category-tag">RDX RED · Photography</div>
-            <div class="pf-card-title">DSLR Editorial</div>
-            <div class="pf-action-hint">Click to view ↗</div>
-          </div>
-        </article>
-
-        <!-- Card 2 — RDX RED / Photo -->
-        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="image"
-          data-title="Tulasi — Portrait Series"
-          data-desc="<!-- PLACEHOLDER: Add project description. (Chris — short portrait bio or shoot context here.) -->"
-          style="transition-delay: 60ms;">
-          <img src="assets/Tulasi.jpg" alt="Tulasi portrait with dramatic light and shadow composition" loading="lazy">
-          <div class="pf-overlay">
-            <div class="pf-category-tag">RDX RED · Portrait</div>
-            <div class="pf-card-title">Tulasi — Portrait Series</div>
-            <div class="pf-action-hint">Click to view ↗</div>
-          </div>
-        </article>
-
-        <!-- Card 3 — RDX RED / Video -->
-        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video"
-          data-src="assets/Shiradi.mp4"
-          data-title="Shiradi — Cinematic Short"
-          data-desc="<!-- PLACEHOLDER: Add project description for Shiradi film. (Chris — client, concept, and any notable production details.) -->"
-          style="transition-delay: 120ms;">
-          <!-- Poster frame generated from first frame via CSS trick (video won't load until lightbox opens) -->
-          <img src="assets/Berlin Indoor Wallpaper.png" alt="Still frame from the Shiradi cinematic short film" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
+        <!-- Card: Shiradi -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video" data-src="assets/Shiradi.mp4"
+          data-title="Shiradi — Cinematic Short" style="transition-delay: 0ms;">
+          <video src="assets/Shiradi.mp4" loop muted playsinline class="pf-poster"
+            style="display: block; width: 100%; height: auto;"></video>
           <div class="pf-play-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg viewBox="0 0 24 24">
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
           </div>
           <div class="pf-overlay">
             <div class="pf-category-tag">RDX RED · Cinematography</div>
@@ -853,15 +939,15 @@
           </div>
         </article>
 
-        <!-- Card 4 — RDX RED / Video -->
-        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video"
-          data-src="assets/Ester Vigil.mp4"
-          data-title="Ester Vigil — Event Film"
-          data-desc="<!-- PLACEHOLDER: Add project description for Ester Vigil event film. (Chris — event name, date, and key creative goals.) -->"
-          style="transition-delay: 180ms;">
-          <img src="assets/Hitman RED Wallpaper.png" alt="Cinematic poster frame for the Ester Vigil event film" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
+        <!-- Card: Ester Vigil -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video" data-src="assets/Ester Vigil.mp4"
+          data-title="Ester Vigil — Event Film" style="transition-delay: 60ms;">
+          <video src="assets/Ester Vigil.mp4" loop muted playsinline class="pf-poster"
+            style="display: block; width: 100%; height: auto;"></video>
           <div class="pf-play-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg viewBox="0 0 24 24">
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
           </div>
           <div class="pf-overlay">
             <div class="pf-category-tag">RDX RED · Event Film</div>
@@ -870,15 +956,15 @@
           </div>
         </article>
 
-        <!-- Card 5 — RDX RED / Video -->
-        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video"
-          data-src="assets/bishop.mp4"
-          data-title="Bishop — Showreel"
-          data-desc="<!-- PLACEHOLDER: Add project description for Bishop showreel. -->"
-          style="transition-delay: 240ms;">
-          <img src="assets/MYSURU.png" alt="Atmospheric still from the Bishop showreel shot at Mysuru Suite" loading="lazy" class="pf-poster" style="filter: grayscale(40%);">
+        <!-- Card: Bishop -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video" data-src="assets/bishop.mp4"
+          data-title="Bishop — Showreel" style="transition-delay: 120ms;">
+          <video src="assets/bishop.mp4" loop muted playsinline class="pf-poster"
+            style="display: block; width: 100%; height: auto;"></video>
           <div class="pf-play-badge" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            <svg viewBox="0 0 24 24">
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
           </div>
           <div class="pf-overlay">
             <div class="pf-category-tag">RDX RED · Showreel</div>
@@ -887,46 +973,169 @@
           </div>
         </article>
 
-        <!-- Card 6 — Code RED / UI -->
-        <article class="pf-card rdx-fade-up" data-category="code-red" data-type="image"
-          data-title="Main Interface — Digital Engineering"
-          data-desc="<!-- PLACEHOLDER: Add project description. (Chris — is this VVCE Connect, ReliefRoute, or another system? Please confirm project name and context.) -->"
-          style="transition-delay: 300ms;">
-          <img src="assets/Main interface.png" alt="Web application interface designed and built by Code RED" loading="lazy">
+        <!-- Card: Midnight -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="image"
+          data-title="Midnight Event Photography">
+          <img src="assets/Midnight.jpg" alt="Midnight Crowd" loading="lazy">
           <div class="pf-overlay">
-            <div class="pf-category-tag">Code RED · Development</div>
-            <div class="pf-card-title">Main Interface</div>
+            <div class="pf-category-tag">RDX RED · Event Photography</div>
+            <div class="pf-card-title">Midnight Event Photography</div>
             <div class="pf-action-hint">Click to view ↗</div>
           </div>
         </article>
 
-        <!-- Card 7 — Shape RED / Design -->
+        <!-- Card: Vidyuth -->
         <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
-          data-title="Campaign Banner"
-          data-desc="<!-- PLACEHOLDER: Add project description for this banner design. (Chris — brand, medium, and campaign goal.) -->"
-          style="transition-delay: 360ms;">
-          <img src="assets/Banner.png" alt="High-impact brand campaign banner designed by Shape RED" loading="lazy">
+          data-title="Vidyuth 2026 Event Poster">
+          <img src="assets/127418.png" alt="Vidyuth Event Poster" loading="lazy">
           <div class="pf-overlay">
             <div class="pf-category-tag">Shape RED · Brand Design</div>
-            <div class="pf-card-title">Campaign Banner</div>
+            <div class="pf-card-title">Vidyuth 2026 Event Poster</div>
             <div class="pf-action-hint">Click to view ↗</div>
           </div>
         </article>
 
-        <!-- Card 8 — Shape RED / AI Art 
-             CONFIRM: Chris — is "ChatGPT Image Mar 26 2026" a Shape RED design piece 
-             you want publicly showcased? If not, remove or reclassify. -->
+        <!-- Card: Traditional Courtyard -->
         <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
-          data-title="Digital Art — March 2026"
-          data-desc="<!-- VERIFY: Chris — please confirm if this AI-generated piece belongs in the portfolio and add context (project/client it was made for). -->"
-          style="transition-delay: 420ms;">
-          <img src="assets/ChatGPT Image Mar 26, 2026, 09_03_52 PM.png" alt="AI-assisted digital art piece exploring abstract form and colour" loading="lazy">
+          data-title="Traditional Courtyard Photography">
+          <img src="assets/Home 1 .png" alt="Traditional Courtyard" loading="lazy">
           <div class="pf-overlay">
-            <div class="pf-category-tag">Shape RED · Digital Art</div>
-            <div class="pf-card-title">Digital Art — March 2026</div>
+            <div class="pf-category-tag">Shape RED · Architectural Photography</div>
+            <div class="pf-card-title">Traditional Courtyard</div>
             <div class="pf-action-hint">Click to view ↗</div>
           </div>
         </article>
+
+        <!-- Card: Courtyard Portrait -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Courtyard Portrait">
+          <img src="assets/Home with.png" alt="Courtyard Portrait" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Portrait Photography</div>
+            <div class="pf-card-title">Courtyard Portrait</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: RED Floral Banner -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="RED Floral Brand Graphic">
+          <img src="assets/home-banner.png" alt="RED Floral Banner" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Digital Art</div>
+            <div class="pf-card-title">RED Floral Graphic</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: Circular Pattern -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Abstract Circular Pattern">
+          <img src="assets/Main interface.png" alt="Circular Pattern" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Graphic Design</div>
+            <div class="pf-card-title">Abstract Circular Pattern</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: RED Shape Concept -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image" data-title="RED Shape Concept">
+          <img src="assets/RED.png" alt="RED Shape Concept" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Brand Identity</div>
+            <div class="pf-card-title">RED Shape Concept</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: Water Lily Composition -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Water Lily Composition">
+          <img src="assets/screen.png" alt="Water Lily Composition" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Visual Design</div>
+            <div class="pf-card-title">Water Lily Composition</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: Tulasi Macro -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Tulasi Macro Photography">
+          <img src="assets/Tulasi.jpg" alt="Tulasi Macro" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Macro Photography</div>
+            <div class="pf-card-title">Tulasi Macro Photography</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: Samurai Concept Art -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Red Tree Samurai Concept Art">
+          <img src="assets/Wall.png" alt="Samurai Concept Art" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Concept Art</div>
+            <div class="pf-card-title">Samurai Concept Art</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: RDX RED Web -->
+        <a href="https://rdx2-vnbm.vercel.app/" target="_blank" class="pf-card rdx-fade-up is-hidden" data-category="code-red"
+          data-type="link">
+          <img src="assets/code_red_rdx.png" alt="RDX RED Web" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Code RED · Web Design</div>
+            <div class="pf-card-title">RDX RED 1st & 2nd Gen</div>
+            <div class="pf-action-hint">View Project ↗</div>
+          </div>
+        </a>
+
+        <!-- Card: Food Shield -->
+        <a href="https://foodshield-lemon.vercel.app/" target="_blank" class="pf-card rdx-fade-up is-hidden"
+          data-category="code-red" data-type="link">
+          <img src="assets/code_red_foodshield.png" alt="Food Shield" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Code RED · Web App</div>
+            <div class="pf-card-title">Food Shield</div>
+            <div class="pf-action-hint">View Project ↗</div>
+          </div>
+        </a>
+
+        <!-- Card: VVCE Hotel -->
+        <a href="https://vvcehotel.vercel.app/" target="_blank" class="pf-card rdx-fade-up is-hidden" data-category="code-red"
+          data-type="link">
+          <img src="assets/code_red_vvcehotel.png" alt="VVCE Hotel" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Code RED · Web App</div>
+            <div class="pf-card-title">VVCE Hotel</div>
+            <div class="pf-action-hint">View Project ↗</div>
+          </div>
+        </a>
+
+        <!-- Card: VVCE Connect -->
+        <a href="https://vvceconnect-bay.vercel.app/#login" target="_blank" class="pf-card rdx-fade-up is-hidden"
+          data-category="code-red" data-type="link">
+          <img src="assets/code_red_vvceconnect.png" alt="VVCE Connect" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Code RED · UI/UX Design</div>
+            <div class="pf-card-title">VVCE Connect</div>
+            <div class="pf-action-hint">View Project ↗</div>
+          </div>
+        </a>
+
+        <!-- Card: Relief Route -->
+        <a href="https://relief-route-henna.vercel.app/" target="_blank" class="pf-card rdx-fade-up is-hidden"
+          data-category="code-red" data-type="link">
+          <img src="assets/code_red_relief.png" alt="Relief Route" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Code RED · Dashboard</div>
+            <div class="pf-card-title">Relief Route</div>
+            <div class="pf-action-hint">View Project ↗</div>
+          </div>
+        </a>
 
       </div><!-- /portfolio-grid -->
     </div>
@@ -939,15 +1148,22 @@
     <div class="lightbox-inner" id="lightbox-inner">
 
       <button class="lightbox-close" id="lightbox-close" aria-label="Close (Esc)">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <svg viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
       </button>
 
       <button class="lightbox-nav-btn lightbox-prev" id="lightbox-prev" aria-label="Previous (←)">
-        <svg viewBox="0 0 24 24"><polyline points="15,18 9,12 15,6"/></svg>
+        <svg viewBox="0 0 24 24">
+          <polyline points="15,18 9,12 15,6" />
+        </svg>
       </button>
 
       <button class="lightbox-nav-btn lightbox-next" id="lightbox-next" aria-label="Next (→)">
-        <svg viewBox="0 0 24 24"><polyline points="9,18 15,12 9,6"/></svg>
+        <svg viewBox="0 0 24 24">
+          <polyline points="9,18 15,12 9,6" />
+        </svg>
       </button>
 
       <div class="lightbox-media" id="lightbox-media">
@@ -965,59 +1181,70 @@
 
   <!-- FOOTER:START -->
 <footer class="rdx-footer">
+  <!-- Background Pattern for Glassmorphism -->
+  <img src="assets/RED Wallpaper.png" alt="" class="footer-bg">
+  
   <div class="footer-container">
-    <div class="footer-grid">
+    <div class="footer-layout">
+      <!-- Links Side -->
+      <div class="footer-links-wrapper">
+        <div class="footer-grid">
+          
+          <!-- Navigation -->
+          <div class="footer-col">
+            <h3 class="footer-heading">NAVIGATION</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="studio.html">Studio</a></li>
+              <li><a href="team.html">Team</a></li>
+            </ul>
+          </div>
+
+          <!-- Studios -->
+          <div class="footer-col">
+            <h3 class="footer-heading">STUDIOS</h3>
+            <ul class="footer-links">
+              <li><a href="services.html#rdx-red">RDX RED</a></li>
+              <li><a href="services.html#code-red">Code RED</a></li>
+              <li><a href="services.html#shape-red">Shape RED</a></li>
+            </ul>
+          </div>
+
+          <!-- Connect -->
+          <div class="footer-col">
+            <h3 class="footer-heading">CONNECT</h3>
+            <ul class="footer-links">
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
+              <li><a href="tel:+917676218729">+91 76762 18729</a></li>
+              <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
+            </ul>
+          </div>
+          
+          <!-- Socials -->
+          <div class="footer-col">
+            <h3 class="footer-heading">SOCIAL</h3>
+            <ul class="footer-links">
+              <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+              <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+              <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
       
-      <!-- Navigation -->
-      <div class="footer-col">
-        <h3 class="footer-heading">NAVIGATION</h3>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="journal.html">Journal</a></li>
-          <li><a href="team.html">Team</a></li>
-        </ul>
+      <!-- Logo Side -->
+      <div class="footer-logo-wrapper">
+        <img src="assets/LOgo.png" alt="RED Studios Logo" class="footer-logo">
       </div>
-
-      <!-- Studios -->
-      <div class="footer-col">
-        <h3 class="footer-heading">STUDIOS</h3>
-        <ul class="footer-links">
-          <li><a href="services.html#rdx-red">RDX RED</a></li>
-          <li><a href="services.html#code-red">Code RED</a></li>
-          <li><a href="services.html#shape-red">Shape RED</a></li>
-        </ul>
-      </div>
-
-      <!-- Connect -->
-      <div class="footer-col">
-        <h3 class="footer-heading">CONNECT</h3>
-        <ul class="footer-links">
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
-          <li><a href="tel:+917676218729">+91 76762 18729</a></li>
-          <!-- PLACEHOLDER: Replace with real addresses once Chris confirms -->
-          <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
-        </ul>
-      </div>
-      
-      <!-- Socials -->
-      <div class="footer-col">
-        <h3 class="footer-heading">SOCIAL</h3>
-        <ul class="footer-links">
-          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
-          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
-        </ul>
-      </div>
-
     </div>
     
     <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> RDX Studios. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> RED Studios. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -1025,21 +1252,74 @@
 <style>
 /* Footer styles */
 .rdx-footer {
-  background-color: var(--rdx-black);
-  border-top: 1px solid var(--rdx-gray);
-  padding: var(--space-xl) 0 var(--space-lg);
+  position: relative;
+  background-color: transparent;
+  padding: 0 0 var(--space-xl) 0;
   margin-top: var(--space-2xl);
+  overflow: hidden;
+}
+.footer-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
 }
 .footer-container {
+  position: relative;
+  z-index: 1;
   max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
+  margin: var(--space-2xl) auto 0;
+  padding: var(--space-2xl) var(--space-xl);
+  background: rgba(15, 15, 15, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+.footer-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+}
+.footer-links-wrapper {
+  flex: 1;
+  min-width: 300px;
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: var(--space-lg);
   margin-bottom: var(--space-xl);
+}
+.footer-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 250px;
+}
+.footer-logo {
+  width: 220px;
+  object-fit: contain;
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+@media (max-width: 900px) {
+  .footer-layout {
+    flex-direction: column-reverse;
+  }
+  .footer-logo-wrapper {
+    justify-content: center;
+    margin-bottom: var(--space-xl);
+  }
 }
 .footer-heading {
   font-family: var(--font-display);
@@ -1069,8 +1349,9 @@
 }
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid var(--rdx-gray);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: var(--space-md);
+  margin-top: var(--space-xl);
   color: var(--rdx-gray-light);
   font-size: 0.85rem;
 }
@@ -1122,9 +1403,15 @@
 
       // ── Open lightbox on card click ──
       allCards.forEach(card => {
-        card.addEventListener('click', () => {
+        card.addEventListener('click', (e) => {
+          if (card.dataset.type === 'link') {
+            return; // Let the browser handle standard anchor tags
+          }
           const idx = visibleCards.indexOf(card);
-          if (idx !== -1) openLightbox(idx);
+          if (idx !== -1) {
+            e.preventDefault();
+            openLightbox(idx);
+          }
         });
       });
 
@@ -1142,7 +1429,7 @@
       document.addEventListener('keydown', e => {
         if (!lightbox.classList.contains('is-open')) return;
         if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft')  navigate(-1);
+        if (e.key === 'ArrowLeft') navigate(-1);
         if (e.key === 'ArrowRight') navigate(1);
       });
     }
@@ -1162,7 +1449,7 @@
 
       setTimeout(() => {
         allCards.forEach(card => {
-          const match = filter === 'all' || card.dataset.category === filter;
+          const match = (filter === 'all' && card.dataset.category !== 'code-red') || card.dataset.category === filter;
           card.classList.remove('is-hidden', 'is-fading-out', 'is-fading-in');
           if (match) {
             card.classList.add('is-fading-in');
@@ -1184,8 +1471,7 @@
       const tag = card.querySelector('.pf-category-tag')?.textContent || '';
       // Strip HTML comment from desc for display
       const rawDesc = card.dataset.desc || '';
-      const displayDesc = rawDesc.replace(/<!--[\s\S]*?-->/g, '').trim()
-        || 'Project details coming soon.';
+      const displayDesc = rawDesc.replace(/<!--[\s\S]*?-->/g, '').trim();
 
       // Populate info
       lbTitle.textContent = title;
@@ -1243,4 +1529,5 @@
     }
   </script>
 </body>
+
 </html>

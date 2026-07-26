@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | RDX Studios</title>
+  <title>About | RED Studios</title>
   <meta name="description"
-    content="Discover the origin story of RDX Studios — founded in 2024 in Karnataka by Chris Zeyon Pinto. Three creative divisions, two premium studios, one uncompromising standard.">
-  <meta property="og:title" content="About | RDX Studios">
+    content="Discover the origin story of RED Studios — founded in 2024 in Karnataka by Chris Zeyon Pinto. Three creative divisions, two premium studios, one uncompromising standard.">
+  <meta property="og:title" content="About | RED Studios">
   <meta property="og:description"
-    content="Our origin, our founder, and the three-wing creative model behind RDX Studios.">
+    content="Our origin, our founder, and the three-wing creative model behind RED Studios.">
   <meta property="og:image" content="assets/The 3 Mark.png">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/webp" href="assets/LOGO2.png">
@@ -35,6 +35,8 @@
       opacity: 0.15;
       z-index: 0;
       pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
     }
 
     .origin-content {
@@ -120,7 +122,8 @@
       object-fit: cover;
       opacity: 0;
       transform: scale(1.1);
-      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+      filter: grayscale(100%);
+      transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1), filter 0.8s ease;
     }
 
     .founder-image-wrapper:hover .founder-quote-overlay,
@@ -450,7 +453,12 @@
   <nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <div class="nav-logo">
-        <a href="index.html" aria-label="RDX Studios Home" class="logo-morph-container">
+        <a href="index.html" aria-label="RED Studios Home" class="logo-morph-container">
+          <svg class="nav-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
           <span class="logo-text logo-full">RDX RED</span>
           <span class="logo-text logo-icon">R</span>
         </a>
@@ -506,7 +514,7 @@
             </div>
           </div>
           <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
-          <a href="journal.html" class="nav-item">JOURNAL</a>
+          <a href="studio.html" class="nav-item">STUDIO</a>
           <a href="team.html" class="nav-item">TEAM</a>
         </div>
       </div>
@@ -553,14 +561,29 @@
     .logo-morph-container {
       position: relative;
       display: block;
-      width: 150px;
+      width: 190px;
       height: 42px;
+    }
+
+    .nav-home-icon {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -12px;
+      width: 24px;
+      height: 24px;
+      color: var(--rdx-red);
+      transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
+    }
+
+    .rdx-nav.is-scrolled .nav-home-icon {
+      color: var(--rdx-white);
     }
 
     .logo-text {
       position: absolute;
       top: 50%;
-      left: 0;
+      left: 34px;
       transform-origin: left center;
       font-family: var(--font-display);
       color: var(--rdx-white);
@@ -965,13 +988,13 @@
   <!-- Origin Story Section -->
   <section id="main-content" class="origin-section">
     <img src="assets/Extended screen.png"
-      alt="The three-wing identity of RDX Studios showing the Code RED, RDX RED, and Shape RED divisions"
+      alt="The three-wing identity of RED Studios showing the Code RED, RDX RED, and Shape RED divisions"
       class="origin-anchor">
     <div class="container">
       <div class="origin-content">
         <h1 class="origin-title rdx-fade-up" style="transition-delay: 100ms;">Our Architecture of Creativity</h1>
         <p class="origin-text rdx-fade-up" style="transition-delay: 200ms;">
-          Ignited in 2024 within the vibrant core of Karnataka, RDX Studios emerged from a singular conviction: that
+          Ignited in 2024 within the vibrant core of Karnataka, RED Studios emerged from a singular conviction: that
           exceptional storytelling demands mastery over both the visual and the virtual. What originated as a relentless
           pursuit of cinematic lighting and photographic perfection quickly expanded into a formidable three-pillar
           creative ecosystem.
@@ -1100,7 +1123,7 @@
           <div class="founder-quote-overlay">
             <blockquote>"Every story deserves to be told through light, motion, and emotion."</blockquote>
           </div>
-          <img src="assets/chr(c).png" alt="Chris Zeyon Pinto, founder of RDX Studios, in a studio portrait"
+          <img src="assets/chr(c1).png" alt="Chris Zeyon Pinto, founder of RED Studios, in a studio portrait"
             class="founder-img" loading="lazy">
         </div>
         <div class="founder-info rdx-fade-up">
@@ -1116,7 +1139,7 @@
                     <blockquote style="font-size: 1.3rem;">"Every frame is a painting waiting to be revealed."
                     </blockquote>
                   </div>
-                  <img src="assets/Cin(c).png" alt="Ciyana, RDX Studios team member" class="founder-img" loading="lazy">
+                  <img src="assets/Cin(c).png" alt="Ciyana, RED Studios team member" class="founder-img" loading="lazy">
                 </div>
                 <div class="team-name">Ciyana</div>
               </div>
@@ -1125,7 +1148,7 @@
                   <div class="founder-quote-overlay" style="padding: var(--space-md);">
                     <blockquote style="font-size: 1.3rem;">"Patience. The best is yet to come."</blockquote>
                   </div>
-                  <img src="assets/Tul(c).png" alt="Tulasi, RDX Studios team member" class="founder-img" loading="lazy">
+                  <img src="assets/Tul(c).png" alt="Tulasi, RED Studios team member" class="founder-img" loading="lazy">
                 </div>
                 <div class="team-name">Tulasi</div>
               </div>
@@ -1167,63 +1190,220 @@
     </div>
   </section>
 
+  <!-- MAX RED SECTION -->
+  <section class="max-red-trigger-section"
+    style="padding: var(--space-2xl) 0; text-align: center; background-color: var(--rdx-black); border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="container">
+      <h2
+        style="font-family: var(--font-display); font-size: 3rem; color: var(--rdx-red); cursor: pointer; display: inline-block; padding: 1rem 3rem; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm); transition: all var(--transition-fast); user-select: none;"
+        class="rdx-fade-up max-red-btn">MAX RED</h2>
+      <p style="color: var(--rdx-gray-light); margin-top: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;"
+        class="rdx-fade-up">Exclusive access portal.</p>
+    </div>
+  </section>
+
+  <!-- MAX RED MODAL (Hidden by default) -->
+  <div id="max-red-modal" class="max-red-modal">
+    <div class="max-red-modal-overlay"></div>
+    <div class="max-red-modal-content">
+      <button class="max-red-close" aria-label="Close modal">×</button>
+      <h3
+        style="font-family: var(--font-display); font-size: 2rem; color: var(--rdx-red); margin-bottom: 1.5rem; text-align: center;">
+        MAX RED Access</h3>
+      <form id="max-red-form"
+        onsubmit="event.preventDefault(); alert('Authentication simulated. Connect to backend.');">
+        <div style="margin-bottom: 1rem;">
+          <label
+            style="display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--rdx-gray-light);"
+            for="max-username">Username</label>
+          <input type="text" id="max-username" required
+            style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: var(--rdx-white); border-radius: 4px; outline: none;">
+        </div>
+        <div style="margin-bottom: 2rem;">
+          <label
+            style="display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--rdx-gray-light);"
+            for="max-password">Password</label>
+          <input type="password" id="max-password" required
+            style="width: 100%; padding: 0.75rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); color: var(--rdx-white); border-radius: 4px; outline: none;">
+        </div>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button type="submit"
+            style="flex: 1; background: var(--rdx-red); color: white; border: none; padding: 0.75rem; font-weight: bold; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: background 0.3s;">Enter
+            Max RED</button>
+          <a href="contact.html?service=max-red"
+            style="flex: 1; text-align: center; background: transparent; color: white; border: 1px solid var(--rdx-white); padding: 0.75rem; font-weight: bold; text-transform: uppercase; cursor: pointer; border-radius: 4px; text-decoration: none; transition: background 0.3s, color 0.3s;"
+            onmouseover="this.style.background='white'; this.style.color='black';"
+            onmouseout="this.style.background='transparent'; this.style.color='white';">REQ MAX</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <style>
+    .max-red-btn:hover {
+      background: rgba(255, 0, 0, 0.05);
+      border-color: var(--rdx-red);
+      transform: scale(1.05);
+    }
+
+    .max-red-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .max-red-modal.is-active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .max-red-modal-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .max-red-modal-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 400px;
+      padding: 2.5rem;
+      background: rgba(15, 15, 15, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      transform: translateY(20px) scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .max-red-modal.is-active .max-red-modal-content {
+      transform: translateY(0) scale(1);
+    }
+
+    .max-red-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: var(--rdx-gray-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .max-red-close:hover {
+      color: var(--rdx-white);
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const maxRedBtn = document.querySelector('.max-red-btn');
+      const maxRedModal = document.getElementById('max-red-modal');
+      const maxRedClose = document.querySelector('.max-red-close');
+      const maxRedOverlay = document.querySelector('.max-red-modal-overlay');
+
+      if (maxRedBtn && maxRedModal) {
+        maxRedBtn.addEventListener('click', () => {
+          maxRedModal.classList.add('is-active');
+        });
+
+        const closeModal = () => {
+          maxRedModal.classList.remove('is-active');
+        };
+
+        maxRedClose.addEventListener('click', closeModal);
+        maxRedOverlay.addEventListener('click', closeModal);
+      }
+    });
+  </script>
+
   <!-- FOOTER:START -->
   <footer class="rdx-footer">
+    <!-- Background Pattern for Glassmorphism -->
+    <img src="assets/RED Wallpaper.png" alt="" class="footer-bg">
+
     <div class="footer-container">
-      <div class="footer-grid">
+      <div class="footer-layout">
+        <!-- Links Side -->
+        <div class="footer-links-wrapper">
+          <div class="footer-grid">
 
-        <!-- Navigation -->
-        <div class="footer-col">
-          <h3 class="footer-heading">NAVIGATION</h3>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="journal.html">Journal</a></li>
-            <li><a href="team.html">Team</a></li>
-          </ul>
+            <!-- Navigation -->
+            <div class="footer-col">
+              <h3 class="footer-heading">NAVIGATION</h3>
+              <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="studio.html">Studio</a></li>
+                <li><a href="team.html">Team</a></li>
+              </ul>
+            </div>
+
+            <!-- Studios -->
+            <div class="footer-col">
+              <h3 class="footer-heading">STUDIOS</h3>
+              <ul class="footer-links">
+                <li><a href="services.html#rdx-red">RDX RED</a></li>
+                <li><a href="services.html#code-red">Code RED</a></li>
+                <li><a href="services.html#shape-red">Shape RED</a></li>
+              </ul>
+            </div>
+
+            <!-- Connect -->
+            <div class="footer-col">
+              <h3 class="footer-heading">CONNECT</h3>
+              <ul class="footer-links">
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
+                <li><a href="tel:+917676218729">+91 76762 18729</a></li>
+                <li>
+                  <p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Socials -->
+            <div class="footer-col">
+              <h3 class="footer-heading">SOCIAL</h3>
+              <ul class="footer-links">
+                <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
 
-        <!-- Studios -->
-        <div class="footer-col">
-          <h3 class="footer-heading">STUDIOS</h3>
-          <ul class="footer-links">
-            <li><a href="services.html#rdx-red">RDX RED</a></li>
-            <li><a href="services.html#code-red">Code RED</a></li>
-            <li><a href="services.html#shape-red">Shape RED</a></li>
-          </ul>
+        <!-- Logo Side -->
+        <div class="footer-logo-wrapper">
+          <img src="assets/LOgo.png" alt="RED Studios Logo" class="footer-logo">
         </div>
-
-        <!-- Connect -->
-        <div class="footer-col">
-          <h3 class="footer-heading">CONNECT</h3>
-          <ul class="footer-links">
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
-            <li><a href="tel:+917676218729">+91 76762 18729</a></li>
-            <!-- PLACEHOLDER: Replace with real addresses once Chris confirms -->
-            <li>
-              <p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Socials -->
-        <div class="footer-col">
-          <h3 class="footer-heading">SOCIAL</h3>
-          <ul class="footer-links">
-            <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
-            <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
-          </ul>
-        </div>
-
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; <span id="year"></span> RDX Studios. All rights reserved.</p>
+        <p>&copy; <span id="year"></span> RED Studios. All rights reserved.</p>
       </div>
     </div>
   </footer>
@@ -1231,23 +1411,83 @@
   <style>
     /* Footer styles */
     .rdx-footer {
-      background-color: var(--rdx-black);
-      border-top: 1px solid var(--rdx-gray);
-      padding: var(--space-xl) 0 var(--space-lg);
+      position: relative;
+      background-color: transparent;
+      padding: 0 0 var(--space-xl) 0;
       margin-top: var(--space-2xl);
+      overflow: hidden;
+    }
+
+    .footer-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
     }
 
     .footer-container {
+      position: relative;
+      z-index: 1;
       max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 var(--space-lg);
+      margin: var(--space-2xl) auto 0;
+      padding: var(--space-2xl) var(--space-xl);
+      background: rgba(15, 15, 15, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer-layout {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-2xl);
+    }
+
+    .footer-links-wrapper {
+      flex: 1;
+      min-width: 300px;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: var(--space-lg);
       margin-bottom: var(--space-xl);
+    }
+
+    .footer-logo-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 250px;
+    }
+
+    .footer-logo {
+      width: 220px;
+      object-fit: contain;
+      opacity: 0.9;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    }
+
+    @media (max-width: 900px) {
+      .footer-layout {
+        flex-direction: column-reverse;
+      }
+
+      .footer-logo-wrapper {
+        justify-content: center;
+        margin-bottom: var(--space-xl);
+      }
     }
 
     .footer-heading {
@@ -1285,8 +1525,9 @@
 
     .footer-bottom {
       text-align: center;
-      border-top: 1px solid var(--rdx-gray);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: var(--space-md);
+      margin-top: var(--space-xl);
       color: var(--rdx-gray-light);
       font-size: 0.85rem;
     }

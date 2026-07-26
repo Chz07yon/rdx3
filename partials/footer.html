@@ -1,57 +1,68 @@
 <footer class="rdx-footer">
+  <!-- Background Pattern for Glassmorphism -->
+  <img src="assets/RED Wallpaper.png" alt="" class="footer-bg">
+  
   <div class="footer-container">
-    <div class="footer-grid">
+    <div class="footer-layout">
+      <!-- Links Side -->
+      <div class="footer-links-wrapper">
+        <div class="footer-grid">
+          
+          <!-- Navigation -->
+          <div class="footer-col">
+            <h3 class="footer-heading">NAVIGATION</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="studio.html">Studio</a></li>
+              <li><a href="team.html">Team</a></li>
+            </ul>
+          </div>
+
+          <!-- Studios -->
+          <div class="footer-col">
+            <h3 class="footer-heading">STUDIOS</h3>
+            <ul class="footer-links">
+              <li><a href="services.html#rdx-red">RDX RED</a></li>
+              <li><a href="services.html#code-red">Code RED</a></li>
+              <li><a href="services.html#shape-red">Shape RED</a></li>
+            </ul>
+          </div>
+
+          <!-- Connect -->
+          <div class="footer-col">
+            <h3 class="footer-heading">CONNECT</h3>
+            <ul class="footer-links">
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
+              <li><a href="tel:+917676218729">+91 76762 18729</a></li>
+              <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
+            </ul>
+          </div>
+          
+          <!-- Socials -->
+          <div class="footer-col">
+            <h3 class="footer-heading">SOCIAL</h3>
+            <ul class="footer-links">
+              <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+              <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+              <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
       
-      <!-- Navigation -->
-      <div class="footer-col">
-        <h3 class="footer-heading">NAVIGATION</h3>
-        <ul class="footer-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="journal.html">Journal</a></li>
-          <li><a href="team.html">Team</a></li>
-        </ul>
+      <!-- Logo Side -->
+      <div class="footer-logo-wrapper">
+        <img src="assets/LOgo.png" alt="RED Studios Logo" class="footer-logo">
       </div>
-
-      <!-- Studios -->
-      <div class="footer-col">
-        <h3 class="footer-heading">STUDIOS</h3>
-        <ul class="footer-links">
-          <li><a href="services.html#rdx-red">RDX RED</a></li>
-          <li><a href="services.html#code-red">Code RED</a></li>
-          <li><a href="services.html#shape-red">Shape RED</a></li>
-        </ul>
-      </div>
-
-      <!-- Connect -->
-      <div class="footer-col">
-        <h3 class="footer-heading">CONNECT</h3>
-        <ul class="footer-links">
-          <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
-          <li><a href="tel:+917676218729">+91 76762 18729</a></li>
-          <!-- PLACEHOLDER: Replace with real addresses once Chris confirms -->
-          <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
-        </ul>
-      </div>
-      
-      <!-- Socials -->
-      <div class="footer-col">
-        <h3 class="footer-heading">SOCIAL</h3>
-        <ul class="footer-links">
-          <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
-          <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
-        </ul>
-      </div>
-
     </div>
     
     <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> RDX Studios. All rights reserved.</p>
+      <p>&copy; <span id="year"></span> RED Studios. All rights reserved.</p>
     </div>
   </div>
 </footer>
@@ -59,21 +70,74 @@
 <style>
 /* Footer styles */
 .rdx-footer {
-  background-color: var(--rdx-black);
-  border-top: 1px solid var(--rdx-gray);
-  padding: var(--space-xl) 0 var(--space-lg);
+  position: relative;
+  background-color: transparent;
+  padding: 0 0 var(--space-xl) 0;
   margin-top: var(--space-2xl);
+  overflow: hidden;
+}
+.footer-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
 }
 .footer-container {
+  position: relative;
+  z-index: 1;
   max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
+  margin: var(--space-2xl) auto 0;
+  padding: var(--space-2xl) var(--space-xl);
+  background: rgba(15, 15, 15, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+.footer-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+}
+.footer-links-wrapper {
+  flex: 1;
+  min-width: 300px;
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: var(--space-lg);
   margin-bottom: var(--space-xl);
+}
+.footer-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 250px;
+}
+.footer-logo {
+  width: 220px;
+  object-fit: contain;
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+}
+@media (max-width: 900px) {
+  .footer-layout {
+    flex-direction: column-reverse;
+  }
+  .footer-logo-wrapper {
+    justify-content: center;
+    margin-bottom: var(--space-xl);
+  }
 }
 .footer-heading {
   font-family: var(--font-display);
@@ -103,8 +167,9 @@
 }
 .footer-bottom {
   text-align: center;
-  border-top: 1px solid var(--rdx-gray);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: var(--space-md);
+  margin-top: var(--space-xl);
   color: var(--rdx-gray-light);
   font-size: 0.85rem;
 }

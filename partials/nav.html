@@ -2,7 +2,11 @@
 <nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
     <div class="nav-logo">
-      <a href="index.html" aria-label="RDX Studios Home" class="logo-morph-container">
+      <a href="index.html" aria-label="RED Studios Home" class="logo-morph-container">
+        <svg class="nav-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
         <span class="logo-text logo-full">RDX RED</span>
         <span class="logo-text logo-icon">R</span>
       </a>
@@ -52,7 +56,7 @@
           </div>
         </div>
         <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
-        <a href="journal.html" class="nav-item">JOURNAL</a>
+        <a href="studio.html" class="nav-item">STUDIO</a>
         <a href="team.html" class="nav-item">TEAM</a>
       </div>
     </div>
@@ -96,13 +100,26 @@
 .logo-morph-container {
   position: relative;
   display: block;
-  width: 150px;
+  width: 190px;
   height: 42px;
+}
+.nav-home-icon {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -12px;
+  width: 24px;
+  height: 24px;
+  color: var(--rdx-red);
+  transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
+}
+.rdx-nav.is-scrolled .nav-home-icon {
+  color: var(--rdx-white);
 }
 .logo-text {
   position: absolute;
   top: 50%;
-  left: 0;
+  left: 34px;
   transform-origin: left center;
   font-family: var(--font-display);
   color: var(--rdx-white);
