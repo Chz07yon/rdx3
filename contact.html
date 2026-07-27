@@ -795,9 +795,9 @@
                 <div class="studio-details">
                   <h3 class="studio-name">Kokkada Main</h3>
                   <p class="studio-address">
-                    123 Creative Hub Street<br>
-                    Dakshina Kannada, KA<br><br>
-                    Hours: 9am - 7pm (Mon-Sat)
+                    Kokkada, Dakshina Kannada<br>
+                    Karnataka, India<br><br>
+                    Status: Currently Closed
                   </p>
                 </div>
               </div>
@@ -806,9 +806,9 @@
                 <div class="studio-details">
                   <h3 class="studio-name">Mysuru Suite</h3>
                   <p class="studio-address">
-                    456 Editorial Lane<br>
-                    Mysore City, KA<br><br>
-                    Hours: By Appointment Only
+                    Mysore City<br>
+                    Karnataka, India<br><br>
+                    Status: Open Online
                   </p>
                 </div>
               </div>
@@ -1088,27 +1088,24 @@
       const inquiryTypeInput = document.getElementById('inquiry_type');
       const serviceInterestSelect = document.getElementById('service_interest');
 
-      // Auto-select service based on URL parameter (?service=code-red)
+      // Check URL parameters for pre-filling service and studio
       const urlParams = new URLSearchParams(window.location.search);
+      
       const serviceParam = urlParams.get('service');
       if (serviceParam) {
-        const option = Array.from(serviceInterestSelect.options).find(opt => opt.value === serviceParam);
-        if (option) {
-          option.selected = true;
-        }
-      }
-
-      // Check URL parameters for pre-filling service interest
-      const urlParams = new URLSearchParams(window.location.search);
-      const serviceParam = urlParams.get('service');
-      if (serviceParam) {
-        const serviceSelect = document.getElementById('service_interest');
-        if (serviceSelect && serviceSelect.querySelector(`option[value="${serviceParam}"]`)) {
-          serviceSelect.value = serviceParam;
+        if (serviceInterestSelect && serviceInterestSelect.querySelector(`option[value="${serviceParam}"]`)) {
+          serviceInterestSelect.value = serviceParam;
           // Switch to general inquiry if max-red is selected since it's not a shoot
           if (serviceParam === 'max-red') {
             setFormType('inquiry');
           }
+        }
+      }
+
+      const studioParam = urlParams.get('studio');
+      if (studioParam) {
+        if (studioInput && studioInput.querySelector(`option[value="${studioParam}"]`)) {
+          studioInput.value = studioParam;
         }
       }
 
