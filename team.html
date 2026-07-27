@@ -30,7 +30,7 @@ Editorial Full-Page Redesign — No Modals
            ═══════════════════════════════════════════ */
 
     :root {
-      --accent-red: #E8001D;
+      --accent-red: var(--rdx-red);
     }
 
     /* Film Grain Overlay */
@@ -49,7 +49,7 @@ Editorial Full-Page Redesign — No Modals
       content: '';
       position: fixed;
       inset: 0;
-      background: radial-gradient(ellipse at center, transparent 50%, rgba(227, 6, 19, 0.06) 100%);
+      background: radial-gradient(ellipse at center, transparent 50%, rgba(var(--rdx-red-rgb), 0.06) 100%);
       pointer-events: none;
       z-index: 9997;
     }
@@ -93,7 +93,7 @@ Editorial Full-Page Redesign — No Modals
 
     .team-hero .hero-overlay {
       background: linear-gradient(to bottom, rgba(8, 8, 8, 0.3), #080808),
-        radial-gradient(circle at center, rgba(227, 6, 19, 0.04) 0%, transparent 60%);
+        radial-gradient(circle at center, rgba(var(--rdx-red-rgb), 0.04) 0%, transparent 60%);
     }
 
     /* Hero Title Splits */
@@ -343,7 +343,7 @@ Editorial Full-Page Redesign — No Modals
     .portrait-quote {
       margin-top: 2rem;
       font-size: 1.6rem;
-      font-style: italic;
+      font-family: var(--font-quote);
       color: var(--accent-red);
       line-height: 1.6;
       opacity: 0;
@@ -373,9 +373,9 @@ Editorial Full-Page Redesign — No Modals
     }
 
     .insta-pill:hover {
-      background: rgba(227, 6, 19, 0.15);
+      background: rgba(var(--rdx-red-rgb), 0.15);
       color: var(--accent-red);
-      box-shadow: 0 0 20px rgba(227, 6, 19, 0.2);
+      box-shadow: 0 0 20px rgba(var(--rdx-red-rgb), 0.2);
     }
 
     /* ─── RIGHT COLUMN — Content ─── */
@@ -389,7 +389,7 @@ Editorial Full-Page Redesign — No Modals
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-family: 'VFCFantomen', sans-serif;
+      font-family: var(--font-team);
       font-size: clamp(8rem, 18vw, 25rem);
       color: rgba(255, 255, 255, 0.03);
       white-space: nowrap;
@@ -418,7 +418,7 @@ Editorial Full-Page Redesign — No Modals
 
     /* Name */
     .member-name {
-      font-family: 'VFCFantomen', sans-serif;
+      font-family: var(--font-team);
       font-size: 6rem;
       color: #fff;
       line-height: 0.95;
@@ -474,7 +474,7 @@ Editorial Full-Page Redesign — No Modals
     .content-divider {
       width: 0;
       height: 2px;
-      background: linear-gradient(to right, var(--accent-red), rgba(227, 6, 19, 0.2));
+      background: linear-gradient(to right, var(--accent-red), rgba(var(--rdx-red-rgb), 0.2));
       margin-bottom: 2.5rem;
       transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
     }
@@ -561,8 +561,8 @@ Editorial Full-Page Redesign — No Modals
     .specialty-tag {
       display: inline-block;
       padding: 0.5rem 1.2rem;
-      background: rgba(227, 6, 19, 0.08);
-      border: 1px solid rgba(227, 6, 19, 0.3);
+      background: rgba(var(--rdx-red-rgb), 0.08);
+      border: 1px solid rgba(var(--rdx-red-rgb), 0.3);
       border-radius: 30px;
       color: var(--accent-red);
       font-family: 'Inter', sans-serif;
@@ -584,7 +584,7 @@ Editorial Full-Page Redesign — No Modals
     .specialty-tag:hover {
       background: var(--accent-red);
       color: #fff;
-      box-shadow: 0 4px 20px rgba(227, 6, 19, 0.3);
+      box-shadow: 0 4px 20px rgba(var(--rdx-red-rgb), 0.3);
     }
 
     /* Selected Works Strip */
@@ -611,7 +611,7 @@ Editorial Full-Page Redesign — No Modals
       overflow: hidden;
       position: relative;
       background: var(--bg-secondary);
-      border: 1px solid rgba(227, 6, 19, 0.15);
+      border: 1px solid rgba(var(--rdx-red-rgb), 0.15);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -622,8 +622,8 @@ Editorial Full-Page Redesign — No Modals
 
     .work-sample:hover {
       filter: grayscale(0%);
-      box-shadow: 0 4px 30px rgba(227, 6, 19, 0.25);
-      border-color: rgba(227, 6, 19, 0.4);
+      box-shadow: 0 4px 30px rgba(var(--rdx-red-rgb), 0.25);
+      border-color: rgba(var(--rdx-red-rgb), 0.4);
     }
 
     .work-sample img {
@@ -927,6 +927,7 @@ Editorial Full-Page Redesign — No Modals
       document.write('<style>#page-transition { display: none !important; }</style>');
     }
   </script>
+  <script>if(localStorage.getItem('max_red_auth')) document.documentElement.classList.add('is-decrypted');</script>
 </head>
 
 <body>
@@ -1529,7 +1530,7 @@ Editorial Full-Page Redesign — No Modals
     <!-- Roster End Separator -->
     <div class="roster-end-separator"
       style="margin: 4rem auto 2rem auto; text-align: center; position: relative; max-width: 800px; padding: 0 2rem;">
-      <hr style="border: none; border-top: 1px dashed rgba(227, 6, 19, 0.2); margin: 0;">
+      <hr style="border: none; border-top: 1px dashed rgba(var(--rdx-red-rgb), 0.2); margin: 0;">
       <span
         style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: var(--bg-primary, #0A0A0A); padding: 0 1rem; color: var(--text-muted); font-family: 'Inter', sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; white-space: nowrap;">End
         of Confirmed Roster</span>

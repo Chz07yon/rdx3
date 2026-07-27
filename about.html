@@ -449,6 +449,7 @@
       document.write('<style>#page-transition { display: none !important; }</style>');
     }
   </script>
+  <script>if (localStorage.getItem('max_red_auth')) document.documentElement.classList.add('is-decrypted');</script>
 </head>
 
 <body class="rdx-grain">
@@ -1182,7 +1183,7 @@
         style="font-family: var(--font-display); font-size: 3rem; color: var(--rdx-red); cursor: pointer; display: inline-block; padding: 1rem 3rem; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-sm); transition: all var(--transition-fast); user-select: none;"
         class="rdx-fade-up max-red-btn">MAX RED</h2>
       <p style="color: var(--rdx-gray-light); margin-top: 1rem; max-width: 500px; margin-left: auto; margin-right: auto;"
-        class="rdx-fade-up">Exclusive access portal.</p>
+        class="rdx-fade-up">Unlock The Full POTENTIAL.</p>
     </div>
   </section>
 
@@ -1304,7 +1305,7 @@
       const maxRedClose = document.querySelector('.max-red-close');
       const maxRedOverlay = document.querySelector('.max-red-modal-overlay');
       const maxRedForm = document.getElementById('max-red-form');
-      
+
       // Inject error message div into the form if it doesn't exist
       if (maxRedForm && !document.getElementById('max-red-error-msg')) {
         const errorDiv = document.createElement('div');
@@ -1332,7 +1333,7 @@
         maxRedClose.addEventListener('click', closeModal);
         maxRedOverlay.addEventListener('click', closeModal);
       }
-      
+
       if (maxRedForm) {
         maxRedForm.addEventListener('submit', (e) => {
           e.preventDefault();
@@ -1340,13 +1341,15 @@
           const pass = document.getElementById('max-password').value.trim();
           const creds = user + ":" + pass;
           const errorMsg = document.getElementById('max-red-error-msg');
-          
+
           const keyHash = CryptoJS.SHA256(creds).toString();
-          
+
           if (typeof MAX_RED_VAULT !== 'undefined' && MAX_RED_VAULT[keyHash]) {
             localStorage.setItem('max_red_auth', creds);
-            if(maxRedModal) maxRedModal.classList.remove('is-active');
-            
+            if (maxRedModal) maxRedModal.classList.remove('is-active');
+
+            // Wait for reload to trigger decrypted state
+
             // Black screen load animation
             const blackScreen = document.createElement('div');
             blackScreen.style.position = 'fixed';
@@ -1361,7 +1364,7 @@
             blackScreen.style.alignItems = 'center';
             blackScreen.style.opacity = '0';
             blackScreen.style.transition = 'opacity 2s ease';
-            
+
             const loadingText = document.createElement('div');
             loadingText.style.color = 'var(--rdx-red)';
             loadingText.style.fontFamily = 'var(--font-display)';
@@ -1370,11 +1373,11 @@
             loadingText.innerHTML = 'DECRYPTING...';
             blackScreen.appendChild(loadingText);
             document.body.appendChild(blackScreen);
-            
+
             setTimeout(() => { blackScreen.style.opacity = '1'; }, 10);
-            setTimeout(() => { 
+            setTimeout(() => {
               sessionStorage.setItem('skipShutter', 'true');
-              window.location.href = 'index.html'; 
+              window.location.href = 'index.html';
             }, 3000);
           } else {
             if (errorMsg) {
@@ -1455,7 +1458,8 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; <span id="year"></span> RED Studios. All rights reserved<span id="max-red-trigger" style="cursor:default; color:var(--rdx-gray-light);">.</span></p>
+        <p>&copy; <span id="year"></span> RED Studios. All rights reserved<span id="max-red-trigger"
+            style="cursor:default; color:var(--rdx-gray-light);">.</span></p>
       </div>
     </div>
   </footer>
@@ -1620,11 +1624,25 @@
   </script>
   <style>
     @keyframes shake {
-      0% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      50% { transform: translateX(5px); }
-      75% { transform: translateX(-5px); }
-      100% { transform: translateX(0); }
+      0% {
+        transform: translateX(0);
+      }
+
+      25% {
+        transform: translateX(-5px);
+      }
+
+      50% {
+        transform: translateX(5px);
+      }
+
+      75% {
+        transform: translateX(-5px);
+      }
+
+      100% {
+        transform: translateX(0);
+      }
     }
   </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>

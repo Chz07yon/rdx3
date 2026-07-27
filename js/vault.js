@@ -64,6 +64,9 @@ const MAX_RED_VAULT = {
         studioDenied.style.display = "none";
       }
       
+      // Apply decrypted typography state globally
+      document.body.classList.add('is-decrypted');
+      
       // Hide login portal on about page if already decrypted
       const maxRedSection = document.querySelector('.max-red-trigger-section');
       if (maxRedSection) {
@@ -95,7 +98,7 @@ const MAX_RED_VAULT = {
         // Sign-out SVG icon
         exitBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;display:block;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>';
         
-        exitBtn.style.color = '#E30613';
+        exitBtn.style.color = 'var(--rdx-red)';
         exitBtn.style.cursor = 'pointer';
         exitBtn.style.display = 'flex';
         exitBtn.style.alignItems = 'center';
@@ -103,7 +106,7 @@ const MAX_RED_VAULT = {
         exitBtn.style.transition = 'color 0.3s ease, transform 0.3s ease';
         
         exitBtn.onmouseover = () => { exitBtn.style.color = 'white'; exitBtn.style.transform = 'scale(1.1)'; };
-        exitBtn.onmouseout = () => { exitBtn.style.color = '#E30613'; exitBtn.style.transform = 'scale(1)'; };
+        exitBtn.onmouseout = () => { exitBtn.style.color = 'var(--rdx-red)'; exitBtn.style.transform = 'scale(1)'; };
         
         exitBtn.onclick = () => {
            localStorage.removeItem("max_red_auth");

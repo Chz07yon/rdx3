@@ -1,14 +1,65 @@
+/* Custom Fonts */
+@font-face {
+  font-family: 'VFCFantomen';
+  src: url('../assets/Font/Heading Font/For both encrypted & decrypted/vintage-fonts/VFCFantomen.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Moho';
+  src: url('../assets/Font/Sub heading font/For both encrypted & decrypted/Moho/moho-ot-condensed-bold.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'wegato';
+  src: url('../assets/Font/Team/decypted/wegato-font/wegato.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avinga';
+  src: url('../assets/Font/Team/encypted/Avinga Font/Avinga.otf') format('opentype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('../assets/Font/body font/For both encrypted & decrypted/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Zepplines';
+  src: url('../assets/Font/quote font/For both encrypted & decrypted/zepplines/Zepplines.otf') format('opentype');
+  font-display: swap;
+}
+
 :root {
-  /* Colors */
+  /* Core Colors */
   --rdx-black: #0A0A0A;
+  --rdx-white: #FFFFFF;
+  --rdx-bone: #F0EAD6;
+  
+  /* Assets */
+  
+  /* Red Palette */
   --rdx-red: #E8001D;
+  --rdx-red-rgb: 232, 0, 29;
   --rdx-red-hover: #B80017;
   --rdx-red-active: #FF1A35;
-  --rdx-white: #FFFFFF;
-  --rdx-gray: #333333;
-  --rdx-gray-light: #888888;
+
+  /* Cool Charcoal Shadows (Replaced Burgundy) */
+  --rdx-gray: #141414;
+  --rdx-gray-light: #404040;
+
+  /* Accents */
+  --rdx-gold: #D4AF37;
+  --rdx-cyan: #00F0FF;
+
+  /* Aliases */
   --rdx-bg: var(--rdx-black);
-  --rdx-text: var(--rdx-white);
+  --rdx-text: var(--rdx-bone);
 
   /* Spacing */
   --space-xs: 0.25rem;
@@ -18,17 +69,52 @@
   --space-xl: 4rem;
   --space-2xl: 8rem;
 
-  /* Typography */
-  --font-display: 'Bebas Neue', sans-serif;
+  /* Typography Variables (Constant) */
+  --font-heading: 'VFCFantomen', sans-serif;
+  --font-subheading: 'Moho', sans-serif;
   --font-body: 'JetBrains Mono', monospace;
+  --font-quote: 'Zepplines', sans-serif;
+
+  /* Typography Variables (Swapping) */
+  --font-team-encrypted: 'Avinga', sans-serif;
+  --font-team-decrypted: 'wegato', sans-serif;
+
+  /* Active Typography Tokens */
+  --font-display: var(--font-heading);
+  /* For backward compatibility and main headings */
+  --font-team: var(--font-team-encrypted);
 
   /* Border Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
   --radius-full: 9999px;
-  
+
   /* Transitions */
   --transition-fast: 200ms ease;
   --transition-normal: 400ms ease;
+}
+
+/* Decrypted State Overrides */
+html.is-decrypted, body.is-decrypted {
+  --font-team: var(--font-team-decrypted);
+
+  /* Electric Gold Glitch Palette Override (No Red) */
+  --rdx-red: #ffc900;
+  --rdx-red-rgb: 255, 201, 0;
+  --rdx-red-hover: #e6b500;
+  --rdx-red-active: #ffdb4d;
+}
+
+/* Dynamic Font Classes */
+.font-subheading {
+  font-family: var(--font-subheading) !important;
+}
+
+.font-team {
+  font-family: var(--font-team) !important;
+}
+
+.font-quote {
+  font-family: var(--font-quote) !important;
 }

@@ -146,6 +146,7 @@
       document.write('<style>#page-transition { display: none !important; }</style>');
     }
   </script>
+  <script>if(localStorage.getItem('max_red_auth')) document.documentElement.classList.add('is-decrypted');</script>
 </head>
 
 <body class="rdx-grain">
@@ -689,9 +690,20 @@
 
 
   <div id="max-red-studio-target">
-    <div id="max-red-access-denied" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 70vh; text-align: center;">
+    <div id="max-red-access-denied" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 70vh; text-align: center; padding-top: 150px; padding-bottom: 50px;">
       <h1 style="color: var(--rdx-red); font-family: var(--font-display); font-size: 4rem; text-shadow: 0 0 20px rgba(255,0,0,0.5);">ACCESS DENIED</h1>
-      <p style="color: var(--rdx-gray-light); margin-top: 1rem; max-width: 400px;">This sector is classified. Valid MAX RED credentials are required to view studio data.</p>
+      <div style="width: 60px; height: 2px; background: #ffc900; margin: 1.5rem 0; box-shadow: 0 0 15px rgba(255, 201, 0, 0.6); border-radius: 2px;"></div>
+      <p style="color: var(--rdx-gray-light); max-width: 400px; line-height: 1.5; margin-bottom: 3rem;">This sector is classified. Valid MAX RED credentials are required to view studio data.</p>
+      
+      <div style="display: flex; flex-direction: column; gap: 2rem; opacity: 0.8;">
+        <blockquote style="color: #ffc900 !important; font-family: var(--font-quote); font-style: normal; font-size: 1.6rem; letter-spacing: 0.05em; text-align: center;">
+          "The purest gold is forged in the deepest red."
+        </blockquote>
+        
+        <blockquote style="color: #ffc900 !important; font-family: var(--font-quote); font-style: normal; font-size: 1.6rem; letter-spacing: 0.05em; text-align: center;">
+          "We don't just capture light; we decrypt the shadows."
+        </blockquote>
+      </div>
     </div>
   </div>
 
