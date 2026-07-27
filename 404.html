@@ -47,6 +47,12 @@
       gap: var(--space-md);
     }
   </style>
+
+  <script>
+    if (sessionStorage.getItem('skipShutter') === 'true') {
+      document.write('<style>#page-transition { display: none !important; }</style>');
+    }
+  </script>
 </head>
 <body>
   <!-- NAV:START -->

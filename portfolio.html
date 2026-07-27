@@ -417,6 +417,12 @@
   <meta name="theme-color" content="#0A0A0A">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <script>
+    if (sessionStorage.getItem('skipShutter') === 'true') {
+      document.write('<style>#page-transition { display: none !important; }</style>');
+    }
+  </script>
 </head>
 
 <body class="rdx-grain">

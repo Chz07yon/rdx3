@@ -128,9 +128,18 @@ function initPageTransitions() {
   if (!transitionOverlay) return;
 
   // On page load, remove the active class to reveal page
-  setTimeout(() => {
+  if (sessionStorage.getItem('skipShutter') === 'true') {
+    transitionOverlay.style.transition = 'none';
     transitionOverlay.classList.remove('active');
-  }, 50);
+    sessionStorage.removeItem('skipShutter');
+    setTimeout(() => {
+      transitionOverlay.style.transition = '';
+    }, 100);
+  } else {
+    setTimeout(() => {
+      transitionOverlay.classList.remove('active');
+    }, 50);
+  }
 
   // Use event delegation on the document since partials are injected dynamically
   document.addEventListener('click', (e) => {

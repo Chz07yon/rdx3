@@ -443,6 +443,12 @@
   <meta name="theme-color" content="#0A0A0A">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <script>
+    if (sessionStorage.getItem('skipShutter') === 'true') {
+      document.write('<style>#page-transition { display: none !important; }</style>');
+    }
+  </script>
 </head>
 
 <body class="rdx-grain">
@@ -1130,29 +1136,7 @@
           <h2 class="founder-title">Chris Zeyon Pinto</h2>
           <div class="founder-role">FOUNDER & CREATIVE DIRECTOR</div>
           <div class="founder-bio">
-            <h3 style="font-family: var(--font-display); font-size: 2rem; color: var(--rdx-red); margin-bottom: 1rem;"
-              class="rdx-fade-up">The Architects</h3>
-            <div class="team-grid">
-              <div class="team-member rdx-fade-up" style="transition-delay: 100ms;">
-                <div class="team-image-wrapper">
-                  <div class="founder-quote-overlay" style="padding: var(--space-md);">
-                    <blockquote style="font-size: 1.3rem;">"Every frame is a painting waiting to be revealed."
-                    </blockquote>
-                  </div>
-                  <img src="assets/Cin(c).png" alt="Ciyana, RED Studios team member" class="founder-img" loading="lazy">
-                </div>
-                <div class="team-name">Ciyana</div>
-              </div>
-              <div class="team-member rdx-fade-up" style="transition-delay: 200ms;">
-                <div class="team-image-wrapper">
-                  <div class="founder-quote-overlay" style="padding: var(--space-md);">
-                    <blockquote style="font-size: 1.3rem;">"Patience. The best is yet to come."</blockquote>
-                  </div>
-                  <img src="assets/Tul(c).png" alt="Tulasi, RED Studios team member" class="founder-img" loading="lazy">
-                </div>
-                <div class="team-name">Tulasi</div>
-              </div>
-            </div>
+            <div id="max-red-about-target"></div>
             <div style="text-align: center;">
               <a href="team.html" class="btn btn-outline rdx-fade-up" style="margin-top: var(--space-md);">Meet the Full
                 Team</a>
@@ -1210,8 +1194,7 @@
       <h3
         style="font-family: var(--font-display); font-size: 2rem; color: var(--rdx-red); margin-bottom: 1.5rem; text-align: center;">
         MAX RED Access</h3>
-      <form id="max-red-form"
-        onsubmit="event.preventDefault(); alert('Authentication simulated. Connect to backend.');">
+      <form id="max-red-form">
         <div style="margin-bottom: 1rem;">
           <label
             style="display: block; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; color: var(--rdx-gray-light);"
@@ -1320,6 +1303,20 @@
       const maxRedModal = document.getElementById('max-red-modal');
       const maxRedClose = document.querySelector('.max-red-close');
       const maxRedOverlay = document.querySelector('.max-red-modal-overlay');
+      const maxRedForm = document.getElementById('max-red-form');
+      
+      // Inject error message div into the form if it doesn't exist
+      if (maxRedForm && !document.getElementById('max-red-error-msg')) {
+        const errorDiv = document.createElement('div');
+        errorDiv.id = 'max-red-error-msg';
+        errorDiv.style.color = 'red';
+        errorDiv.style.marginTop = '10px';
+        errorDiv.style.display = 'none';
+        errorDiv.style.fontWeight = 'bold';
+        errorDiv.style.textAlign = 'center';
+        errorDiv.innerText = 'ACCESS DENIED';
+        maxRedForm.appendChild(errorDiv);
+      }
 
       if (maxRedBtn && maxRedModal) {
         maxRedBtn.addEventListener('click', () => {
@@ -1328,10 +1325,65 @@
 
         const closeModal = () => {
           maxRedModal.classList.remove('is-active');
+          const errorMsg = document.getElementById('max-red-error-msg');
+          if (errorMsg) errorMsg.style.display = 'none';
         };
 
         maxRedClose.addEventListener('click', closeModal);
         maxRedOverlay.addEventListener('click', closeModal);
+      }
+      
+      if (maxRedForm) {
+        maxRedForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const user = document.getElementById('max-username').value.trim();
+          const pass = document.getElementById('max-password').value.trim();
+          const creds = user + ":" + pass;
+          const errorMsg = document.getElementById('max-red-error-msg');
+          
+          const keyHash = CryptoJS.SHA256(creds).toString();
+          
+          if (typeof MAX_RED_VAULT !== 'undefined' && MAX_RED_VAULT[keyHash]) {
+            localStorage.setItem('max_red_auth', creds);
+            if(maxRedModal) maxRedModal.classList.remove('is-active');
+            
+            // Black screen load animation
+            const blackScreen = document.createElement('div');
+            blackScreen.style.position = 'fixed';
+            blackScreen.style.top = '0';
+            blackScreen.style.left = '0';
+            blackScreen.style.width = '100vw';
+            blackScreen.style.height = '100vh';
+            blackScreen.style.backgroundColor = 'black';
+            blackScreen.style.zIndex = '999999';
+            blackScreen.style.display = 'flex';
+            blackScreen.style.justifyContent = 'center';
+            blackScreen.style.alignItems = 'center';
+            blackScreen.style.opacity = '0';
+            blackScreen.style.transition = 'opacity 2s ease';
+            
+            const loadingText = document.createElement('div');
+            loadingText.style.color = 'var(--rdx-red)';
+            loadingText.style.fontFamily = 'var(--font-display)';
+            loadingText.style.fontSize = '2rem';
+            loadingText.style.letterSpacing = '4px';
+            loadingText.innerHTML = 'DECRYPTING...';
+            blackScreen.appendChild(loadingText);
+            document.body.appendChild(blackScreen);
+            
+            setTimeout(() => { blackScreen.style.opacity = '1'; }, 10);
+            setTimeout(() => { 
+              sessionStorage.setItem('skipShutter', 'true');
+              window.location.href = 'index.html'; 
+            }, 3000);
+          } else {
+            if (errorMsg) {
+              errorMsg.style.display = 'block';
+              errorMsg.style.animation = 'none';
+              setTimeout(() => errorMsg.style.animation = 'shake 0.4s', 10);
+            }
+          }
+        });
       }
     });
   </script>
@@ -1403,7 +1455,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; <span id="year"></span> RED Studios. All rights reserved.</p>
+        <p>&copy; <span id="year"></span> RED Studios. All rights reserved<span id="max-red-trigger" style="cursor:default; color:var(--rdx-gray-light);">.</span></p>
       </div>
     </div>
   </footer>
@@ -1425,11 +1477,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.15;
+      opacity: 0.35;
       z-index: 0;
       pointer-events: none;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 60%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 60%, transparent 100%);
     }
 
     .footer-container {
@@ -1566,6 +1618,17 @@
       counters.forEach(counter => observer.observe(counter));
     });
   </script>
+  <style>
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="js/vault.js"></script>
 </body>
 
 </html>

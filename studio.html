@@ -140,6 +140,12 @@
   <meta name="theme-color" content="#0A0A0A">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <script>
+    if (sessionStorage.getItem('skipShutter') === 'true') {
+      document.write('<style>#page-transition { display: none !important; }</style>');
+    }
+  </script>
 </head>
 
 <body class="rdx-grain">
@@ -682,79 +688,12 @@
   <!-- NAV:END -->
 
 
-  <!-- Intro -->
-  <header class="studio-intro">
-    <img src="assets/redpatterns.png" alt="" class="studio-intro-bg">
-    <div class="container" style="position: relative; z-index: 1;">
-      <h1 class="studio-title rdx-fade-up">Studios</h1>
-      <p class="studio-subtitle rdx-fade-up" style="transition-delay:100ms;">
-        Where RDX RED's work actually happens.
-      </p>
+  <div id="max-red-studio-target">
+    <div id="max-red-access-denied" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 70vh; text-align: center;">
+      <h1 style="color: var(--rdx-red); font-family: var(--font-display); font-size: 4rem; text-shadow: 0 0 20px rgba(255,0,0,0.5);">ACCESS DENIED</h1>
+      <p style="color: var(--rdx-gray-light); margin-top: 1rem; max-width: 400px;">This sector is classified. Valid MAX RED credentials are required to view studio data.</p>
     </div>
-  </header>
-
-  <!-- Studios Section -->
-  <section id="main-content" class="studio-section">
-    <div class="container">
-
-      <!-- Kokkada Main -->
-      <div class="studio-block rdx-slide-in" style="position: relative;">
-        <img src="assets/Kokkada background.png" alt=""
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.15; z-index: 0; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);">
-        <div class="studio-image-col rdx-fade-up" style="position: relative; z-index: 1; transition-delay: 100ms;">
-          <img src="assets/Kokkada icon.png" alt="Kokkada Main Studio" loading="lazy" class="studio-feature-img">
-        </div>
-        <div class="studio-text-col" style="position: relative; z-index: 1;">
-          <h2 class="studio-name rdx-fade-up" style="transition-delay: 150ms;">Kokkada Main</h2>
-          <!-- CONFIRM: studio ambiance/specialty description -->
-          <p class="studio-desc rdx-fade-up" style="transition-delay: 200ms;">Where RDX RED began, and where the
-            majority of full-scale production still happens.
-            Kokkada Main is built for control — a space shaped around light rather than around furniture,
-            where every session starts from a blank, adjustable canvas instead of working around a room.
-            This is the studio for productions that need room to build: full lighting setups, extended shoots, and the
-            kind of unhurried creative process that a founding space allows.</p>
-
-          <div class="studio-info rdx-fade-up" style="transition-delay: 250ms;">
-            <!-- CONFIRM: exact street address + hours per studio -->
-            <p><strong>Location:</strong> Kokkada, Dakshina Kannada, Karnataka, India</p>
-            <p><strong>Status:</strong> Currently Closed </p>
-          </div>
-
-          <a href="contact.html?studio=kokkada" class="btn btn-primary rdx-fade-up"
-            style="transition-delay: 300ms; display: inline-block;">Book This Studio</a>
-        </div>
-      </div>
-
-      <!-- Mysuru Suite -->
-      <div class="studio-block reverse rdx-slide-in" style="transition-delay: 150ms; position: relative;">
-        <img src="assets/Mysuru back.png" alt=""
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.15; z-index: 0; pointer-events: none; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);">
-        <div class="studio-image-col rdx-fade-up" style="position: relative; z-index: 1; transition-delay: 100ms;">
-          <img src="assets/Mysuru Iocn.png" alt="Mysuru Suite" loading="lazy" class="studio-feature-img">
-        </div>
-        <div class="studio-text-col" style="position: relative; z-index: 1;">
-          <h2 class="studio-name rdx-fade-up" style="transition-delay: 150ms;">Mysuru Suite</h2>
-          <!-- CONFIRM: studio ambiance/specialty description -->
-          <p class="studio-desc rdx-fade-up" style="transition-delay: 200ms;">A tighter, more precise space built for
-            work that lives or dies on detail — portraits,
-            brand campaigns, and the kind of editorial output that needs a controlled environment without the scale of a
-            full production studio. Where Kokkada Main is built for range, Mysuru Suite is built for focus: fewer
-            variables, faster turnaround, and a setup tuned for close, deliberate work.
-          </p>
-
-          <div class="studio-info rdx-fade-up" style="transition-delay: 250ms;">
-            <!-- CONFIRM: exact street address + hours per studio -->
-            <p><strong>Location:</strong> Mysore City, Karnataka, India</p>
-            <p><strong>Status:</strong> Open Online </p>
-          </div>
-
-          <a href="contact.html?studio=mysuru" class="btn btn-primary rdx-fade-up"
-            style="transition-delay: 300ms; display: inline-block;">Book This Studio</a>
-        </div>
-      </div>
-
-    </div>
-  </section>
+  </div>
 
   <!-- FOOTER:START -->
   <footer class="rdx-footer">
@@ -845,11 +784,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.15;
+      opacity: 0.35;
       z-index: 0;
       pointer-events: none;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 60%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 60%, transparent 100%);
     }
 
     .footer-container {
@@ -956,6 +895,8 @@
 
 
   <script src="js/main.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="js/vault.js"></script>
 </body>
 
 </html>

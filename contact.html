@@ -19,6 +19,32 @@
     .contact-hero {
       padding: 160px 0 var(--space-xl);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .contact-intro-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      z-index: 0;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
+      animation: kenBurnsContact 15s infinite alternate linear;
+    }
+
+    @keyframes kenBurnsContact {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
     }
     .contact-title {
       font-size: clamp(3rem, 8vw, 6rem);
@@ -277,6 +303,12 @@
   <meta name="theme-color" content="#0A0A0A">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <script>
+    if (sessionStorage.getItem('skipShutter') === 'true') {
+      document.write('<style>#page-transition { display: none !important; }</style>');
+    }
+  </script>
 </head>
 <body class="rdx-grain">
   
@@ -759,7 +791,8 @@
 
   <!-- Intro -->
   <header class="contact-hero">
-    <div class="container">
+    <img src="assets/redpatterns.png" alt="" class="contact-intro-bg">
+    <div class="container" style="position: relative; z-index: 2;">
       <h1 class="contact-title rdx-fade-up">Ready to Create?</h1>
       <p class="contact-subtitle rdx-fade-up" style="transition-delay:100ms;">
         Let's build your next visual or digital legacy.
@@ -778,42 +811,9 @@
             <h2 class="info-heading">Direct Contact</h2>
             <p class="info-text">Email: <a href="mailto:ddxredx0703@gmail.com" class="info-link">ddxredx0703@gmail.com</a></p>
             <p class="info-text">Phone: <a href="tel:+917676218729" class="info-link">+91 76762 18729</a></p>
-            
-            <div class="social-links">
-              <a href="#" target="_blank" rel="noopener">Instagram</a>
-              <a href="#" target="_blank" rel="noopener">Twitter</a>
-              <a href="#" target="_blank" rel="noopener">LinkedIn</a>
-              <a href="#" target="_blank" rel="noopener">Behance</a>
-            </div>
           </div>
 
-          <div class="contact-info-block" style="margin-top: var(--space-2xl);">
-            <h2 class="info-heading">Our Studios</h2>
-            <div class="studios-panel">
-              <div class="studio-card">
-                <img src="assets/KOKKADA.png" alt="Interior of the Kokkada Main production studio" class="studio-img" loading="lazy">
-                <div class="studio-details">
-                  <h3 class="studio-name">Kokkada Main</h3>
-                  <p class="studio-address">
-                    Kokkada, Dakshina Kannada<br>
-                    Karnataka, India<br><br>
-                    Status: Currently Closed
-                  </p>
-                </div>
-              </div>
-              <div class="studio-card">
-                <img src="assets/MYSURU.png" alt="Interior of the Mysuru Suite editorial studio" class="studio-img" loading="lazy">
-                <div class="studio-details">
-                  <h3 class="studio-name">Mysuru Suite</h3>
-                  <p class="studio-address">
-                    Mysore City<br>
-                    Karnataka, India<br><br>
-                    Status: Open Online
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div id="max-red-contact-target"></div>
         </div>
 
         <!-- Right: Form -->
@@ -935,17 +935,6 @@
               <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
             </ul>
           </div>
-          
-          <!-- Socials -->
-          <div class="footer-col">
-            <h3 class="footer-heading">SOCIAL</h3>
-            <ul class="footer-links">
-              <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-              <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
-              <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-              <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
-            </ul>
-          </div>
         </div>
       </div>
       
@@ -977,11 +966,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.15;
+  opacity: 0.35;
   z-index: 0;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 60%, transparent 100%);
 }
 .footer-container {
   position: relative;
@@ -1172,5 +1161,7 @@
       });
     });
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="js/vault.js"></script>
 </body>
 </html>

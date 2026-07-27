@@ -419,6 +419,12 @@
     ]
   }
   </script>
+
+  <script>
+    if (sessionStorage.getItem('skipShutter') === 'true') {
+      document.write('<style>#page-transition { display: none !important; }</style>');
+    }
+  </script>
 </head>
 
 <body class="rdx-grain">
