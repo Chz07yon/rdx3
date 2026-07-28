@@ -1785,6 +1785,17 @@ Editorial Full-Page Redesign — No Modals
 
         if (name === 'Chris Z. Pinto' || name === 'Chris Zeyon Pinto') {
           displayName = 'Chris&nbsp;Z.<br>Pinto';
+          if (document.documentElement.classList.contains('is-decrypted') || document.body.classList.contains('is-decrypted')) {
+            imgSrc = 'assets/chr(BG).png';
+          }
+        } else if (name.toLowerCase().includes('ciyan')) {
+          if (document.documentElement.classList.contains('is-decrypted') || document.body.classList.contains('is-decrypted')) {
+            imgSrc = 'assets/Cin(BG).png';
+          }
+        } else if (name.toLowerCase().includes('tulasi')) {
+          if (document.documentElement.classList.contains('is-decrypted') || document.body.classList.contains('is-decrypted')) {
+            imgSrc = 'assets/Tul(BG).png';
+          }
         }
 
         // Build specialty tags
