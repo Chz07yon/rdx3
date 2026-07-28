@@ -26,13 +26,8 @@ const MAX_RED_VAULT = {
   function runDecryption() {
     // Check for credentials
     const credentials = localStorage.getItem("max_red_auth");
-    const studioDenied = document.getElementById("max-red-access-denied");
     
     if (!credentials) {
-      // If we are on studio.html and NOT logged in, show access denied
-      if (studioDenied) {
-        studioDenied.style.display = "flex";
-      }
       return; // No keycard, nothing to decrypt
     }
 
@@ -41,9 +36,8 @@ const MAX_RED_VAULT = {
       const payload = MAX_RED_VAULT[keyHash];
 
       if (!payload) {
-        // Invalid credentials found in storage (should theoretically never happen if auth succeeded)
+        // Invalid credentials found in storage
         localStorage.removeItem("max_red_auth");
-        if (studioDenied) studioDenied.style.display = "flex";
         return;
       }
 
@@ -59,11 +53,6 @@ const MAX_RED_VAULT = {
         }
       };
 
-      // Hide access denied on studio
-      if (studioDenied) {
-        studioDenied.style.display = "none";
-      }
-      
       // Apply decrypted typography state globally
       document.body.classList.add('is-decrypted');
       

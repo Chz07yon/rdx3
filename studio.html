@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/global.css">
   <style>
-    /* Intro */
+    /* ─── HERO ─── */
     .studio-intro {
       position: relative;
       overflow: hidden;
@@ -35,50 +35,118 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.75;
+      opacity: 0.65;
       z-index: 0;
       pointer-events: none;
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
       mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      animation: studioPan 18s ease-in-out infinite alternate;
+    }
+
+    @keyframes studioPan {
+      0%   { transform: scale(1.05) translateX(0); }
+      100% { transform: scale(1.12) translateX(-2%); }
+    }
+
+    .studio-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.4), rgba(10,10,10,0.1) 50%, rgba(10,10,10,0.7));
+      z-index: 1;
+    }
+
+    .studio-intro .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .studio-eyebrow {
+      font-family: var(--font-subheading);
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--rdx-red);
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
     }
 
     .studio-title {
       font-size: clamp(3rem, 8vw, 6rem);
       color: var(--rdx-white);
       margin-bottom: var(--space-sm);
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.35s forwards;
     }
 
     .studio-subtitle {
       color: var(--rdx-gray-light);
       font-size: 1.1rem;
+      max-width: 540px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.5s forwards;
     }
 
+    .studio-rule {
+      width: 0;
+      height: 1px;
+      background: var(--rdx-red);
+      margin: 1.5rem auto 0;
+      animation: drawRule 0.8s ease 0.9s forwards;
+    }
+
+    @keyframes drawRule { to { width: 100px; } }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── SECTIONS ─── */
     .studio-section {
       padding: var(--space-2xl) 0;
     }
 
+    .studio-section-label {
+      font-family: var(--font-subheading);
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--rdx-red);
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+
+    /* ─── STUDIO BLOCK ─── */
     .studio-block {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: var(--space-2xl);
-      align-items: center;
+      gap: 0;
+      align-items: stretch;
       margin-bottom: var(--space-2xl);
       background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: var(--radius-md);
       overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .studio-block.in-view {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .studio-block.reverse {
       direction: rtl;
     }
-
-    .studio-block.reverse>* {
+    .studio-block.reverse > * {
       direction: ltr;
     }
 
     @media (max-width: 900px) {
-
       .studio-block,
       .studio-block.reverse {
         grid-template-columns: 1fr;
@@ -87,51 +155,355 @@
     }
 
     .studio-image-col {
+      position: relative;
       width: 100%;
       height: 100%;
-      min-height: 400px;
+      min-height: 480px;
+      overflow: hidden;
     }
 
     .studio-feature-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .studio-block:hover .studio-feature-img {
+      transform: scale(1.04);
+    }
+
+    .studio-img-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: 1.5rem;
+      background: rgba(10,10,10,0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(var(--rdx-red-rgb), 0.4);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 1rem;
+      font-family: var(--font-subheading);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rdx-red);
     }
 
     .studio-text-col {
       padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .studio-index {
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: rgba(255,255,255,0.04);
+      line-height: 1;
+      margin-bottom: -1.5rem;
+      user-select: none;
     }
 
     .studio-name {
       font-family: var(--font-display);
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 4vw, 3rem);
       color: var(--rdx-white);
-      margin-bottom: var(--space-sm);
+      margin-bottom: 0.5rem;
+      line-height: 1;
+    }
+
+    .studio-location {
+      font-family: var(--font-subheading);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rdx-red);
+      margin-bottom: 1.5rem;
     }
 
     .studio-desc {
       color: var(--rdx-gray-light);
-      font-size: 1.1rem;
-      line-height: 1.6;
+      font-size: 1rem;
+      line-height: 1.8;
       margin-bottom: var(--space-lg);
     }
 
-    .studio-info {
+    .studio-features {
+      list-style: none;
       margin-bottom: var(--space-lg);
-      padding: var(--space-md);
-      background: rgba(0, 0, 0, 0.4);
-      border-radius: var(--radius-sm);
-      border-left: 2px solid var(--rdx-red);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
-    .studio-info p {
+    .studio-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       color: var(--rdx-gray-light);
-      margin-bottom: 4px;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
     }
 
-    .studio-info p:last-child {
-      margin-bottom: 0;
+    .studio-features li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rdx-red);
+    }
+
+    .studio-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      background: var(--rdx-red);
+      color: var(--rdx-white);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-subheading);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+      align-self: flex-start;
+    }
+
+    .studio-cta:hover {
+      background: var(--rdx-red-hover);
+      transform: translateY(-2px);
+    }
+
+    /* ─── BOOKING BANNER ─── */
+    .booking-banner {
+      margin: var(--space-2xl) 0;
+      padding: var(--space-xl);
+      background: rgba(var(--rdx-red-rgb), 0.06);
+      border: 1px solid rgba(var(--rdx-red-rgb), 0.2);
+      border-radius: var(--radius-md);
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .booking-banner.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .booking-banner h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--rdx-white);
+      margin-bottom: 0.75rem;
+    }
+
+    .booking-banner p {
+      color: var(--rdx-gray-light);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .booking-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 2rem;
+      border: 1px solid rgba(var(--rdx-red-rgb), 0.4);
+      color: var(--rdx-white);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-subheading);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--rdx-red);
+      background: rgba(var(--rdx-red-rgb), 0.08);
+    }
+
+    /* ─── VAULT EASTER EGG TRIGGER ─── */
+    #vault-easter-egg {
+      position: fixed;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      width: 32px;
+      height: 32px;
+      opacity: 0.2;
+      cursor: pointer;
+      z-index: 200;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      color: var(--rdx-red);
+    }
+
+    #vault-easter-egg:hover {
+      opacity: 0.6;
+      transform: scale(1.15);
+    }
+
+    #vault-easter-egg svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* ─── VAULT MODAL ─── */
+    #vault-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.35s ease, visibility 0.35s;
+    }
+
+    #vault-modal-overlay.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .vault-modal-box {
+      background: rgba(10,10,10,0.95);
+      border: 1px solid rgba(var(--rdx-red-rgb), 0.3);
+      border-radius: var(--radius-md);
+      padding: 3rem;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      position: relative;
+      transform: scale(0.95) translateY(10px);
+      transition: transform 0.35s ease;
+    }
+
+    #vault-modal-overlay.is-open .vault-modal-box {
+      transform: scale(1) translateY(0);
+    }
+
+    .vault-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.4);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: color 0.2s;
+      padding: 0.25rem;
+    }
+
+    .vault-modal-close:hover { color: var(--rdx-white); }
+
+    .vault-modal-icon {
+      color: var(--rdx-red);
+      margin-bottom: 1rem;
+    }
+
+    .vault-modal-icon svg {
+      width: 40px;
+      height: 40px;
+    }
+
+    .vault-modal-box h2 {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--rdx-white);
+      margin-bottom: 0.5rem;
+    }
+
+    .vault-modal-box p {
+      color: var(--rdx-gray-light);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .vault-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .vault-input-group label {
+      font-family: var(--font-subheading);
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rdx-red);
+    }
+
+    .vault-input-group input {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      color: var(--rdx-white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .vault-input-group input:focus {
+      border-color: var(--rdx-red);
+    }
+
+    #vault-modal-submit {
+      width: 100%;
+      padding: 0.9rem;
+      background: var(--rdx-red);
+      color: var(--rdx-white);
+      border: none;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-subheading);
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    #vault-modal-submit:hover { background: var(--rdx-red-hover); }
+
+    #vault-modal-error {
+      color: #ff4444;
+      font-size: 0.8rem;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    /* ─── CLASSIFIED BONUS SECTION (visible only when decrypted) ─── */
+    #max-red-studio-target {
+      display: none;
+    }
+
+    html.is-decrypted #max-red-studio-target {
+      display: block;
     }
   </style>
 
@@ -261,7 +633,6 @@
       padding: 0 var(--space-lg);
     }
 
-    /* Logo Morph */
     .logo-morph-container {
       position: relative;
       display: block;
@@ -296,41 +667,15 @@
       line-height: 1;
       transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
       margin-top: -18px;
-      /* vertical alignment adjustment */
     }
 
-    .logo-full {
-      opacity: 1;
-      transform: scale(1);
-    }
+    .logo-full { opacity: 1; transform: scale(1); }
+    .logo-icon { opacity: 0; transform: scale(0.8); color: var(--rdx-red); }
+    .rdx-nav.is-scrolled .logo-full { opacity: 0; transform: scale(1.1); }
+    .rdx-nav.is-scrolled .logo-icon { opacity: 1; transform: scale(1); }
 
-    .logo-icon {
-      opacity: 0;
-      transform: scale(0.8);
-      color: var(--rdx-red);
-      /* Style the R differently if desired, or keep white */
-    }
-
-    .rdx-nav.is-scrolled .logo-full {
-      opacity: 0;
-      transform: scale(1.1);
-    }
-
-    .rdx-nav.is-scrolled .logo-icon {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: var(--space-xl);
-      align-items: center;
-    }
-
-    .nav-group {
-      display: flex;
-      gap: var(--space-lg);
-    }
+    .nav-links { display: flex; gap: var(--space-xl); align-items: center; }
+    .nav-group { display: flex; gap: var(--space-lg); }
 
     .nav-item {
       font-family: var(--font-body);
@@ -340,16 +685,8 @@
       text-transform: uppercase;
     }
 
-    .nav-item:hover {
-      color: var(--rdx-red);
-    }
-
-    /* Focus-visible for keyboard accessibility */
-    .nav-item:focus-visible,
-    .btn-primary:focus-visible {
-      outline: 2px solid var(--rdx-red);
-      outline-offset: 4px;
-    }
+    .nav-item:hover { color: var(--rdx-red); }
+    .nav-item:focus-visible, .btn-primary:focus-visible { outline: 2px solid var(--rdx-red); outline-offset: 4px; }
 
     .btn-primary {
       background-color: var(--rdx-red);
@@ -362,11 +699,8 @@
       transition: background-color var(--transition-fast);
     }
 
-    .btn-primary:hover {
-      background-color: var(--rdx-red-hover);
-    }
+    .btn-primary:hover { background-color: var(--rdx-red-hover); }
 
-    /* Hamburger */
     .nav-hamburger {
       display: none;
       flex-direction: column;
@@ -386,246 +720,84 @@
       transition: transform var(--transition-fast), opacity var(--transition-fast);
     }
 
-    .nav-hamburger.is-open .hamburger-line:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
+    .nav-hamburger.is-open .hamburger-line:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.is-open .hamburger-line:nth-child(2) { opacity: 0; }
+    .nav-hamburger.is-open .hamburger-line:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-    .nav-hamburger.is-open .hamburger-line:nth-child(2) {
-      opacity: 0;
-    }
-
-    .nav-hamburger.is-open .hamburger-line:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Mobile breakpoint */
     @media (max-width: 900px) {
-      .nav-hamburger {
-        display: flex;
-      }
-
+      .nav-hamburger { display: flex; }
       .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 280px;
-        height: 100vh;
-        background: var(--rdx-black);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 100px var(--space-lg) var(--space-lg);
-        gap: var(--space-lg);
-        transform: translateX(100%);
-        transition: transform var(--transition-normal);
-        box-shadow: -4px 0 30px rgba(0, 0, 0, 0.5);
-        z-index: 105;
+        position: fixed; top: 0; right: 0; width: 280px; height: 100vh;
+        background: var(--rdx-black); flex-direction: column; align-items: flex-start;
+        padding: 100px var(--space-lg) var(--space-lg); gap: var(--space-lg);
+        transform: translateX(100%); transition: transform var(--transition-normal);
+        box-shadow: -4px 0 30px rgba(0,0,0,0.5); z-index: 105;
       }
-
-      .nav-links.is-open {
-        transform: translateX(0);
-      }
-
-      .nav-group {
-        flex-direction: column;
-        gap: var(--space-md);
-      }
-
-      .nav-cta {
-        display: none;
-        /* CTA duplicated inside mobile menu if needed */
-      }
+      .nav-links.is-open { transform: translateX(0); }
+      .nav-group { flex-direction: column; gap: var(--space-md); }
+      .nav-cta { display: none; }
     }
 
-    /* Mega Menu Styles */
-    .mega-menu-wrapper {
-      position: static;
-      /* Important so that the fixed child works reliably on all browsers, though fixed is relative to viewport anyway */
-    }
-
+    .mega-menu-wrapper { position: static; }
     .services-trigger {
-      background: none;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      color: var(--rdx-white);
-      padding: 0;
-      font-family: inherit;
-      font-size: inherit;
-      font-weight: inherit;
-      letter-spacing: inherit;
+      background: none; border: none; cursor: pointer; display: flex;
+      align-items: center; gap: 4px; color: var(--rdx-white); padding: 0;
+      font-family: inherit; font-size: inherit; font-weight: inherit; letter-spacing: inherit;
     }
-
-    .dropdown-icon {
-      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-
-    .services-trigger[aria-expanded="true"] .dropdown-icon {
-      transform: rotate(180deg);
-    }
+    .dropdown-icon { transition: transform 0.3s cubic-bezier(0.25,1,0.5,1); }
+    .services-trigger[aria-expanded="true"] .dropdown-icon { transform: rotate(180deg); }
 
     .mega-menu-panel {
-      position: fixed;
-      top: 50%;
-      left: 50%;
+      position: fixed; top: 50%; left: 50%;
       transform: translate(-50%, -45%) scale(0.98);
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: var(--radius-sm);
-      padding: var(--space-xl);
-      width: max-content;
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
+      background: rgba(10,10,10,0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius-sm);
+      padding: var(--space-xl); width: max-content;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05);
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.4s cubic-bezier(0.25,1,0.5,1), transform 0.4s cubic-bezier(0.25,1,0.5,1), visibility 0.4s;
       z-index: 1000;
     }
-
-    .mega-menu-panel.is-open {
-      opacity: 1;
-      visibility: visible;
-      transform: translate(-50%, -50%) scale(1);
-    }
-
-    .mega-menu-grid {
-      display: flex;
-      flex-direction: row;
-      gap: var(--space-lg);
-    }
-
+    .mega-menu-panel.is-open { opacity: 1; visibility: visible; transform: translate(-50%,-50%) scale(1); }
+    .mega-menu-grid { display: flex; flex-direction: row; gap: var(--space-lg); }
     .mega-card {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-md);
-      padding: var(--space-lg);
-      border-radius: var(--radius-sm);
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid transparent;
-      width: 280px;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-      position: relative;
-      overflow: hidden;
+      display: flex; flex-direction: column; gap: var(--space-md); padding: var(--space-lg);
+      border-radius: var(--radius-sm); background: rgba(255,255,255,0.02); border: 1px solid transparent;
+      width: 280px; text-decoration: none; transition: all 0.3s cubic-bezier(0.25,1,0.5,1);
+      position: relative; overflow: hidden;
     }
-
     .mega-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: var(--rdx-red-active);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
+      background: var(--rdx-red-active); transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.25,1,0.5,1);
     }
-
-    .mega-card:hover,
-    .mega-card:focus-visible {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.1);
-      transform: translateY(-4px);
-      outline: none;
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    .mega-card:hover, .mega-card:focus-visible {
+      background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);
+      transform: translateY(-4px); outline: none; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
     }
-
-    .mega-card:hover::after,
-    .mega-card:focus-visible::after {
-      transform: scaleX(1);
-    }
-
+    .mega-card:hover::after, .mega-card:focus-visible::after { transform: scaleX(1); }
     .mega-card-icon {
-      width: 48px !important;
-      height: 48px !important;
-      object-fit: contain;
-      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s;
-      filter: brightness(0.8);
+      width: 48px !important; height: 48px !important; object-fit: contain;
+      transition: transform 0.4s cubic-bezier(0.25,1,0.5,1), filter 0.4s; filter: brightness(0.8);
     }
-
-    .mega-card:hover .mega-card-icon {
-      transform: scale(1.1);
-      filter: brightness(1);
-    }
-
-    .mega-card-content {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
+    .mega-card:hover .mega-card-icon { transform: scale(1.1); filter: brightness(1); }
+    .mega-card-content { display: flex; flex-direction: column; gap: 8px; }
     .mega-card-title {
-      font-family: var(--font-display);
-      font-size: 1.75rem;
-      color: var(--rdx-white);
-      line-height: 1;
-      transition: color 0.3s ease;
+      font-family: var(--font-display); font-size: 1.75rem; color: var(--rdx-white);
+      line-height: 1; transition: color 0.3s ease;
     }
-
-    .mega-card:hover .mega-card-title {
-      color: var(--rdx-red-active);
-    }
-
-    .mega-card-desc {
-      font-size: 0.9rem;
-      color: var(--rdx-gray-light);
-      line-height: 1.4;
-    }
-
-
+    .mega-card:hover .mega-card-title { color: var(--rdx-red-active); }
+    .mega-card-desc { font-size: 0.9rem; color: var(--rdx-gray-light); line-height: 1.4; }
 
     @media (max-width: 900px) {
-      .mega-menu-panel {
-        position: static;
-        transform: none;
-        box-shadow: none;
-        border: none;
-        background: transparent;
-        backdrop-filter: none;
-        padding: var(--space-sm) 0 0 0;
-        width: 100%;
-        display: none;
-      }
-
-      .mega-menu-panel.is-open {
-        transform: none;
-        display: block;
-      }
-
-      .mega-menu-grid {
-        flex-direction: column;
-      }
-
-      .mega-card {
-        width: 100%;
-        flex-direction: row;
-        align-items: center;
-        padding: var(--space-sm);
-        background: transparent;
-        border: none;
-      }
-
-      .mega-card:hover {
-        transform: none;
-        background: rgba(255, 255, 255, 0.05);
-        box-shadow: none;
-      }
-
-      .mega-card-desc {
-        display: none;
-      }
-
-      .mega-card-icon {
-        width: 32px !important;
-        height: 32px !important;
-      }
-
-      .mega-card-title {
-        font-size: 1.25rem;
-      }
+      .mega-menu-panel { position: static; transform: none; box-shadow: none; border: none; background: transparent; backdrop-filter: none; padding: var(--space-sm) 0 0 0; width: 100%; display: none; }
+      .mega-menu-panel.is-open { transform: none; display: block; }
+      .mega-menu-grid { flex-direction: column; }
+      .mega-card { width: 100%; flex-direction: row; align-items: center; padding: var(--space-sm); background: transparent; border: none; }
+      .mega-card:hover { transform: none; background: rgba(255,255,255,0.05); box-shadow: none; }
+      .mega-card-desc { display: none; }
+      .mega-card-icon { width: 32px !important; height: 32px !important; }
+      .mega-card-title { font-size: 1.25rem; }
     }
   </style>
 
@@ -633,79 +805,136 @@
     (function () {
       const trigger = document.querySelector('.services-trigger');
       const panel = document.getElementById('services-mega-menu');
-
       if (!trigger || !panel) return;
-
-      const closeMenu = () => {
-        trigger.setAttribute('aria-expanded', 'false');
-        panel.classList.remove('is-open');
-        document.body.classList.remove('mega-menu-active');
-      };
-
-      const openMenu = () => {
-        trigger.setAttribute('aria-expanded', 'true');
-        panel.classList.add('is-open');
-        if (window.innerWidth > 900) document.body.classList.add('mega-menu-active');
-      };
-
-      trigger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-        if (isExpanded) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-
-      document.addEventListener('click', (e) => {
-        if (!trigger.contains(e.target) && !panel.contains(e.target)) {
-          closeMenu();
-        }
-      });
-
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          closeMenu();
-        }
-      });
-
-      const links = panel.querySelectorAll('a');
-      links.forEach(link => {
-        link.addEventListener('click', () => {
-          closeMenu();
-          // Also close mobile hamburger menu if open
-          const hamburger = document.getElementById('nav-hamburger');
-          const navLinks = document.getElementById('nav-links');
-          if (hamburger && navLinks) {
-            hamburger.classList.remove('is-open');
-            hamburger.setAttribute('aria-expanded', 'false');
-            navLinks.classList.remove('is-open');
-          }
-        });
-      });
+      const closeMenu = () => { trigger.setAttribute('aria-expanded','false'); panel.classList.remove('is-open'); document.body.classList.remove('mega-menu-active'); };
+      const openMenu = () => { trigger.setAttribute('aria-expanded','true'); panel.classList.add('is-open'); if (window.innerWidth > 900) document.body.classList.add('mega-menu-active'); };
+      trigger.addEventListener('click', (e) => { e.stopPropagation(); trigger.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu(); });
+      document.addEventListener('click', (e) => { if (!trigger.contains(e.target) && !panel.contains(e.target)) closeMenu(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+      panel.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { closeMenu(); const h = document.getElementById('nav-hamburger'); const n = document.getElementById('nav-links'); if (h && n) { h.classList.remove('is-open'); h.setAttribute('aria-expanded','false'); n.classList.remove('is-open'); } }));
     })();
   </script>
   <!-- NAV:END -->
 
 
-  <div id="max-red-studio-target">
-    <div id="max-red-access-denied" style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 70vh; text-align: center; padding-top: 150px; padding-bottom: 50px;">
-      <h1 style="color: var(--rdx-red); font-family: var(--font-display); font-size: 4rem; text-shadow: 0 0 20px rgba(255,0,0,0.5);">ACCESS DENIED</h1>
-      <div style="width: 60px; height: 2px; background: #ffc900; margin: 1.5rem 0; box-shadow: 0 0 15px rgba(255, 201, 0, 0.6); border-radius: 2px;"></div>
-      <p style="color: var(--rdx-gray-light); max-width: 400px; line-height: 1.5; margin-bottom: 3rem;">This sector is classified. Valid MAX RED credentials are required to view studio data.</p>
-      
-      <div style="display: flex; flex-direction: column; gap: 2rem; opacity: 0.8;">
-        <blockquote style="color: #ffc900 !important; font-family: var(--font-quote); font-style: normal; font-size: 1.6rem; letter-spacing: 0.05em; text-align: center;">
-          "The purest gold is forged in the deepest red."
-        </blockquote>
-        
-        <blockquote style="color: #ffc900 !important; font-family: var(--font-quote); font-style: normal; font-size: 1.6rem; letter-spacing: 0.05em; text-align: center;">
-          "We don't just capture light; we decrypt the shadows."
-        </blockquote>
+  <!-- ═══ HERO ═══ -->
+  <section id="main-content" class="studio-intro">
+    <img src="assets/Kokkada background.png" alt="" class="studio-intro-bg">
+    <div class="studio-hero-overlay"></div>
+    <div class="container">
+      <p class="studio-eyebrow">Our Spaces</p>
+      <h1 class="studio-title">The Studios</h1>
+      <p class="studio-subtitle">Two purpose-built creative spaces. One in the hills, one in the city — both built for work that matters.</p>
+      <div class="studio-rule"></div>
+    </div>
+  </section>
+
+
+  <!-- ═══ STUDIO BLOCKS ═══ -->
+  <section class="studio-section">
+    <div class="container">
+      <p class="studio-section-label">01 — 02 &nbsp;/&nbsp; Active Locations</p>
+
+      <!-- Kokkada Main -->
+      <div class="studio-block rdx-fade-up" id="studio-kokkada">
+        <div class="studio-image-col">
+          <img src="assets/KOKKADA.png" alt="Kokkada Main Studio" class="studio-feature-img">
+          <span class="studio-img-badge">Primary Base</span>
+        </div>
+        <div class="studio-text-col">
+          <div class="studio-index">01</div>
+          <h2 class="studio-name">Kokkada Main</h2>
+          <p class="studio-location">Dakshina Kannada, Karnataka</p>
+          <p class="studio-desc">
+            The founding studio — where RED Studio was born. Nestled in the lush Western Ghats, Kokkada Main is our primary creative base for cinematic photography, videography, and post-production work. The natural landscape, dramatic light, and the raw energy of the region make it the perfect backdrop for editorial, fashion, and narrative visual storytelling.
+          </p>
+          <ul class="studio-features">
+            <li>Full cinematic production setup</li>
+            <li>Natural backdrop — Western Ghats terrain</li>
+            <li>Post-production &amp; color grading suite</li>
+            <li>Fashion, editorial &amp; portrait sessions</li>
+          </ul>
+          <a href="contact.html?studio=kokkada" class="studio-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.91 6.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Book Kokkada
+          </a>
+        </div>
       </div>
+
+      <!-- Mysuru Suite -->
+      <div class="studio-block reverse rdx-fade-up" id="studio-mysuru">
+        <div class="studio-image-col">
+          <img src="assets/MYSURU.png" alt="Mysuru Suite Studio" class="studio-feature-img">
+          <span class="studio-img-badge">City Suite</span>
+        </div>
+        <div class="studio-text-col">
+          <div class="studio-index">02</div>
+          <h2 class="studio-name">Mysuru Suite</h2>
+          <p class="studio-location">Mysore City, Karnataka</p>
+          <p class="studio-desc">
+            Our urban creative hub in the heritage city of Mysore. The Mysuru Suite is a controlled studio environment designed for product shoots, corporate portraits, brand campaigns, and digital content creation. Its city-center accessibility makes it the preferred space for client-facing sessions and commercial projects across Mysore and beyond.
+          </p>
+          <ul class="studio-features">
+            <li>Controlled studio lighting rigs</li>
+            <li>Product photography &amp; brand shoots</li>
+            <li>Corporate portraits &amp; headshots</li>
+            <li>Social content &amp; reel production</li>
+          </ul>
+          <a href="contact.html?studio=mysuru" class="studio-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.91 6.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            Book Mysuru
+          </a>
+        </div>
+      </div>
+
+      <!-- Booking Banner -->
+      <div class="booking-banner rdx-fade-up" id="studio-booking-banner">
+        <h2>Start Your Project</h2>
+        <p>Both studios are available for bookings. Reach out and let's build something worth remembering.</p>
+        <div class="booking-btns">
+          <a href="contact.html" class="studio-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Get in Touch
+          </a>
+          <a href="services.html" class="btn-outline">View Services</a>
+        </div>
+      </div>
+
+      <!-- Vault-injected classified bonus content (only shows when decrypted) -->
+      <div id="max-red-studio-target"></div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══ VAULT EASTER EGG TRIGGER ═══ -->
+  <button id="vault-easter-egg" aria-label="Classified access" title="">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+    </svg>
+  </button>
+
+  <!-- ═══ VAULT MODAL ═══ -->
+  <div id="vault-modal-overlay" role="dialog" aria-modal="true" aria-label="Classified access">
+    <div class="vault-modal-box">
+      <button class="vault-modal-close" id="vault-modal-close-btn" aria-label="Close">&times;</button>
+      <div class="vault-modal-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+        </svg>
+      </div>
+      <h2>MAX RED</h2>
+      <p>Classified sector. Valid credentials required.</p>
+      <div class="vault-input-group">
+        <label for="vault-modal-input">Access Key</label>
+        <input type="password" id="vault-modal-input" placeholder="Enter credentials" autocomplete="off">
+      </div>
+      <button id="vault-modal-submit">Authenticate</button>
+      <div id="vault-modal-error">Invalid credentials. Access denied.</div>
     </div>
   </div>
+
 
   <!-- FOOTER:START -->
   <footer class="rdx-footer">
@@ -735,9 +964,8 @@
             <div class="footer-col">
               <h3 class="footer-heading">STUDIOS</h3>
               <ul class="footer-links">
-                <li><a href="services.html#rdx-red">RDX RED</a></li>
-                <li><a href="services.html#code-red">Code RED</a></li>
-                <li><a href="services.html#shape-red">Shape RED</a></li>
+                <li><a href="#studio-kokkada">Kokkada Main</a></li>
+                <li><a href="#studio-mysuru">Mysuru Suite</a></li>
               </ul>
             </div>
 
@@ -791,122 +1019,114 @@
 
     .footer-bg {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.35;
-      z-index: 0;
-      pointer-events: none;
+      top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.35; z-index: 0; pointer-events: none;
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 60%, transparent 100%);
       mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 60%, transparent 100%);
     }
 
     .footer-container {
-      position: relative;
-      z-index: 1;
-      max-width: 1400px;
-      margin: var(--space-2xl) auto 0;
-      padding: var(--space-2xl) var(--space-xl);
-      background: rgba(15, 15, 15, 0.4);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      position: relative; z-index: 1; max-width: 1400px; margin: var(--space-2xl) auto 0;
+      padding: var(--space-2xl) var(--space-xl); background: rgba(15,15,15,0.4);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255,255,255,0.05); border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     }
 
-    .footer-layout {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: var(--space-2xl);
-    }
-
-    .footer-links-wrapper {
-      flex: 1;
-      min-width: 300px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: var(--space-lg);
-      margin-bottom: var(--space-xl);
-    }
-
-    .footer-logo-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      min-width: 250px;
-    }
-
-    .footer-logo {
-      width: 220px;
-      object-fit: contain;
-      opacity: 0.9;
-      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
-    }
+    .footer-layout { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2xl); }
+    .footer-links-wrapper { flex: 1; min-width: 300px; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-xl); }
+    .footer-logo-wrapper { display: flex; align-items: center; justify-content: flex-end; min-width: 250px; }
+    .footer-logo { width: 220px; object-fit: contain; opacity: 0.9; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5)); }
 
     @media (max-width: 900px) {
-      .footer-layout {
-        flex-direction: column-reverse;
-      }
-
-      .footer-logo-wrapper {
-        justify-content: center;
-        margin-bottom: var(--space-xl);
-      }
+      .footer-layout { flex-direction: column-reverse; }
+      .footer-logo-wrapper { justify-content: center; margin-bottom: var(--space-xl); }
     }
 
-    .footer-heading {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      color: var(--rdx-white);
-      margin-bottom: var(--space-md);
-      letter-spacing: 0.05em;
-    }
-
-    .footer-links {
-      list-style: none;
-    }
-
-    .footer-links li {
-      margin-bottom: var(--space-sm);
-    }
-
-    .footer-links a,
-    .footer-text {
-      font-family: var(--font-body);
-      color: var(--rdx-gray-light);
-      font-size: 0.95rem;
-      transition: color var(--transition-fast);
-    }
-
-    .footer-links a:hover {
-      color: var(--rdx-red);
-    }
-
-    .footer-links a:focus-visible {
-      outline: 2px solid var(--rdx-red);
-      outline-offset: 2px;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: var(--space-md);
-      margin-top: var(--space-xl);
-      color: var(--rdx-gray-light);
-      font-size: 0.85rem;
-    }
+    .footer-heading { font-family: var(--font-display); font-size: 1.5rem; color: var(--rdx-white); margin-bottom: var(--space-md); letter-spacing: 0.05em; }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: var(--space-sm); }
+    .footer-links a, .footer-text { font-family: var(--font-body); color: var(--rdx-gray-light); font-size: 0.95rem; transition: color var(--transition-fast); }
+    .footer-links a:hover { color: var(--rdx-red); }
+    .footer-links a:focus-visible { outline: 2px solid var(--rdx-red); outline-offset: 2px; }
+    .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: var(--space-md); margin-top: var(--space-xl); color: var(--rdx-gray-light); font-size: 0.85rem; }
   </style>
   <!-- FOOTER:END -->
 
 
   <script src="js/main.js" defer></script>
+
+  <script>
+    /* ─── SCROLL ANIMATION ─── */
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.studio-block, .booking-banner').forEach(el => observer.observe(el));
+    });
+
+    /* ─── VAULT MODAL EASTER EGG ─── */
+    (function() {
+      const trigger = document.getElementById('vault-easter-egg');
+      const overlay = document.getElementById('vault-modal-overlay');
+      const closeBtn = document.getElementById('vault-modal-close-btn');
+      const submitBtn = document.getElementById('vault-modal-submit');
+      const input = document.getElementById('vault-modal-input');
+      const errorEl = document.getElementById('vault-modal-error');
+
+      function openModal() {
+        overlay.classList.add('is-open');
+        setTimeout(() => input.focus(), 100);
+      }
+
+      function closeModal() {
+        overlay.classList.remove('is-open');
+        input.value = '';
+        errorEl.style.display = 'none';
+      }
+
+      trigger.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeModal(); });
+
+      function attemptLogin() {
+        const key = input.value.trim();
+        if (!key) return;
+        // Store credential — vault.js will validate via SHA256 against known hashes
+        localStorage.setItem('max_red_auth', key);
+        // Reload to let vault.js run full decryption
+        const blackScreen = document.createElement('div');
+        blackScreen.style.cssText = 'position:fixed;inset:0;background:#000;z-index:999999;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 1s ease';
+        const txt = document.createElement('div');
+        txt.style.cssText = 'color:var(--rdx-red);font-family:var(--font-display);font-size:1.5rem;letter-spacing:4px';
+        txt.textContent = 'AUTHENTICATING...';
+        blackScreen.appendChild(txt);
+        document.body.appendChild(blackScreen);
+        setTimeout(() => blackScreen.style.opacity = '1', 10);
+        setTimeout(() => {
+          sessionStorage.setItem('skipShutter', 'true');
+          window.location.reload();
+        }, 1500);
+      }
+
+      submitBtn.addEventListener('click', attemptLogin);
+      input.addEventListener('keydown', (e) => { if (e.key === 'Enter') attemptLogin(); });
+
+      // After reload — if decryption failed (no payload match), show error and clear
+      if (localStorage.getItem('max_red_auth') && !document.documentElement.classList.contains('is-decrypted')) {
+        // vault.js will remove invalid credentials; show nothing here — vault.js handles it
+      }
+    })();
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <script src="js/vault.js"></script>
 </body>

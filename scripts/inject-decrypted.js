@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const dir = 'c:\\Extacuricular\\Antigravity\\RDX3.0';
-const scriptToInject = `<script>if(localStorage.getItem('max_red_auth')) document.documentElement.classList.add('is-decrypted');</script>`;
+const dir = process.cwd();
+const scriptToInject = `<script>if(localStorage.getItem('max_red_auth')) document.documentElement.classList.add('is-decrypted');<\/script>`;
 
 function processDirectory(directory) {
   const files = fs.readdirSync(directory);
@@ -12,17 +12,17 @@ function processDirectory(directory) {
       if (file !== 'node_modules' && file !== '.git') {
         processDirectory(fullPath);
       }
-    } else if (fullPath.endsWith('.html')) {
+    } else if (file.endsWith('.html')) {
       let content = fs.readFileSync(fullPath, 'utf8');
-      
-      // Remove it if it's already there to avoid duplicates
+
+      // Remove if already present to avoid duplicates
       content = content.replace(/<script>if\(localStorage\.getItem\('max_red_auth'\)\) document\.documentElement\.classList\.add\('is-decrypted'\);<\/script>/g, '');
-      
+
       // Inject before </head>
       if (content.includes('</head>')) {
         content = content.replace('</head>', `  ${scriptToInject}\n</head>`);
         fs.writeFileSync(fullPath, content, 'utf8');
-        console.log(`Updated ${file}`);
+        console.log(`Updated: ${path.relative(dir, fullPath)}`);
       }
     }
   }

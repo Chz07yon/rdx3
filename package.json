@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npx serve .",
-    "sync-partials": "node scripts/inline-partials.cjs"
+    "sync-partials": "node scripts/inline-partials.cjs",
+    "inject-decrypted": "node scripts/inject-decrypted.js"
   },
   "keywords": [],
   "author": "",
