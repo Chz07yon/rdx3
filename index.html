@@ -41,17 +41,33 @@
       justify-content: center;
     }
 
+    .hero::before,
     .hero::after {
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background-image: url('assets/redpatterns.png');
       background-size: cover;
       background-position: center;
       /* Slow Ken-Burns */
       animation: kenBurnsZoom 20s infinite alternate linear;
-      z-index: 1;
+    }
+
+    .hero::before {
+      background-image: url('assets/goldpatterns.png');
+      z-index: 0;
       opacity: 0.75;
+    }
+
+    .hero::after {
+      background-image: url('assets/redpatterns.png');
+      z-index: 1;
+      opacity: 1;
+      animation: kenBurnsZoom 20s infinite alternate linear, containmentBreathing 10s infinite;
+    }
+
+    @keyframes containmentBreathing {
+      0%, 75%, 85%, 100% { opacity: 1; }
+      80% { opacity: 0.4; }
     }
 
     @keyframes kenBurnsZoom {

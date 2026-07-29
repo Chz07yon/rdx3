@@ -51,8 +51,18 @@
     }
 
     .portfolio-subtitle {
-      color: var(--rdx-gray-light);
+      color: #000000;
+      font-weight: 500;
+      transition: color 1.5s ease;
       font-size: 1.1rem;
+    }
+
+    html.is-decrypted .portfolio-title {
+      color: #1a1a1a;
+    }
+
+    html.is-decrypted .portfolio-subtitle {
+      color: var(--rdx-gray-light);
     }
 
     /* ────────────────────────────────
@@ -1535,6 +1545,8 @@
       if (next >= 0 && next < visibleCards.length) openLightbox(next);
     }
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="js/vault.js"></script>
 </body>
 
 </html>

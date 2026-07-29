@@ -39,8 +39,8 @@
       opacity: 0.75;
       z-index: 0;
       pointer-events: none;
-      -webkit-mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
-      mask-image: linear-gradient(to bottom, black 0%, black 60%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
     }
 
     .services-intro .container {
@@ -61,8 +61,18 @@
       max-width: 800px;
       margin: 0 auto;
       font-size: 1.15rem;
-      color: var(--rdx-gray-light);
+      color: #000000;
+      font-weight: 500;
+      transition: color 1.5s ease;
       line-height: 1.6;
+    }
+
+    html.is-decrypted .intro-title {
+      color: #1a1a1a;
+    }
+
+    html.is-decrypted .intro-desc {
+      color: var(--rdx-gray-light);
     }
 
     @media (max-width: 768px) {
@@ -90,7 +100,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.15;
+      opacity: 0.05;
       z-index: 0;
       pointer-events: none;
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
@@ -1213,6 +1223,8 @@
 
 
   <script src="js/main.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script src="js/vault.js"></script>
 </body>
 
 </html>

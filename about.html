@@ -18,25 +18,35 @@
   <style>
     /* Origin Story Section */
     .origin-section {
-      padding: 180px 0 var(--space-2xl);
+      padding: 240px 0 160px;
       text-align: center;
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: relative;
       overflow: hidden;
     }
 
-    .origin-anchor {
+    .origin-section::before {
+      content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      opacity: 0.15;
+      background-image: url('assets/redpatterns.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.75;
       z-index: 0;
       pointer-events: none;
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
       mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+    }
+
+    html.is-decrypted .origin-section::before {
+      background-image: url('assets/goldpatterns.png');
     }
 
     .origin-content {
@@ -47,10 +57,15 @@
     }
 
     .origin-title {
-      font-size: 5rem;
-      color: var(--rdx-red);
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      color: var(--rdx-white);
+      transition: color 1.5s ease;
       margin-bottom: var(--space-md);
       line-height: 1.1;
+    }
+
+    html.is-decrypted .origin-title {
+      color: #1a1a1a;
     }
 
     @media (max-width: 768px) {
@@ -61,8 +76,14 @@
 
     .origin-text {
       font-size: 1.1rem;
-      color: var(--rdx-gray-light);
+      color: #000000;
+      font-weight: 500;
+      transition: color 1.5s ease;
       margin-bottom: var(--space-lg);
+    }
+
+    html.is-decrypted .origin-text {
+      color: var(--rdx-gray-light);
     }
 
     /* Founder Section */
@@ -994,9 +1015,6 @@
 
   <!-- Origin Story Section -->
   <section id="main-content" class="origin-section">
-    <img src="assets/redpatterns.png"
-      alt="The three-wing identity of RED Studios showing the Code RED, RDX RED, and Shape RED divisions"
-      class="origin-anchor">
     <div class="container">
       <div class="origin-content">
         <h1 class="origin-title rdx-fade-up" style="transition-delay: 100ms;">Our Architecture of Creativity</h1>

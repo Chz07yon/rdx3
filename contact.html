@@ -21,7 +21,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      min-height: 50vh;
+      min-height: 60vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -37,8 +37,8 @@
       opacity: 0.75;
       z-index: 0;
       pointer-events: none;
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 70%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
       animation: kenBurnsContact 15s infinite alternate linear;
     }
 
@@ -52,8 +52,18 @@
       margin-bottom: var(--space-sm);
     }
     .contact-subtitle {
-      color: var(--rdx-gray-light);
+      color: #000000;
+      font-weight: 500;
+      transition: color 1.5s ease;
       font-size: 1.1rem;
+    }
+
+    html.is-decrypted .contact-title {
+      color: #1a1a1a;
+    }
+
+    html.is-decrypted .contact-subtitle {
+      color: var(--rdx-gray-light);
     }
 
     .contact-section {

@@ -45,10 +45,14 @@ const MAX_RED_VAULT = {
       const injectHtml = (targetId, cipherText) => {
         const target = document.getElementById(targetId);
         if (target && cipherText) {
-          const bytes = CryptoJS.AES.decrypt(cipherText, credentials);
-          const rawHtml = bytes.toString(CryptoJS.enc.Utf8);
-          if (rawHtml) {
-            target.innerHTML = rawHtml;
+          try {
+            const bytes = CryptoJS.AES.decrypt(cipherText, credentials);
+            const rawHtml = bytes.toString(CryptoJS.enc.Utf8);
+            if (rawHtml) {
+              target.innerHTML = rawHtml;
+            }
+          } catch (e) {
+            console.warn(`[MAX RED] Failed to decrypt target: ${targetId}`, e);
           }
         }
       };

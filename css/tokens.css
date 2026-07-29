@@ -1,37 +1,42 @@
 /* Custom Fonts */
 @font-face {
+  font-family: 'Ethero';
+  src: url('../assets/Font/ethero.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
   font-family: 'VFCFantomen';
-  src: url('../assets/Font/Heading Font/For both encrypted & decrypted/vintage-fonts/VFCFantomen.ttf') format('truetype');
+  src: url('../assets/Font/VFCFantomen.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Moho';
-  src: url('../assets/Font/Sub heading font/For both encrypted & decrypted/Moho/moho-ot-condensed-bold.otf') format('opentype');
+  src: url('../assets/Font/moho-ot-condensed-bold.otf') format('opentype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'wegato';
-  src: url('../assets/Font/Team/decypted/wegato-font/wegato.otf') format('opentype');
+  src: url('../assets/Font/wegato.otf') format('opentype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Avinga';
-  src: url('../assets/Font/Team/encypted/Avinga Font/Avinga.otf') format('opentype');
+  src: url('../assets/Font/Avinga.otf') format('opentype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('../assets/Font/body font/For both encrypted & decrypted/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+  src: url('../assets/Font/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Zepplines';
-  src: url('../assets/Font/quote font/For both encrypted & decrypted/zepplines/Zepplines.otf') format('opentype');
+  src: url('../assets/Font/Zepplines.otf') format('opentype');
   font-display: swap;
 }
 

@@ -2,14 +2,14 @@
 
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('../assets/Font/JetBrains_Mono/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
+  src: url('../assets/Font/JetBrainsMono-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'JetBrains Mono';
-  src: url('../assets/Font/JetBrains_Mono/JetBrainsMono-Italic-VariableFont_wght.ttf') format('truetype');
+  src: url('../assets/Font/JetBrainsMono-Italic-VariableFont_wght.ttf') format('truetype');
   font-weight: 100 900;
   font-style: italic;
 }
@@ -107,6 +107,24 @@ body.is-decrypted #page-transition {
 html.is-decrypted img[src*="redpatterns.png"] {
   content: url('../assets/goldpatterns.png') !important;
 }
+
+html.is-decrypted img[src*="chr(BR).png"],
+html.is-decrypted img[src*="chr%28BR%29.png"] {
+  content: url('../assets/chr(BG).png') !important;
+}
+
+html.is-decrypted img[src*="Cin(BR).png"],
+html.is-decrypted img[src*="Cin%28BR%29.png"],
+html.is-decrypted img[src*="Ciyana.png"] {
+  content: url('../assets/Cin(BG).png') !important;
+}
+
+html.is-decrypted img[src*="Tul(BR).png"],
+html.is-decrypted img[src*="Tul%28BR%29.png"],
+html.is-decrypted img[src*="data:image/svg"] {
+  content: url('../assets/Tul(BG).png') !important;
+}
+
 html.is-decrypted .hero::after {
   background-image: url('../assets/goldpatterns.png') !important;
 }
@@ -238,4 +256,9 @@ blockquote, .testimonial-quote, q {
   top: 0;
   outline: 3px solid var(--rdx-white);
   outline-offset: 2px;
+}
+
+/* Decrypted state footer logo */
+html.is-decrypted .footer-logo {
+  content: url('../assets/RED LOGO 2.png') !important;
 }
