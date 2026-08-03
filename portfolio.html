@@ -433,486 +433,547 @@
       document.write('<style>#page-transition { display: none !important; }</style>');
     }
   </script>
-  <script>if(localStorage.getItem('max_red_auth')) document.documentElement.classList.add('is-decrypted');</script>
+  <script>if (localStorage.getItem('max_red_auth')) document.documentElement.classList.add('is-decrypted');</script>
 </head>
 
 <body class="rdx-grain">
 
   <div id="page-transition" class="active"></div>
   <!-- NAV:START -->
-<a href="#main-content" class="skip-link">Skip to main content</a>
-<nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
-  <div class="nav-container">
-    <div class="nav-logo">
-      <a href="index.html" aria-label="RED Studios Home" class="logo-morph-container">
-        <svg class="nav-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-          <polyline points="9 22 9 12 15 12 15 22"></polyline>
-        </svg>
-        <span class="logo-text logo-full">RDX RED</span>
-        <span class="logo-text logo-icon">R</span>
-      </a>
-    </div>
-    
-    <!-- Hamburger Toggle (mobile) -->
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-      <span class="hamburger-line"></span>
-    </button>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <nav id="site-nav" class="rdx-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <a href="index.html" aria-label="RED Studios Home" class="logo-morph-container">
+          <svg class="nav-home-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+          <span class="logo-text logo-full">RDX RED</span>
+          <span class="logo-text logo-icon">R</span>
+        </a>
+      </div>
 
-    <div class="nav-links" id="nav-links">
-      <div class="nav-group secondary">
-        <a href="about.html" class="nav-item">ABOUT</a>
-        
-        <div class="mega-menu-wrapper">
-          <button class="nav-item services-trigger" aria-expanded="false" aria-controls="services-mega-menu">
-            SERVICES
-            <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          
-          <div id="services-mega-menu" class="mega-menu-panel">
-            <div class="mega-menu-grid">
-              <a href="services.html#rdx-red" class="mega-card">
-                <img src="assets/Wattermark.png" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
-                <div class="mega-card-content">
-                  <h4 class="mega-card-title">RDX RED</h4>
-                  <p class="mega-card-desc">The premium photography and videography wing.</p>
-                </div>
-              </a>
-              <a href="services.html#code-red" class="mega-card">
-                <img src="assets/Icon CRED.png" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
-                <div class="mega-card-content">
-                  <h4 class="mega-card-title">Code RED</h4>
-                  <p class="mega-card-desc">The digital engineering wing.</p>
-                </div>
-              </a>
-              <a href="services.html#shape-red" class="mega-card">
-                <img src="assets/Icon SRED.png" alt="" class="mega-card-icon" style="width:32px;height:32px;object-fit:contain;">
-                <div class="mega-card-content">
-                  <h4 class="mega-card-title">Shape RED</h4>
-                  <p class="mega-card-desc">The creative digital wing forging impactful digital media.</p>
-                </div>
-              </a>
+      <!-- Hamburger Toggle (mobile) -->
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <div class="nav-group secondary">
+          <a href="about.html" class="nav-item">ABOUT</a>
+
+          <div class="mega-menu-wrapper">
+            <button class="nav-item services-trigger" aria-expanded="false" aria-controls="services-mega-menu">
+              SERVICES
+              <svg class="dropdown-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <div id="services-mega-menu" class="mega-menu-panel">
+              <div class="mega-menu-grid">
+                <a href="services.html#rdx-red" class="mega-card">
+                  <img src="assets/Wattermark.png" alt="" class="mega-card-icon"
+                    style="width:32px;height:32px;object-fit:contain;">
+                  <div class="mega-card-content">
+                    <h4 class="mega-card-title">RDX RED</h4>
+                    <p class="mega-card-desc">The premium photography and videography wing.</p>
+                  </div>
+                </a>
+                <a href="services.html#code-red" class="mega-card">
+                  <img src="assets/Icon CRED.png" alt="" class="mega-card-icon"
+                    style="width:32px;height:32px;object-fit:contain;">
+                  <div class="mega-card-content">
+                    <h4 class="mega-card-title">Code RED</h4>
+                    <p class="mega-card-desc">The digital engineering wing.</p>
+                  </div>
+                </a>
+                <a href="services.html#shape-red" class="mega-card">
+                  <img src="assets/Icon SRED.png" alt="" class="mega-card-icon"
+                    style="width:32px;height:32px;object-fit:contain;">
+                  <div class="mega-card-content">
+                    <h4 class="mega-card-title">Shape RED</h4>
+                    <p class="mega-card-desc">The creative digital wing forging impactful digital media.</p>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
+          <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
+          <a href="studio.html" class="nav-item">STUDIO</a>
+          <a href="team.html" class="nav-item">TEAM</a>
         </div>
-        <a href="portfolio.html" class="nav-item">PORTFOLIO</a>
-        <a href="studio.html" class="nav-item">STUDIO</a>
-        <a href="team.html" class="nav-item">TEAM</a>
+      </div>
+
+      <div class="nav-cta">
+        <a href="contact.html" class="btn btn-primary">CONNECT</a>
       </div>
     </div>
-    
-    <div class="nav-cta">
-      <a href="contact.html" class="btn btn-primary">CONNECT</a>
-    </div>
-  </div>
-</nav>
+  </nav>
 
-<style>
-/* Nav Styles */
-.rdx-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  background-color: transparent;
-  transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out;
-  padding: var(--space-xl) 0;
-}
-.rdx-nav.is-scrolled {
-  background-color: #0A0A0A;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-  padding: var(--space-md) 0;
-}
-.rdx-nav.is-hidden {
-  transform: translateY(-100%);
-}
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
-}
+  <style>
+    /* Nav Styles */
+    .rdx-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background-color: transparent;
+      transition: transform 0.4s ease-in-out, background-color 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out;
+      padding: var(--space-xl) 0;
+    }
 
-/* Logo Morph */
-.logo-morph-container {
-  position: relative;
-  display: block;
-  width: 190px;
-  height: 42px;
-}
-.nav-home-icon {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  margin-top: -12px;
-  width: 24px;
-  height: 24px;
-  color: var(--rdx-red);
-  transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
-}
-.rdx-nav.is-scrolled .nav-home-icon {
-  color: var(--rdx-white);
-}
-.logo-text {
-  position: absolute;
-  top: 50%;
-  left: 34px;
-  transform-origin: left center;
-  font-family: var(--font-display);
-  color: var(--rdx-white);
-  font-size: 2.5rem;
-  letter-spacing: 0.05em;
-  line-height: 1;
-  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-  margin-top: -18px; /* vertical alignment adjustment */
-}
-.logo-full {
-  opacity: 1;
-  transform: scale(1);
-}
-.logo-icon {
-  opacity: 0;
-  transform: scale(0.8);
-  color: var(--rdx-red); /* Style the R differently if desired, or keep white */
-}
-.rdx-nav.is-scrolled .logo-full {
-  opacity: 0;
-  transform: scale(1.1);
-}
-.rdx-nav.is-scrolled .logo-icon {
-  opacity: 1;
-  transform: scale(1);
-}
-.nav-links {
-  display: flex;
-  gap: var(--space-xl);
-  align-items: center;
-}
-.nav-group {
-  display: flex;
-  gap: var(--space-lg);
-}
-.nav-item {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-.nav-item:hover {
-  color: var(--rdx-red);
-}
-/* Focus-visible for keyboard accessibility */
-.nav-item:focus-visible,
-.btn-primary:focus-visible {
-  outline: 2px solid var(--rdx-red);
-  outline-offset: 4px;
-}
-.btn-primary {
-  background-color: var(--rdx-red);
-  color: var(--rdx-white);
-  padding: 0.85rem 1.75rem;
-  border-radius: var(--radius-sm);
-  font-size: 1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: background-color var(--transition-fast);
-}
-.btn-primary:hover {
-  background-color: var(--rdx-red-hover);
-}
+    .rdx-nav.is-scrolled {
+      background-color: #0A0A0A;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      padding: var(--space-md) 0;
+    }
 
-/* Hamburger */
-.nav-hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  z-index: 110;
-}
-.hamburger-line {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background-color: var(--rdx-white);
-  transition: transform var(--transition-fast), opacity var(--transition-fast);
-}
-.nav-hamburger.is-open .hamburger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.nav-hamburger.is-open .hamburger-line:nth-child(2) {
-  opacity: 0;
-}
-.nav-hamburger.is-open .hamburger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
+    .rdx-nav.is-hidden {
+      transform: translateY(-100%);
+    }
 
-/* Mobile breakpoint */
-@media (max-width: 900px) {
-  .nav-hamburger {
-    display: flex;
-  }
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 280px;
-    height: 100vh;
-    background: var(--rdx-black);
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 100px var(--space-lg) var(--space-lg);
-    gap: var(--space-lg);
-    transform: translateX(100%);
-    transition: transform var(--transition-normal);
-    box-shadow: -4px 0 30px rgba(0,0,0,0.5);
-    z-index: 105;
-  }
-  .nav-links.is-open {
-    transform: translateX(0);
-  }
-  .nav-group {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-  .nav-cta {
-    display: none; /* CTA duplicated inside mobile menu if needed */
-  }
-}
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+    }
 
-/* Mega Menu Styles */
-.mega-menu-wrapper {
-  position: static; /* Important so that the fixed child works reliably on all browsers, though fixed is relative to viewport anyway */
-}
-.services-trigger {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: var(--rdx-white);
-  padding: 0;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  letter-spacing: inherit;
-}
-.dropdown-icon {
-  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.services-trigger[aria-expanded="true"] .dropdown-icon {
-  transform: rotate(180deg);
-}
-.mega-menu-panel {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -45%) scale(0.98);
-  background: rgba(10, 10, 10, 0.85);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-sm);
-  padding: var(--space-xl);
-  width: max-content;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255,255,255,0.05);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
-  z-index: 1000;
-}
-.mega-menu-panel.is-open {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, -50%) scale(1);
-}
-.mega-menu-grid {
-  display: flex;
-  flex-direction: row;
-  gap: var(--space-lg);
-}
-.mega-card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  padding: var(--space-lg);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid transparent;
-  width: 280px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  position: relative;
-  overflow: hidden;
-}
-.mega-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--rdx-red-active);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-}
-.mega-card:hover, .mega-card:focus-visible {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
-  transform: translateY(-4px);
-  outline: none;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-}
-.mega-card:hover::after, .mega-card:focus-visible::after {
-  transform: scaleX(1);
-}
-.mega-card-icon {
-  width: 48px !important;
-  height: 48px !important;
-  object-fit: contain;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s;
-  filter: brightness(0.8);
-}
-.mega-card:hover .mega-card-icon {
-  transform: scale(1.1);
-  filter: brightness(1);
-}
-.mega-card-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.mega-card-title {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  color: var(--rdx-white);
-  line-height: 1;
-  transition: color 0.3s ease;
-}
-.mega-card:hover .mega-card-title {
-  color: var(--rdx-red-active);
-}
-.mega-card-desc {
-  font-size: 0.9rem;
-  color: var(--rdx-gray-light);
-  line-height: 1.4;
-}
+    /* Logo Morph */
+    .logo-morph-container {
+      position: relative;
+      display: block;
+      width: 190px;
+      height: 42px;
+    }
 
+    .nav-home-icon {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -12px;
+      width: 24px;
+      height: 24px;
+      color: var(--rdx-red);
+      transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
+    }
 
+    .rdx-nav.is-scrolled .nav-home-icon {
+      color: var(--rdx-white);
+    }
 
-@media (max-width: 900px) {
-  .mega-menu-panel {
-    position: static;
-    transform: none;
-    box-shadow: none;
-    border: none;
-    background: transparent;
-    backdrop-filter: none;
-    padding: var(--space-sm) 0 0 0;
-    width: 100%;
-    display: none;
-  }
-  .mega-menu-panel.is-open {
-    transform: none;
-    display: block;
-  }
-  .mega-menu-grid {
-    flex-direction: column;
-  }
-  .mega-card {
-    width: 100%;
-    flex-direction: row;
-    align-items: center;
-    padding: var(--space-sm);
-    background: transparent;
-    border: none;
-  }
-  .mega-card:hover {
-    transform: none;
-    background: rgba(255,255,255,0.05);
-    box-shadow: none;
-  }
-  .mega-card-desc {
-    display: none;
-  }
-  .mega-card-icon {
-    width: 32px !important;
-    height: 32px !important;
-  }
-  .mega-card-title {
-    font-size: 1.25rem;
-  }
-}
-</style>
+    .logo-text {
+      position: absolute;
+      top: 50%;
+      left: 34px;
+      transform-origin: left center;
+      font-family: var(--font-display);
+      color: var(--rdx-white);
+      font-size: 2.5rem;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+      margin-top: -18px;
+      /* vertical alignment adjustment */
+    }
 
-<script>
-  (function() {
-    const trigger = document.querySelector('.services-trigger');
-    const panel = document.getElementById('services-mega-menu');
-    
-    if (!trigger || !panel) return;
-    
-    const closeMenu = () => {
-      trigger.setAttribute('aria-expanded', 'false');
-      panel.classList.remove('is-open');
-      document.body.classList.remove('mega-menu-active');
-    };
-    
-    const openMenu = () => {
-      trigger.setAttribute('aria-expanded', 'true');
-      panel.classList.add('is-open');
-      if (window.innerWidth > 900) document.body.classList.add('mega-menu-active');
-    };
-    
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-      if (isExpanded) {
-        closeMenu();
-      } else {
-        openMenu();
+    .logo-full {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .logo-icon {
+      opacity: 0;
+      transform: scale(0.8);
+      color: var(--rdx-red);
+      /* Style the R differently if desired, or keep white */
+    }
+
+    .rdx-nav.is-scrolled .logo-full {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+
+    .rdx-nav.is-scrolled .logo-icon {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: var(--space-xl);
+      align-items: center;
+    }
+
+    .nav-group {
+      display: flex;
+      gap: var(--space-lg);
+    }
+
+    .nav-item {
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-item:hover {
+      color: var(--rdx-red);
+    }
+
+    /* Focus-visible for keyboard accessibility */
+    .nav-item:focus-visible,
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--rdx-red);
+      outline-offset: 4px;
+    }
+
+    .btn-primary {
+      background-color: var(--rdx-red);
+      color: var(--rdx-white);
+      padding: 0.85rem 1.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      transition: background-color var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--rdx-red-hover);
+    }
+
+    /* Hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 110;
+    }
+
+    .hamburger-line {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: var(--rdx-white);
+      transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
+
+    .nav-hamburger.is-open .hamburger-line:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-hamburger.is-open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-hamburger.is-open .hamburger-line:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile breakpoint */
+    @media (max-width: 900px) {
+      .nav-hamburger {
+        display: flex;
       }
-    });
-    
-    document.addEventListener('click', (e) => {
-      if (!trigger.contains(e.target) && !panel.contains(e.target)) {
-        closeMenu();
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 280px;
+        height: 100vh;
+        background: var(--rdx-black);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 100px var(--space-lg) var(--space-lg);
+        gap: var(--space-lg);
+        transform: translateX(100%);
+        transition: transform var(--transition-normal);
+        box-shadow: -4px 0 30px rgba(0, 0, 0, 0.5);
+        z-index: 105;
       }
-    });
-    
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        closeMenu();
+
+      .nav-links.is-open {
+        transform: translateX(0);
       }
-    });
-    
-    const links = panel.querySelectorAll('a');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        closeMenu();
-        // Also close mobile hamburger menu if open
-        const hamburger = document.getElementById('nav-hamburger');
-        const navLinks = document.getElementById('nav-links');
-        if (hamburger && navLinks) {
-          hamburger.classList.remove('is-open');
-          hamburger.setAttribute('aria-expanded', 'false');
-          navLinks.classList.remove('is-open');
+
+      .nav-group {
+        flex-direction: column;
+        gap: var(--space-md);
+      }
+
+      .nav-cta {
+        display: none;
+        /* CTA duplicated inside mobile menu if needed */
+      }
+    }
+
+    /* Mega Menu Styles */
+    .mega-menu-wrapper {
+      position: static;
+      /* Important so that the fixed child works reliably on all browsers, though fixed is relative to viewport anyway */
+    }
+
+    .services-trigger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--rdx-white);
+      padding: 0;
+      font-family: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      letter-spacing: inherit;
+    }
+
+    .dropdown-icon {
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .services-trigger[aria-expanded="true"] .dropdown-icon {
+      transform: rotate(180deg);
+    }
+
+    .mega-menu-panel {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -45%) scale(0.98);
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-sm);
+      padding: var(--space-xl);
+      width: max-content;
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s;
+      z-index: 1000;
+    }
+
+    .mega-menu-panel.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .mega-menu-grid {
+      display: flex;
+      flex-direction: row;
+      gap: var(--space-lg);
+    }
+
+    .mega-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding: var(--space-lg);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
+      width: 280px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mega-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--rdx-red-active);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .mega-card:hover,
+    .mega-card:focus-visible {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-4px);
+      outline: none;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .mega-card:hover::after,
+    .mega-card:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .mega-card-icon {
+      width: 48px !important;
+      height: 48px !important;
+      object-fit: contain;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.4s;
+      filter: brightness(0.8);
+    }
+
+    .mega-card:hover .mega-card-icon {
+      transform: scale(1.1);
+      filter: brightness(1);
+    }
+
+    .mega-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mega-card-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      color: var(--rdx-white);
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+
+    .mega-card:hover .mega-card-title {
+      color: var(--rdx-red-active);
+    }
+
+    .mega-card-desc {
+      font-size: 0.9rem;
+      color: var(--rdx-gray-light);
+      line-height: 1.4;
+    }
+
+
+
+    @media (max-width: 900px) {
+      .mega-menu-panel {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        backdrop-filter: none;
+        padding: var(--space-sm) 0 0 0;
+        width: 100%;
+        display: none;
+      }
+
+      .mega-menu-panel.is-open {
+        transform: none;
+        display: block;
+      }
+
+      .mega-menu-grid {
+        flex-direction: column;
+      }
+
+      .mega-card {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        padding: var(--space-sm);
+        background: transparent;
+        border: none;
+      }
+
+      .mega-card:hover {
+        transform: none;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: none;
+      }
+
+      .mega-card-desc {
+        display: none;
+      }
+
+      .mega-card-icon {
+        width: 32px !important;
+        height: 32px !important;
+      }
+
+      .mega-card-title {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+
+  <script>
+    (function () {
+      const trigger = document.querySelector('.services-trigger');
+      const panel = document.getElementById('services-mega-menu');
+
+      if (!trigger || !panel) return;
+
+      const closeMenu = () => {
+        trigger.setAttribute('aria-expanded', 'false');
+        panel.classList.remove('is-open');
+        document.body.classList.remove('mega-menu-active');
+      };
+
+      const openMenu = () => {
+        trigger.setAttribute('aria-expanded', 'true');
+        panel.classList.add('is-open');
+        if (window.innerWidth > 900) document.body.classList.add('mega-menu-active');
+      };
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+        if (isExpanded) {
+          closeMenu();
+        } else {
+          openMenu();
         }
       });
-    });
-  })();
-</script>
-<!-- NAV:END -->
+
+      document.addEventListener('click', (e) => {
+        if (!trigger.contains(e.target) && !panel.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          closeMenu();
+        }
+      });
+
+      const links = panel.querySelectorAll('a');
+      links.forEach(link => {
+        link.addEventListener('click', () => {
+          closeMenu();
+          // Also close mobile hamburger menu if open
+          const hamburger = document.getElementById('nav-hamburger');
+          const navLinks = document.getElementById('nav-links');
+          if (hamburger && navLinks) {
+            hamburger.classList.remove('is-open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('is-open');
+          }
+        });
+      });
+    })();
+  </script>
+  <!-- NAV:END -->
 
 
   <!-- Intro -->
@@ -1001,6 +1062,50 @@
           </div>
         </article>
 
+        <!-- Card: 164956 -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video" data-src="assets/164956.mp4"
+          data-title="Cinematic Highlight">
+          <video src="assets/164956.mp4" loop muted playsinline class="pf-poster"
+            style="display: block; width: 100%; height: auto;"></video>
+          <div class="pf-play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
+          </div>
+          <div class="pf-overlay">
+            <div class="pf-category-tag">RDX RED · Cinematography</div>
+            <div class="pf-card-title">Cinematic Highlight</div>
+            <div class="pf-action-hint">Click to play ▶</div>
+          </div>
+        </article>
+
+        <!-- Card: 164325 -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="image" data-title="Photography">
+          <img src="assets/164325.jpg" alt="Photography" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">RDX RED · Photography</div>
+            <div class="pf-card-title">Photography</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: 164301 -->
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="video" data-src="assets/164301.mp4"
+          data-title="Cinematic Moment">
+          <video src="assets/164301.mp4" loop muted playsinline class="pf-poster"
+            style="display: block; width: 100%; height: auto;"></video>
+          <div class="pf-play-badge" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <polygon points="5,3 19,12 5,21" />
+            </svg>
+          </div>
+          <div class="pf-overlay">
+            <div class="pf-category-tag">RDX RED · Cinematography</div>
+            <div class="pf-card-title">Cinematic Moment</div>
+            <div class="pf-action-hint">Click to play ▶</div>
+          </div>
+        </article>
+
         <!-- Card: Vidyuth -->
         <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
           data-title="Vidyuth 2026 Event Poster">
@@ -1019,17 +1124,6 @@
           <div class="pf-overlay">
             <div class="pf-category-tag">Shape RED · Architectural Photography</div>
             <div class="pf-card-title">Traditional Courtyard</div>
-            <div class="pf-action-hint">Click to view ↗</div>
-          </div>
-        </article>
-
-        <!-- Card: Courtyard Portrait -->
-        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
-          data-title="Courtyard Portrait">
-          <img src="assets/Home with.png" alt="Courtyard Portrait" loading="lazy">
-          <div class="pf-overlay">
-            <div class="pf-category-tag">Shape RED · Portrait Photography</div>
-            <div class="pf-card-title">Courtyard Portrait</div>
             <div class="pf-action-hint">Click to view ↗</div>
           </div>
         </article>
@@ -1078,11 +1172,11 @@
         </article>
 
         <!-- Card: Tulasi Macro -->
-        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+        <article class="pf-card rdx-fade-up" data-category="rdx-red" data-type="image"
           data-title="Tulasi Macro Photography">
           <img src="assets/Tulasi.jpg" alt="Tulasi Macro" loading="lazy">
           <div class="pf-overlay">
-            <div class="pf-category-tag">Shape RED · Macro Photography</div>
+            <div class="pf-category-tag">RDX RED · Macro Photography</div>
             <div class="pf-card-title">Tulasi Macro Photography</div>
             <div class="pf-action-hint">Click to view ↗</div>
           </div>
@@ -1099,9 +1193,52 @@
           </div>
         </article>
 
+        <!-- Card: Berlin Environment Concept -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Berlin Environment Concept">
+          <img src="assets/berlin wallpaper.png" alt="Berlin Environment Concept" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Environment Art</div>
+            <div class="pf-card-title">Berlin Environment Concept</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: Berlin Indoor Concept -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Berlin Indoor Concept">
+          <img src="assets/Berlin Indoor Wallpaper.png" alt="Berlin Indoor Concept" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Environment Art</div>
+            <div class="pf-card-title">Berlin Indoor Concept</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: Chongqing Cyberpunk Concept -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image"
+          data-title="Chongqing Cyberpunk Concept">
+          <img src="assets/Chongqing Wallpaper.png" alt="Chongqing Cyberpunk Concept" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Concept Art</div>
+            <div class="pf-card-title">Chongqing Cyberpunk Concept</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
+        <!-- Card: Hitman RED Theme -->
+        <article class="pf-card rdx-fade-up" data-category="shape-red" data-type="image" data-title="Hitman RED Theme">
+          <img src="assets/Hitman RED Wallpaper.png" alt="Hitman RED Theme" loading="lazy">
+          <div class="pf-overlay">
+            <div class="pf-category-tag">Shape RED · Concept Art</div>
+            <div class="pf-card-title">Hitman RED Theme</div>
+            <div class="pf-action-hint">Click to view ↗</div>
+          </div>
+        </article>
+
         <!-- Card: RDX RED Web -->
-        <a href="https://rdx2-vnbm.vercel.app/" target="_blank" class="pf-card rdx-fade-up is-hidden" data-category="code-red"
-          data-type="link">
+        <a href="https://rdx2-vnbm.vercel.app/" target="_blank" class="pf-card rdx-fade-up is-hidden"
+          data-category="code-red" data-type="link">
           <img src="assets/code_red_rdx.png" alt="RDX RED Web" loading="lazy">
           <div class="pf-overlay">
             <div class="pf-category-tag">Code RED · Web Design</div>
@@ -1122,8 +1259,8 @@
         </a>
 
         <!-- Card: VVCE Hotel -->
-        <a href="https://vvcehotel.vercel.app/" target="_blank" class="pf-card rdx-fade-up is-hidden" data-category="code-red"
-          data-type="link">
+        <a href="https://vvcehotel.vercel.app/" target="_blank" class="pf-card rdx-fade-up is-hidden"
+          data-category="code-red" data-type="link">
           <img src="assets/code_red_vvcehotel.png" alt="VVCE Hotel" loading="lazy">
           <div class="pf-overlay">
             <div class="pf-category-tag">Code RED · Web App</div>
@@ -1197,183 +1334,202 @@
   </div>
 
   <!-- FOOTER:START -->
-<footer class="rdx-footer">
-  <!-- Background Pattern for Glassmorphism -->
-  <img src="assets/RED Wallpaper.png" alt="" class="footer-bg">
-  
-  <div class="footer-container">
-    <div class="footer-layout">
-      <!-- Links Side -->
-      <div class="footer-links-wrapper">
-        <div class="footer-grid">
-          
-          <!-- Navigation -->
-          <div class="footer-col">
-            <h3 class="footer-heading">NAVIGATION</h3>
-            <ul class="footer-links">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="about.html">About</a></li>
-              <li><a href="services.html">Services</a></li>
-              <li><a href="portfolio.html">Portfolio</a></li>
-              <li><a href="studio.html">Studio</a></li>
-              <li><a href="team.html">Team</a></li>
-            </ul>
-          </div>
+  <footer class="rdx-footer">
+    <!-- Background Pattern for Glassmorphism -->
+    <img src="assets/RED Wallpaper.png" alt="" class="footer-bg">
 
-          <!-- Studios -->
-          <div class="footer-col">
-            <h3 class="footer-heading">STUDIOS</h3>
-            <ul class="footer-links">
-              <li><a href="services.html#rdx-red">RDX RED</a></li>
-              <li><a href="services.html#code-red">Code RED</a></li>
-              <li><a href="services.html#shape-red">Shape RED</a></li>
-            </ul>
-          </div>
+    <div class="footer-container">
+      <div class="footer-layout">
+        <!-- Links Side -->
+        <div class="footer-links-wrapper">
+          <div class="footer-grid">
 
-          <!-- Connect -->
-          <div class="footer-col">
-            <h3 class="footer-heading">CONNECT</h3>
-            <ul class="footer-links">
-              <li><a href="contact.html">Contact Us</a></li>
-              <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
-              <li><a href="tel:+917676218729">+91 76762 18729</a></li>
-              <li><p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p></li>
-            </ul>
-          </div>
-          
-          <!-- Socials -->
-          <div class="footer-col">
-            <h3 class="footer-heading">SOCIAL</h3>
-            <ul class="footer-links">
-              <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
-              <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
-              <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
-              <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
-            </ul>
+            <!-- Navigation -->
+            <div class="footer-col">
+              <h3 class="footer-heading">NAVIGATION</h3>
+              <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="studio.html">Studio</a></li>
+                <li><a href="team.html">Team</a></li>
+              </ul>
+            </div>
+
+            <!-- Studios -->
+            <div class="footer-col">
+              <h3 class="footer-heading">STUDIOS</h3>
+              <ul class="footer-links">
+                <li><a href="services.html#rdx-red">RDX RED</a></li>
+                <li><a href="services.html#code-red">Code RED</a></li>
+                <li><a href="services.html#shape-red">Shape RED</a></li>
+              </ul>
+            </div>
+
+            <!-- Connect -->
+            <div class="footer-col">
+              <h3 class="footer-heading">CONNECT</h3>
+              <ul class="footer-links">
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="mailto:ddxredx0703@gmail.com">ddxredx0703@gmail.com</a></li>
+                <li><a href="tel:+917676218729">+91 76762 18729</a></li>
+                <li>
+                  <p class="footer-text">Dakshina Kannada &amp; Mysore City,<br>Karnataka, India</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Socials -->
+            <div class="footer-col">
+              <h3 class="footer-heading">SOCIAL</h3>
+              <ul class="footer-links">
+                <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+                <li><a href="#" target="_blank" rel="noopener">Twitter</a></li>
+                <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="#" target="_blank" rel="noopener">Behance</a></li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <!-- Logo Side -->
-      <div class="footer-logo-wrapper">
-        <img src="assets/LOgo.png" alt="RED Studios Logo" class="footer-logo">
-      </div>
-    </div>
-    
-    <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> RED Studios. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
 
-<style>
-/* Footer styles */
-.rdx-footer {
-  position: relative;
-  background-color: transparent;
-  padding: 0 0 var(--space-xl) 0;
-  margin-top: var(--space-2xl);
-  overflow: hidden;
-}
-.footer-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.15;
-  z-index: 0;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
-  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
-}
-.footer-container {
-  position: relative;
-  z-index: 1;
-  max-width: 1400px;
-  margin: var(--space-2xl) auto 0;
-  padding: var(--space-2xl) var(--space-xl);
-  background: rgba(15, 15, 15, 0.4);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-}
-.footer-layout {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: var(--space-2xl);
-}
-.footer-links-wrapper {
-  flex: 1;
-  min-width: 300px;
-}
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
-}
-.footer-logo-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  min-width: 250px;
-}
-.footer-logo {
-  width: 220px;
-  object-fit: contain;
-  opacity: 0.9;
-  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
-}
-@media (max-width: 900px) {
-  .footer-layout {
-    flex-direction: column-reverse;
-  }
-  .footer-logo-wrapper {
-    justify-content: center;
-    margin-bottom: var(--space-xl);
-  }
-}
-.footer-heading {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  color: var(--rdx-white);
-  margin-bottom: var(--space-md);
-  letter-spacing: 0.05em;
-}
-.footer-links {
-  list-style: none;
-}
-.footer-links li {
-  margin-bottom: var(--space-sm);
-}
-.footer-links a, .footer-text {
-  font-family: var(--font-body);
-  color: var(--rdx-gray-light);
-  font-size: 0.95rem;
-  transition: color var(--transition-fast);
-}
-.footer-links a:hover {
-  color: var(--rdx-red);
-}
-.footer-links a:focus-visible {
-  outline: 2px solid var(--rdx-red);
-  outline-offset: 2px;
-}
-.footer-bottom {
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  padding-top: var(--space-md);
-  margin-top: var(--space-xl);
-  color: var(--rdx-gray-light);
-  font-size: 0.85rem;
-}
-</style>
-<!-- FOOTER:END -->
+        <!-- Logo Side -->
+        <div class="footer-logo-wrapper">
+          <img src="assets/LOgo.png" alt="RED Studios Logo" class="footer-logo">
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year"></span> RED Studios. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    /* Footer styles */
+    .rdx-footer {
+      position: relative;
+      background-color: transparent;
+      padding: 0 0 var(--space-xl) 0;
+      margin-top: var(--space-2xl);
+      overflow: hidden;
+    }
+
+    .footer-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.15;
+      z-index: 0;
+      pointer-events: none;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 100%);
+    }
+
+    .footer-container {
+      position: relative;
+      z-index: 1;
+      max-width: 1400px;
+      margin: var(--space-2xl) auto 0;
+      padding: var(--space-2xl) var(--space-xl);
+      background: rgba(15, 15, 15, 0.4);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer-layout {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-2xl);
+    }
+
+    .footer-links-wrapper {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer-logo-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      min-width: 250px;
+    }
+
+    .footer-logo {
+      width: 220px;
+      object-fit: contain;
+      opacity: 0.9;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.5));
+    }
+
+    @media (max-width: 900px) {
+      .footer-layout {
+        flex-direction: column-reverse;
+      }
+
+      .footer-logo-wrapper {
+        justify-content: center;
+        margin-bottom: var(--space-xl);
+      }
+    }
+
+    .footer-heading {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--rdx-white);
+      margin-bottom: var(--space-md);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer-links a,
+    .footer-text {
+      font-family: var(--font-body);
+      color: var(--rdx-gray-light);
+      font-size: 0.95rem;
+      transition: color var(--transition-fast);
+    }
+
+    .footer-links a:hover {
+      color: var(--rdx-red);
+    }
+
+    .footer-links a:focus-visible {
+      outline: 2px solid var(--rdx-red);
+      outline-offset: 2px;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: var(--space-md);
+      margin-top: var(--space-xl);
+      color: var(--rdx-gray-light);
+      font-size: 0.85rem;
+    }
+  </style>
+  <!-- FOOTER:END -->
 
   <script src="js/main.js" defer></script>
   <script>
@@ -1490,8 +1646,8 @@
       const rawDesc = card.dataset.desc || '';
       const displayDesc = rawDesc.replace(/<!--[\s\S]*?-->/g, '').trim();
 
-      // Populate info
-      lbTitle.textContent = title;
+        // Populate info
+        lbTitle.textContent = title;
       lbTag.textContent = tag;
       lbDesc.textContent = displayDesc;
 
