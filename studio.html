@@ -10,7 +10,7 @@
   <meta property="og:title" content="Studios | RED Studios">
   <meta property="og:description"
     content="Discover RED Studios' physical spaces: Kokkada Main and Mysuru Suite, where our creative work comes to life.">
-  <meta property="og:image" content="assets/KOKKADA.png">
+  <meta property="og:image" content="https://rdx3.vercel.app/assets/KOKKADA.png">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/webp" href="assets/LOGO2.png">
   <link rel="stylesheet" href="css/tokens.css">
@@ -552,12 +552,8 @@
       display: none;
     }
 
-    /* ─── CLASSIFIED BONUS SECTION (visible only when decrypted) ─── */
+    /* ─── CLASSIFIED BONUS SECTION ─── */
     #max-red-studio-target {
-      display: none;
-    }
-
-    html.is-decrypted #max-red-studio-target {
       display: block;
     }
 
@@ -603,7 +599,7 @@
   </style>
 
   <!-- CONFIRM: Replace example-rdx3.com with live domain -->
-  <link rel="canonical" href="https://example-rdx3.com/studio.html">
+  <link rel="canonical" href="https://rdx3.vercel.app/studio.html">
   <meta name="theme-color" content="#0A0A0A">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -1117,9 +1113,9 @@
 
   <!-- ═══ STUDIO BLOCKS ═══ -->
   <section class="studio-section">
-    <div class="container">
-      <!-- ENCRYPTED STATE: ACCESS DENIED -->
-      <div id="studio-access-denied" style="min-height: 40vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: rgba(10, 0, 0, 0.5); border: 1px solid; border-image: linear-gradient(to right, transparent 0%, rgba(255,0,0,0.5) 15%, rgba(255,0,0,0.5) 85%, transparent 100%) 1; position: relative; overflow: hidden; margin: 4rem 0; padding: 4rem 2rem;">
+    <div class="container" style="position: relative;">
+      <!-- ENCRYPTED STATE: ACCESS DENIED (Overlay) -->
+      <div id="studio-access-denied" style="position: absolute; inset: 0; z-index: 50; min-height: 40vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: rgba(10, 0, 0, 0.85); backdrop-filter: blur(12px); border: 1px solid; border-image: linear-gradient(to right, transparent 0%, rgba(255,0,0,0.5) 15%, rgba(255,0,0,0.5) 85%, transparent 100%) 1; overflow: hidden; padding: 4rem 2rem;">
         <div class="decryption-failure-layer"></div>
         <div class="red-flare" style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,0,0,0.15) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; animation: pulse 3s infinite;"></div>
         <h2 style="font-family: var(--font-display); font-size: clamp(3.5rem, 8vw, 6.5rem); line-height: 1.1; letter-spacing: 4px; color: var(--rdx-white); position: relative; z-index: 2; margin-bottom: 1rem;">ACCESS DENIED</h2>
@@ -1132,8 +1128,48 @@
         </div>
       </div>
 
-      <!-- Vault-injected classified bonus content (only shows when decrypted) -->
-      <div id="max-red-studio-target"></div>
+      <!-- Raw Studio Content -->
+      <div id="max-red-studio-target">
+        
+        <div class="studio-block in-view">
+          <div class="studio-image-col">
+            <img src="assets/KOKKADA.png" alt="Kokkada Main" class="studio-feature-img">
+            <div class="studio-img-badge">01 // KOKKADA</div>
+          </div>
+          <div class="studio-text-col">
+            <div class="studio-index">01</div>
+            <h2 class="studio-name">Kokkada Main</h2>
+            <div class="studio-location">Karnataka, IN</div>
+            <p class="studio-desc">123 Creative Hub Street, Kokkada</p>
+            <ul class="studio-features">
+              <li>Photography & Videography</li>
+              <li>Creative Headquarters</li>
+              <li>Post-Production Suite</li>
+            </ul>
+            <a href="contact.html?service=rdx-red" class="studio-cta">Book Studio <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <div class="studio-block reverse in-view">
+          <div class="studio-image-col">
+            <img src="assets/Mysuru.png" alt="Mysuru Suite" class="studio-feature-img">
+            <div class="studio-img-badge">02 // MYSURU</div>
+          </div>
+          <div class="studio-text-col">
+            <div class="studio-index">02</div>
+            <h2 class="studio-name">Mysuru Suite</h2>
+            <div class="studio-location">Karnataka, IN</div>
+            <p class="studio-desc">456 Editorial Lane, Mysuru</p>
+            <ul class="studio-features">
+              <li>Editorial Photography</li>
+              <li>High-End Portraits</li>
+              <li>Color Grading Suite</li>
+            </ul>
+            <a href="contact.html?service=rdx-red" class="studio-cta">Book Studio <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
 
     </div>
   </section>

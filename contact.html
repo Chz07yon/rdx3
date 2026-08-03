@@ -7,7 +7,7 @@
   <meta name="description" content="Get in touch with RED Studios. Book a photography shoot, start a digital build, or shape your brand. Studios in Kokkada and Mysuru, Karnataka.">
   <meta property="og:title" content="Contact | RED Studios">
   <meta property="og:description" content="Book a shoot, start a digital build, or shape your brand. Get in touch with RED Studios.">
-  <meta property="og:image" content="assets/KOKKADA.png">
+  <meta property="og:image" content="https://rdx3.vercel.app/assets/KOKKADA.png">
   <meta property="og:type" content="website">
   <link rel="icon" type="image/webp" href="assets/LOGO2.png">
   <link rel="stylesheet" href="css/tokens.css">
@@ -309,7 +309,7 @@
   </style>
 
   <!-- CONFIRM: Replace example-rdx3.com with live domain -->
-  <link rel="canonical" href="https://example-rdx3.com/contact.html">
+  <link rel="canonical" href="https://rdx3.vercel.app/contact.html">
   <meta name="theme-color" content="#0A0A0A">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -1142,8 +1142,8 @@
       btnShoot.addEventListener('click', () => setFormType('shoot'));
       btnInquiry.addEventListener('click', () => setFormType('inquiry'));
 
-      // Handle Form Submit (Client-Side Validation Only)
-      contactForm.addEventListener('submit', (e) => {
+      // Handle Form Submit
+      contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
         // Remove previous visual error states (optional simple handling)
@@ -1159,9 +1159,44 @@
           return;
         }
 
-        // Validation passed: Show Success State
-        contactForm.style.display = 'none';
-        formSuccess.classList.add('is-visible');
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'SENDING...';
+        submitBtn.disabled = true;
+
+        try {
+          const response = await fetch('https://formspree.io/f/REPLACE_ME_FORMSPREE_ENDPOINT', {
+            method: 'POST',
+            body: new FormData(contactForm),
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+
+          if (response.ok) {
+            // Validation passed: Show Success State
+            contactForm.style.display = 'none';
+            formSuccess.classList.add('is-visible');
+          } else {
+            throw new Error('Form submission failed');
+          }
+        } catch (error) {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          // Reuse existing error highlighting styling for the button or show a message
+          submitBtn.style.backgroundColor = 'var(--rdx-red)';
+          
+          let existingError = contactForm.querySelector('.form-error-msg');
+          if (!existingError) {
+            existingError = document.createElement('div');
+            existingError.className = 'form-error-msg';
+            existingError.style.color = 'var(--rdx-red)';
+            existingError.style.marginTop = '1rem';
+            existingError.style.textAlign = 'center';
+            existingError.textContent = 'Message failed to send. Please try again.';
+            submitBtn.parentNode.insertBefore(existingError, submitBtn.nextSibling);
+          }
+        }
       });
 
       // Clear custom error borders on input
