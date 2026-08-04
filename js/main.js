@@ -80,7 +80,7 @@ function initHamburger() {
   });
 
   // Close menu when a nav link is clicked
-  navLinks.querySelectorAll('.nav-item').forEach(link => {
+  navLinks.querySelectorAll('a.nav-item').forEach(link => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('is-open');
       hamburger.classList.remove('is-open');
